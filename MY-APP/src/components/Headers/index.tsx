@@ -7,7 +7,6 @@ import Swal from 'sweetalert2';
 // import Weather from '../apis/weather';
 import LoginButton from '../antd/loginbutton';
 
-
 const MainLogo = () => {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,7 +48,7 @@ const MainLogo = () => {
           </a>
         </Link>
         {/* <Weather></Weather> */}
-        <div>전기 버스 관리 시스템</div>
+        <h1>전기 버스 관리 시스템</h1>
         <ButtonWrapper>
           <LoginButton isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </ButtonWrapper>

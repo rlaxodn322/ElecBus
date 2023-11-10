@@ -11,9 +11,9 @@ const MainFooter = () => {
             <a>First C&D</a>
           </nav>
           <p>
-            <span>저자 : 최재민</span>
-            <span>이메일 : jaemin@firstcorea.com</span>
-            <span>Copyright 2023. 최재민. ALL Rights Reserved.</span>
+            <span>저자 : 김태우</span>
+            <span>이메일 : taewoo@firstcorea.com</span>
+            <span>Copyright 2023. 김태우. ALL Rights Reserved.</span>
           </p>
         </footer>
       </Layout>

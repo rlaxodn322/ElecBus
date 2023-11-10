@@ -37,9 +37,11 @@ const App: React.FC = () => (
     </Row>
     <Row>
       <Col span={12}>col-8</Col>
-      <Col span={12}>col-8</Col>
+    
     </Row>
   </>
 );
 
+
 export default App;
+
