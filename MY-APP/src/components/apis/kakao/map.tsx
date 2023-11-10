@@ -30,7 +30,7 @@ export default function MapComponent() {
 
   return (
     <div>
-      <div id="map" style={{ width: '400px', height: '750px' }}></div>
+      <div id="map" style={{ width: '600px', height: '750px' }}></div>
     </div>
   );
 }
