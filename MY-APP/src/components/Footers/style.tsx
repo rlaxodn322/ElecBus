@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Layout = styled.div`
   width: 100%;
   height: auto;
-  background-color: #d3d3d3;
+  background-color: #f7f7f7;
   color: #808080;
   display: flex; /* 가로로 가운데 정렬을 위해 flex 사용 */
   justify-content: center; /* 가로 가운데 정렬 */

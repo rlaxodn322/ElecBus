@@ -38,7 +38,7 @@ for (let i = 0; i < 100; i++) {
 }
 
 const App: React.FC = () => (
-  <Table columns={columns} dataSource={data} pagination={{ pageSize: 10 }} scroll={{ y: 600 }} />
+  <Table columns={columns} dataSource={data} pagination={{ pageSize: 6 }} scroll={{ y: 600 }} />
 );
 
 export default App;

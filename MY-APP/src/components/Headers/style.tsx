@@ -12,11 +12,11 @@ export const LogoWrapper = styled.div`
   justify-content: space-between;
   padding: 10px;
   padding-left: 80px;
-  background-color: #d3d3d3;
+  background-color: #f7f7f7;
 
   & img {
     height: 50px;
-    // margin: 10px; 
+    // margin: 10px;
   }
 `;
 
@@ -42,4 +42,3 @@ export const Button = styled.div`
   // height: 20px;
   // cursor: pointer;
 `;
-

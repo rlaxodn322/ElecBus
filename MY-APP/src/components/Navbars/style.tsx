@@ -5,12 +5,12 @@ export const Layout = styled.div`
   left: 0;
   width: 250px;
   bottom: 0;
-  background: linear-gradient(182.11deg, #d3d3d3 3.56%, white 80.44%);
+  background: linear-gradient(182.11deg, #f8f8f7 3.56%, white 80.44%);
   height: 100vh;
   width: 60px;
   z-index: 3;
-  border-right: 1px solid #f0f0f0;
   border-radius: 5px;
+  opacity: 0.9;
   & div {
     height: 60px;
     padding-top: 10px;
@@ -32,6 +32,7 @@ export const Layout = styled.div`
   }
   &:hover {
     width: 250px;
+
     & div {
       text-align: right;
       margin: 20px;

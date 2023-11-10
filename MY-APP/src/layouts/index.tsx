@@ -12,7 +12,6 @@ const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
       <Layout>
         <MainHeader />
         <MainNavbar />
-    
         <ContentsWrapper>{children}</ContentsWrapper>
         <MainFooter />
       </Layout>
