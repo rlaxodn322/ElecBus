@@ -1,14 +1,20 @@
 import React from 'react';
-import { Card, Space } from 'antd';
-
+import { Col, Row } from 'antd';
+import MapComponent from '../apis/kakao/map';
 const App: React.FC = () => (
-  <Space direction="vertical" size={16}>
-    <Card title="Default size card" extra={<a href="#">More</a>} style={{ width: 600 }}>
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </Card>
-  </Space>
+  <>
+    <Row>
+      <Col span={12}>
+        <h1>운행지도</h1>
+        <MapComponent></MapComponent>
+      </Col>
+      <Col span={12}>ㅏㅏ</Col>
+    </Row>
+    <Row>
+      <Col span={12}>col-8</Col>
+      <Col span={12}>col-8</Col>
+    </Row>
+  </>
 );
 
 export default App;
