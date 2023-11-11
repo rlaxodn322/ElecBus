@@ -1,7 +1,6 @@
 import Head from 'next/head';
-
 import MainLayout from '../../../layouts';
-
+import Table from '../../../components/antd/buslist/table';
 const MyPage = () => {
   return (
     <>
@@ -12,6 +11,7 @@ const MyPage = () => {
 
       <div>
         <h2>통계 정보</h2>
+        <Table />
       </div>
     </>
   );
