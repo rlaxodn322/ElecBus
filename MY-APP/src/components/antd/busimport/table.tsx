@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, Input, Select } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 const { Option } = Select;
 
 const layout = {
@@ -50,9 +51,11 @@ const App: React.FC = () => {
           <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px grey' }} type="primary" htmlType="submit">
             노선등록
           </Button>
-          <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} htmlType="button" onClick={onReset}>
-            취소
-          </Button>
+          <Link href="../">
+            <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} htmlType="button" onClick={onReset}>
+              취소
+            </Button>
+          </Link>
         </Form.Item>
       </Form>
     </>

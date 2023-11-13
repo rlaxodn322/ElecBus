@@ -10,12 +10,13 @@ const MyPage = () => {
   const router = useRouter();
   const arr = ['버스번호', '차량번호', '위치', '운행상태'];
   const arr1 = ['강원71자1565', '90', '차고지', '미운행'];
-
+  const router1 = () => {
+    router.push('../../auth/busimport');
+  };
   return (
     <>
       <Head>
         <title>통계정보</title>
-        
         <meta name="description" content="통계정보" />
       </Head>
 
