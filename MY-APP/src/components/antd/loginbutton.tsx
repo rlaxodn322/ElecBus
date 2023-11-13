@@ -14,17 +14,19 @@ const LoginButton: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) =
       {isLoggedIn ? (
         <>
           <Link href="/auth/mypage">
-            <Button>마이페이지</Button>
+            <Button style={{ boxShadow: '2px 2px 2px 2px grey' }}>마이페이지</Button>
           </Link>
-          <Button onClick={handleLogout}>로그아웃</Button>
+          <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} onClick={handleLogout}>
+            로그아웃
+          </Button>
         </>
       ) : (
         <>
           <Link href="/auth/login">
-            <Button>로그인</Button>
+            <Button style={{ boxShadow: '2px 2px 2px 2px grey' }}>로그인</Button>
           </Link>
           <Link href="/auth/signup">
-            <Button>회원가입</Button>
+            <Button style={{ boxShadow: '2px 2px 2px 2px grey' }}>회원가입</Button>
           </Link>
         </>
       )}

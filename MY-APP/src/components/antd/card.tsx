@@ -3,14 +3,14 @@ import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map';
 import 'antd-button-color/dist/css/style.css';
 const style: React.CSSProperties = {
-  padding: '8px 0',
   border: '1px solid black',
   height: '150px',
   borderRadius: '20px',
   boxShadow: '2px 2px 2px 2px grey',
 };
 const style1: React.CSSProperties = {
-  marginLeft: '40px',
+  marginLeft: '100px',
+  width: '80px',
 };
 const style2: React.CSSProperties = {
   marginLeft: '70px',

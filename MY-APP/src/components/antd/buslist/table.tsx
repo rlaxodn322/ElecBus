@@ -3,7 +3,6 @@ import { Layout, Space, Button, Form, Input, InputNumber } from 'antd';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-
 const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   minHeight: 120,

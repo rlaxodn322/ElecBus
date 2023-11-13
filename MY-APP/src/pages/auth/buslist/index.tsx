@@ -2,11 +2,19 @@ import Head from 'next/head';
 import MainLayout from '../../../layouts';
 import Table from '../../../components/antd/buslist/table';
 import { Button } from 'antd';
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import 'antd-button-color/dist/css/style.css';
+
 const MyPage = () => {
+  const router = useRouter();
   const arr = ['버스번호', '차량번호', '위치', '운행상태'];
   const arr1 = ['강원71자1565', '90', '차고지', '미운행'];
   const arr2 = ['강원70자8021', '33', '차고지', '미운행'];
+  const router1 = () => {
+    router.push('../../auth/busimport');
+  };
   return (
     <>
       <Head>
@@ -68,6 +76,7 @@ const MyPage = () => {
               {item}
             </span>
           ))}
+
           <Button type="warning" style={{ margin: '40px' }}>
             상세정보
           </Button>
@@ -84,7 +93,7 @@ const MyPage = () => {
           paddingTop: '50px',
         }}
       >
-        <Button type="primary" style={{ marginRight: '70px', fontSize: '18px' }}>
+        <Button href="/auth/busimport" type="primary" style={{ marginRight: '70px', fontSize: '18px' }} >
           노선등록
         </Button>
       </div>

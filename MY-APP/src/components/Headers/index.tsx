@@ -48,7 +48,7 @@ const MainLogo = () => {
           </a>
         </Link>
         {/* <Weather></Weather> */}
-        <h1 style={{color:'darkblue'}}>전기 버스 관리 시스템</h1>
+        <h1 style={{ color: 'darkblue' }}>전기 버스 관리 시스템</h1>
         <ButtonWrapper>
           <LoginButton isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </ButtonWrapper>

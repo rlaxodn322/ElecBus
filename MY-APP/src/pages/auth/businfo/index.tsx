@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import MainLayout from '../../../layouts';
 import Table from '../../../components/antd/businfo/table';
+import { Button } from 'antd';
 const MyPage = () => {
   return (
     <>
@@ -11,15 +12,37 @@ const MyPage = () => {
       <div
         style={{
           width: '1370px',
-          height: '500px',
           display: 'flex',
-          justifyContent:'center',
+          justifyContent: 'center',
           margin: '0 auto',
-          paddingTop:'50px',
+          paddingTop: '50px',
         }}
-      ><Table/></div>
-      <div></div>
-      <div></div>
+      >
+        <Table />
+      </div>
+      <div
+        style={{
+          width: '1370px',
+          display: 'flex',
+          justifyContent: 'center',
+          margin: '0 auto',
+        }}
+      >
+        <Table />
+      </div>
+      <div
+        style={{
+          width: '1370px',
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '300px',
+          marginLeft: '700px',
+        }}
+      >
+        <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} type="primary" size="large">
+          버스등록
+        </Button>
+      </div>
     </>
   );
 };
