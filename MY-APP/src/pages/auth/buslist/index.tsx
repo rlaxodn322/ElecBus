@@ -2,6 +2,7 @@ import Head from 'next/head';
 import MainLayout from '../../../layouts';
 import Table from '../../../components/antd/buslist/table';
 import { Button } from 'antd';
+import 'antd-button-color/dist/css/style.css';
 const MyPage = () => {
   const arr = ['버스번호', '차량번호', '위치', '운행상태'];
   const arr1 = ['강원71자1565', '90', '차고지', '미운행'];
@@ -67,11 +68,26 @@ const MyPage = () => {
               {item}
             </span>
           ))}
-          <Button style={{ margin: '40px' }}>상세정보</Button>
-          <Button>정보변경</Button>
+          <Button type="warning" style={{ margin: '40px' }}>
+            상세정보
+          </Button>
+          <Button type="primary">정보변경</Button>
         </div>
       </div>
-      <div></div>
+      <div
+        style={{
+          width: '1370px',
+          height: '500px',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          margin: '0 auto',
+          paddingTop: '50px',
+        }}
+      >
+        <Button type="primary" style={{ marginRight: '70px', fontSize: '18px' }}>
+          노선등록
+        </Button>
+      </div>
     </>
   );
 };

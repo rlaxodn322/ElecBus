@@ -12,42 +12,34 @@ const style: React.CSSProperties = {
 
 const App: React.FC = () => (
   <>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
-    <Col className="gutter-row" span={2}>
-      <div style={style}>고장정보</div>
-    </Col>
+    {/* {[...Array(12)].map((_, index) => (
+      <Col wrap="wrap" key={index} className="gutter-row" span={2}>
+        <div style={style}>고장정보</div>
+      </Col>
+    ))}
+
+    {[...Array(12)].map((_, index) => (
+      <Col key={index} className="gutter-row" span={2}>
+        <div style={style}>고장정보</div>
+      </Col>
+    ))} */}
+    <div
+      style={{
+        border: '1px solid black',
+        width: '1370px',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        margin: '0 auto',
+        paddingTop: '20px',
+      }}
+    >
+      {[...Array(12)].map((_, index) => (
+        <Col wrap="wrap" key={index} className="gutter-row" span={2}>
+          <div style={style}>고장정보</div>
+        </Col>
+      ))}
+    </div>
   </>
 );
 
