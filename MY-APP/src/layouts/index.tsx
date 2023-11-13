@@ -1,7 +1,6 @@
 import MainHeader from '../components/Headers';
 import MainNavbar from '../components/Navbars';
 import MainFooter from '../components/Footers';
-import Map from '../components/apis/kakao/map';
 import { ContentsWrapper, Layout } from './style';
 
 import React, { ReactNode } from 'react';

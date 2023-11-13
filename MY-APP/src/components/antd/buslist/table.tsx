@@ -3,14 +3,6 @@ import { Layout, Space, Button, Form, Input, InputNumber } from 'antd';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-const headerStyle: React.CSSProperties = {
-  textAlign: 'center',
-  color: '#fff',
-  height: 64,
-  paddingInline: 50,
-  lineHeight: '64px',
-  backgroundColor: '#7dbcea',
-};
 
 const contentStyle: React.CSSProperties = {
   textAlign: 'center',
@@ -21,12 +13,6 @@ const contentStyle: React.CSSProperties = {
   height: '500px',
   width: '400px',
   margin: '0 auto',
-};
-
-const footerStyle: React.CSSProperties = {
-  textAlign: 'center',
-  color: '#fff',
-  backgroundColor: '#7dbcea',
 };
 
 const layout = {
@@ -52,7 +38,6 @@ const onFinish = (values: any) => {
 const App: React.FC = () => (
   <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
     <Layout>
-      <Header style={headerStyle}>Header</Header>
       <Content style={contentStyle}>
         {' '}
         <Form
@@ -75,7 +60,6 @@ const App: React.FC = () => (
           </Form.Item>
         </Form>
       </Content>
-      <Footer style={footerStyle}>Footer</Footer>
     </Layout>
   </Space>
 );

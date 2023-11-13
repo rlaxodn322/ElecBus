@@ -29,8 +29,8 @@ export default function MapComponent() {
   }, []);
 
   return (
-    <div style={{ border: '3px solid black', width: '650px', borderRadius: '10px' }}>
-      <div id="map" style={{ width: '600px', height: '750px', margin: '0 auto' }}></div>
-    </div>
+  
+      <div id="map" style={{ width: '600px', height: '750px', margin: '0 auto', borderRadius:'20px'}}></div>
+    
   );
 }
