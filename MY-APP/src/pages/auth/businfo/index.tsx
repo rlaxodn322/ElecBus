@@ -87,9 +87,7 @@ const MyPage = () => {
         }}
       >
         <h1>에러기록</h1>
-        <Button size="large" type="primary">
-          엑셀 다운로드
-        </Button>
+        <Button size="large">엑셀 다운로드</Button>
       </div>
 
       <ErrorTable />

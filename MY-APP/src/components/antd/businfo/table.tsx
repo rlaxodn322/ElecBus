@@ -7,8 +7,8 @@ const style: React.CSSProperties = {
   width: '100px',
   height: '100px',
   borderRadius: '20px',
-  border: '1px solid black',
-  boxShadow: '1px 1px 1px 1px grey',
+  border: '1px solid lightgrey',
+  boxShadow: '1px 1px 1px 1px lightgrey',
 };
 
 const App: React.FC = () => (

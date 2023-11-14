@@ -6,7 +6,7 @@ const { RangePicker } = DatePicker;
 const App: React.FC = () => (
   <Space direction="vertical" size={12}>
     <RangePicker />
-    <Button type="primary">검색</Button>
+    <Button>검색</Button>
   </Space>
 );
 

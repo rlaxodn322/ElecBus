@@ -31,7 +31,7 @@ const MyPage = () => {
         <div
           style={{
             width: '1370px',
-            background: 'darkblue',
+            background: 'skyblue',
             height: '100px',
             display: 'flex',
             alignItems: 'center',
@@ -73,12 +73,8 @@ const MyPage = () => {
             </span>
           ))}
 
-          <Button type="warning" style={{ margin: '40px', boxShadow: '2px 2px 2px 2px grey' }}>
-            상세정보
-          </Button>
-          <Button type="primary" style={{ boxShadow: '2px 2px 2px 2px grey' }}>
-            정보변경
-          </Button>
+          <Button style={{ margin: '40px', boxShadow: '2px 2px 2px 2px grey' }}>상세정보</Button>
+          <Button style={{ boxShadow: '2px 2px 2px 2px grey' }}>정보변경</Button>
         </div>
       </div>
       <div
@@ -93,16 +89,12 @@ const MyPage = () => {
         }}
       >
         <Link href="/auth/lineimport">
-          <Button type="primary" size="large" style={{ boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}>
+          <Button size="large" style={{ boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}>
             노선등록
           </Button>
         </Link>
         <Link href="/auth/busimport">
-          <Button
-            style={{ boxShadow: '2px 2px 2px 2px grey', marginLeft: '20px', fontSize: '18px' }}
-            type="primary"
-            size="large"
-          >
+          <Button style={{ boxShadow: '2px 2px 2px 2px grey', marginLeft: '20px', fontSize: '18px' }} size="large">
             버스등록
           </Button>
         </Link>
