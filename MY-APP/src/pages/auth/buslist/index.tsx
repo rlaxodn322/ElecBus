@@ -102,8 +102,6 @@ const MyPage = () => {
           <Button
             style={{ boxShadow: '2px 2px 2px 2px grey', marginLeft: '20px', marginRight: '70px', fontSize: '18px' }}
             size="large"
-            type="primary"
-            danger
           >
             버스삭제
           </Button>

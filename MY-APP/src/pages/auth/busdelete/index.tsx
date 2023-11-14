@@ -31,7 +31,7 @@ const MyPage = () => {
         <div
           style={{
             width: '1370px',
-            background: 'darkblue',
+            background: 'skyblue',
             height: '100px',
             display: 'flex',
             alignItems: 'center',
