@@ -95,7 +95,7 @@ const App: React.FC = () => (
               <Col className="gutter-row" span={10}>
                 <div>
                   <h1 style={style}>
-                    보유차량<img style={style1} src="/icons/icons/car.svg"></img>
+                    보유차량<img style={style1} src="/icons/icons/bus.svg"></img>
                   </h1>
                 </div>
               </Col>
@@ -103,7 +103,7 @@ const App: React.FC = () => (
                 <div>
                   <h1 style={style}>
                     운행차량
-                    <img style={style1} src="/icons/icons/car.svg"></img>
+                    <img style={style1} src="/icons/icons/bus-go.svg"></img>
                   </h1>
                 </div>
               </Col>
@@ -113,7 +113,7 @@ const App: React.FC = () => (
                 <div>
                   <h1 style={style}>
                     대기차량
-                    <img style={style1} src="/icons/icons/car.svg"></img>
+                    <img style={style1} src="/icons/icons/bus-wait.svg"></img>
                   </h1>
                 </div>
               </Col>
@@ -121,7 +121,7 @@ const App: React.FC = () => (
                 <div>
                   <h1 style={style}>
                     고장차량
-                    <img style={style1} src="/icons/icons/car.svg"></img>
+                    <img style={style1} src="/icons/icons/bus-as.svg"></img>
                   </h1>
                 </div>
               </Col>

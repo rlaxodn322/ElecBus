@@ -5,15 +5,14 @@ import { Page } from './style';
 import Card from '../components/antd/card';
 // import FormDisabledDemo from '../components/antd/signup';
 
-
 const Home = () => {
   return (
     <>
       <Head>
         <title>HOME</title>
         <meta name="description" content="text." />
-      </Head> 
-      <Card></Card> 
+      </Head>
+      <Card></Card>
       <Page></Page>
     </>
   );
