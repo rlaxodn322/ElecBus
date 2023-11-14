@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import MainLayout from '../../../layouts';
-import Table from '../../../components/antd/busimport/table1';
+import Table from '../../../components/antd/busimport/table';
 const MyPage = () => {
   return (
     <>
       <Head>
-        <title>버스등록</title>
-        <meta name="description" content="버스등록" />
+        <title>노선등록</title>
+        <meta name="description" content="노선등록" />
       </Head>
       <div
         style={{

@@ -32,9 +32,7 @@ const App: React.FC = () => {
       <Form {...layout} ref={formRef} name="control-ref" onFinish={onFinish} style={{ maxWidth: 600 }}>
         <Form.Item name="bus" label="노선" rules={[{ required: true }]}>
           <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
-          <Button style={{ marginTop: '10px' }}>노선검색</Button>
         </Form.Item>
-
         <Form.Item name="busnumber" label="차량번호" rules={[{ required: true }]}>
           <Select style={{ width: '300px' }} placeholder="차량번호를 입력하세요." allowClear>
             <Option value="male">{arr2[0]}</Option>

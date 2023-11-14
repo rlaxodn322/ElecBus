@@ -2,12 +2,11 @@ import Head from 'next/head';
 import MainLayout from '../../../layouts';
 import { Button } from 'antd';
 import React from 'react';
+import Link from 'next/link';
 
-import { useRouter } from 'next/router';
 import 'antd-button-color/dist/css/style.css';
 
 const MyPage = () => {
-  const router = useRouter();
   const arr = ['버스번호', '차량번호', '위치', '운행상태'];
   const arr1 = ['강원71자1565', '90', '차고지', '미운행'];
 
@@ -15,7 +14,7 @@ const MyPage = () => {
     <>
       <Head>
         <title>통계정보</title>
-        
+
         <meta name="description" content="통계정보" />
       </Head>
 
@@ -92,14 +91,15 @@ const MyPage = () => {
           paddingTop: '50px',
         }}
       >
-        <Button
-          href="/auth/busimport"
-          type="primary"
-          size="large"
-          style={{ marginRight: '70px', boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}
-        >
-          노선등록
-        </Button>
+        <Link href="/auth/lineimport">
+          <Button
+            type="primary"
+            size="large"
+            style={{ marginRight: '70px', boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}
+          >
+            노선등록
+          </Button>
+        </Link>
       </div>
     </>
   );

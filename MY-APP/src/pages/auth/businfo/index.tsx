@@ -45,7 +45,7 @@ const MyPage = () => {
           marginLeft: '700px',
         }}
       >
-        <Link href="/">
+        <Link href="/auth/busimport">
           <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} type="primary" size="large">
             버스등록
           </Button>
