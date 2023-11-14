@@ -45,16 +45,7 @@ const MyPage = () => {
           marginLeft: '700px',
         }}
       >
-        <Link href="/auth/busimport">
-          <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} type="primary" size="large">
-            버스등록
-          </Button>
-        </Link>
-        <Link href="/auth/busdelete">
-          <Button style={{ boxShadow: '2px 2px 2px 2px grey', marginLeft: '20px' }} size="large" type="primary" danger>
-            버스삭제
-          </Button>
-        </Link>
+        
       </div>
     </>
   );

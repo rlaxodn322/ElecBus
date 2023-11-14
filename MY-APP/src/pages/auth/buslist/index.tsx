@@ -92,12 +92,27 @@ const MyPage = () => {
         }}
       >
         <Link href="/auth/lineimport">
+          <Button type="primary" size="large" style={{ boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}>
+            노선등록
+          </Button>
+        </Link>
+        <Link href="/auth/busimport">
           <Button
+            style={{ boxShadow: '2px 2px 2px 2px grey', marginLeft: '20px', fontSize: '18px' }}
             type="primary"
             size="large"
-            style={{ marginRight: '70px', boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}
           >
-            노선등록
+            버스등록
+          </Button>
+        </Link>
+        <Link href="/auth/busdelete">
+          <Button
+            style={{ boxShadow: '2px 2px 2px 2px grey', marginLeft: '20px', marginRight: '70px', fontSize: '18px' }}
+            size="large"
+            type="primary"
+            danger
+          >
+            버스삭제
           </Button>
         </Link>
       </div>

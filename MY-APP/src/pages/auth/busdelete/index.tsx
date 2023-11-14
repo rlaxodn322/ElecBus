@@ -35,7 +35,7 @@ const MyPage = () => {
             height: '100px',
             display: 'flex',
             alignItems: 'center',
-            paddingLeft: '100px',
+            paddingLeft: '150px',
             borderRadius: '10px',
           }}
         >
@@ -63,7 +63,7 @@ const MyPage = () => {
             height: '100px',
             display: 'flex',
             alignItems: 'center',
-            paddingLeft: '100px',
+            paddingLeft: '90px',
             borderRadius: '10px',
           }}
         >
@@ -73,12 +73,7 @@ const MyPage = () => {
             </span>
           ))}
 
-          <Button type="warning" style={{ margin: '40px', boxShadow: '2px 2px 2px 2px grey' }}>
-            상세정보
-          </Button>
-          <Button type="primary" style={{ boxShadow: '2px 2px 2px 2px grey' }}>
-            정보변경
-          </Button>
+          <Button style={{ margin: '40px', boxShadow: '2px 2px 2px 2px grey' }}>🗑</Button>
         </div>
       </div>
       <div
@@ -91,11 +86,12 @@ const MyPage = () => {
           paddingTop: '50px',
         }}
       >
-        <Link href="/auth/businfo">
+        <Link href="/auth/buslist">
           <Button
             type="primary"
             size="large"
             style={{ marginRight: '70px', boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}
+            danger
           >
             취소
           </Button>

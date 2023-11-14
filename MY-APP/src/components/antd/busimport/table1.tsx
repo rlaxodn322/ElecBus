@@ -52,7 +52,7 @@ const App: React.FC = () => {
           <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px grey' }} type="primary" htmlType="submit">
             노선등록
           </Button>
-          <Link href="/auth/businfo">
+          <Link href="/auth/buslist">
             <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} htmlType="button" onClick={onReset}>
               취소
             </Button>
