@@ -13,9 +13,9 @@ const MyPage = () => {
   return (
     <>
       <Head>
-        <title>통계정보</title>
+        <title>버스관리</title>
 
-        <meta name="description" content="통계정보" />
+        <meta name="description" content="버스관리" />
       </Head>
 
       <div
@@ -49,7 +49,7 @@ const MyPage = () => {
       <div
         style={{
           width: '1370px',
-          height: '500px',
+          height: '100%',
           display: 'flex',
           justifyContent: 'center',
           margin: '0 auto',
@@ -84,11 +84,12 @@ const MyPage = () => {
       <div
         style={{
           width: '1370px',
-          height: '500px',
+          height: '200px',
           display: 'flex',
           justifyContent: 'flex-end',
           margin: '0 auto',
           paddingTop: '50px',
+          marginTop: '300px',
         }}
       >
         <Link href="/auth/lineimport">
