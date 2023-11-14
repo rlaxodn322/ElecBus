@@ -3,15 +3,11 @@ import MainLayout from '../../../layouts';
 import Table from '../../../components/antd/businfo/table';
 import BusChoice from '../../../components/antd/buschoice/table';
 import DateTable from '../../../components/antd/busdate/table';
+import ErrorTable from '../../../components/antd/buserror/table';
 import { Button } from 'antd';
 import Link from 'next/link';
 
 const MyPage = () => {
-  const day = ['Day1', 'Day2', 'Day3']; // Replace with your data
-  const car = ['Car1', 'Car2', 'Car3']; // Replace with your data
-  const errorlo = ['Error1', 'Error2', 'Error3']; // Replace with your data
-  const err = ['Err1', 'Err2', 'Err3']; // Replace with your data
-  const check = ['Check1', 'Check2', 'Check3']; // Replace with your data
   return (
     <>
       <Head>
@@ -51,6 +47,7 @@ const MyPage = () => {
           justifyContent: 'flex-start',
           margin: '0 auto',
           paddingTop: '20px',
+          marginTop: '80px',
         }}
       >
         통계 정보
@@ -94,84 +91,8 @@ const MyPage = () => {
           엑셀 다운로드
         </Button>
       </div>
-      <div style={{ border: '1px solid black' }}>
-        <div
-          style={{
-            width: '1370px',
-            display: 'flex',
-            margin: '0 auto',
-            paddingTop: '20px',
-            alignItems: 'center',
-            marginTop: '20px',
 
-            borderRadius: '20px',
-          }}
-        >
-          <div style={{ width: '25%', borderBottom: '1px solid black', fontSize: '25px', fontWeight: 'bold' }}>
-            날짜
-          </div>
-          <div style={{ width: '25%', borderBottom: '1px solid black', fontSize: '25px', fontWeight: 'bold' }}>
-            차량
-          </div>
-          <div style={{ width: '25%', borderBottom: '1px solid black', fontSize: '25px', fontWeight: 'bold' }}>
-            에러위치
-          </div>
-          <div style={{ width: '25%', borderBottom: '1px solid black', fontSize: '25px', fontWeight: 'bold' }}>
-            에러내용
-          </div>
-          <div style={{ width: '25%', borderBottom: '1px solid black', fontSize: '25px', fontWeight: 'bold' }}>
-            비고
-          </div>
-        </div>
-        <div
-          style={{
-            width: '1370px',
-            display: 'flex',
-            margin: '0 auto',
-            paddingTop: '20px',
-            alignItems: 'center',
-            marginTop: '20px',
-          }}
-        >
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{day[0]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{car[0]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{errorlo[0]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{err[0]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{check[0]}</div>
-        </div>
-        <div
-          style={{
-            width: '1370px',
-            display: 'flex',
-            margin: '0 auto',
-            paddingTop: '20px',
-            alignItems: 'center',
-            marginTop: '20px',
-          }}
-        >
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{day[1]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{car[1]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{errorlo[1]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{err[1]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{check[1]}</div>
-        </div>
-        <div
-          style={{
-            width: '1370px',
-            display: 'flex',
-            margin: '0 auto',
-            paddingTop: '20px',
-            alignItems: 'center',
-            marginTop: '20px',
-          }}
-        >
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{day[0]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{car[0]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{errorlo[0]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{err[0]}</div>
-          <div style={{ width: '25%', fontSize: '25px', fontWeight: 'bold' }}>{check[0]}</div>
-        </div>
-      </div>
+      <ErrorTable />
     </>
   );
 };
