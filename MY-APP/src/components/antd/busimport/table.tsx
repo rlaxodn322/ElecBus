@@ -1,8 +1,9 @@
-import React from 'react';
-import { Button, Form, Input, Select } from 'antd';
+import React, { useState } from 'react';
+import { Button, Form, Input, Select, Modal } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+
 const { Option } = Select;
 
 const layout = {
@@ -27,13 +28,42 @@ const App: React.FC = () => {
   };
   const arr2 = ['강원71자1565', '경기71자1565', '충청71자1565'];
   const arr = ['노란버스', '파란버스', '초록버스'];
+  const city = ['원주', '충주', '강원'];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <Form {...layout} ref={formRef} name="control-ref" onFinish={onFinish} style={{ maxWidth: 600 }}>
         <Form.Item name="bus" label="노선" rules={[{ required: true }]}>
           <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
-          <Button style={{ marginTop: '10px' }}>노선검색</Button>
+          <Button style={{ marginTop: '10px' }} onClick={showModal}>
+            노선검색
+          </Button>
         </Form.Item>
+        <Modal title="노선 검색" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+          <Form.Item name="busnumber" label="차량번호" rules={[{ required: true }]}>
+            <Select style={{ width: '300px' }} placeholder="도시를 선택해주세요." allowClear>
+              <Option value="male">{city[0]}</Option>
+              <Option value="female">{city[1]}</Option>
+              <Option value="other">{city[2]}</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item name="bus" label="노선" rules={[{ required: true }]}>
+            <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
+          </Form.Item>
+        </Modal>
 
         <Form.Item name="busnumber" label="차량번호" rules={[{ required: true }]}>
           <Select style={{ width: '300px' }} placeholder="차량번호를 입력하세요." allowClear>
