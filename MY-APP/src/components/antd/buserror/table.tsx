@@ -6,6 +6,8 @@ const data = [
   ['Day1', 'Car1', 'Error1', 'Err1', 'Check1'],
   ['Day2', 'Car2', 'Error2', 'Err2', 'Check2'],
   ['Day3', 'Car3', 'Error3', 'Err3', 'Check3'],
+  ['Day4', 'Car4', 'Error4', 'Err4', 'Check4'],
+  ['Day5', 'Car5', 'Error5', 'Err5', 'Check5'],
 ];
 
 const renderRow = (items, isHeader = false) => (

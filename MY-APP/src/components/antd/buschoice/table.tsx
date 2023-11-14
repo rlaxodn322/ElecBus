@@ -1,6 +1,6 @@
 import React from 'react';
 import { Cascader } from 'antd';
-import Table from '../busdate/table';
+
 interface Option {
   value: string;
   label: string;
@@ -24,7 +24,6 @@ const onChange = (value: string[]) => {
 
 // Just show the latest item.
 const displayRender = (labels: string[]) => labels[labels.length - 1];
-
 const App: React.FC = () => (
   <Cascader
     options={options}

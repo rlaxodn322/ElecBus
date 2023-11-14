@@ -31,7 +31,7 @@ const App: React.FC = () => (
     <div
       style={{
         width: '1370px',
-        height: '100vh',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
         margin: '0 auto',
@@ -45,6 +45,48 @@ const App: React.FC = () => (
             <img style={{ width: '20px', color: 'darkblue' }} src="/icons/icons/map.svg"></img> 운행지도
           </h1>
           <MapComponent></MapComponent>
+          <div
+            style={{
+              width: '1370px',
+
+              margin: '0 auto',
+            }}
+          >
+            <div id="map" style={{ width: '600px', height: '750px', borderRadius: '20px' }}>
+              <Row>
+                <div
+                  style={{
+                    border: '2px solid black',
+                    width: '600px',
+                    height: '600px',
+                    boxShadow: '3px 3px 3px 3px grey',
+                    marginTop: '50px',
+                  }}
+                >
+                  <div
+                    style={{
+                      border: '1px solid black',
+                      width: '600px',
+                      height: '50px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      background: 'darkblue',
+                      color: 'white',
+                    }}
+                  >
+                    <div style={style2}>차량번호</div>
+                    <div style={style2}>노선</div>
+                    <div style={style2}>고장정보</div>
+                  </div>
+                  <div style={{ display: 'flex' }}>
+                    <div style={style3}>{arr1[0]}</div>
+                    <div style={style3}>{arr1[1]}</div>
+                    <div style={style3}>{arr1[2]}</div>
+                  </div>
+                </div>
+              </Row>
+            </div>
+          </div>
         </Col>
 
         <Col span={12}>
@@ -124,43 +166,6 @@ const App: React.FC = () => (
           </Row>
         </Col>
       </Row>
-    </div>
-
-    <div
-      style={{
-        width: '1370px',
-
-        margin: '0 auto',
-      }}
-    >
-      <div id="map" style={{ width: '600px', height: '750px', borderRadius: '20px' }}>
-        <Row>
-          <div
-            style={{ border: '2px solid black', width: '600px', height: '600px', boxShadow: '3px 3px 3px 3px grey' }}
-          >
-            <div
-              style={{
-                border: '1px solid black',
-                width: '600px',
-                height: '50px',
-                display: 'flex',
-                alignItems: 'center',
-                background: 'darkblue',
-                color: 'white',
-              }}
-            >
-              <div style={style2}>차량번호</div>
-              <div style={style2}>노선</div>
-              <div style={style2}>고장정보</div>
-            </div>
-            <div style={{ display: 'flex' }}>
-              <div style={style3}>{arr1[0]}</div>
-              <div style={style3}>{arr1[1]}</div>
-              <div style={style3}>{arr1[2]}</div>
-            </div>
-          </div>
-        </Row>
-      </div>
     </div>
   </>
 );
