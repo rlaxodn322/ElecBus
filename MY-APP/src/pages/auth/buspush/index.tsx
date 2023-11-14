@@ -2,7 +2,7 @@ import Head from 'next/head';
 import MainLayout from '../../../layouts';
 import { Button } from 'antd';
 import React from 'react';
-
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import 'antd-button-color/dist/css/style.css';
 
@@ -93,14 +93,15 @@ const MyPage = () => {
           paddingTop: '50px',
         }}
       >
-        <Button
-          href="/auth/busimport"
-          type="primary"
-          size="large"
-          style={{ marginRight: '70px', boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}
-        >
-          노선등록
-        </Button>
+        <Link href="/auth/import">
+          <Button
+            type="primary"
+            size="large"
+            style={{ marginRight: '70px', boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}
+          >
+            노선등록
+          </Button>
+        </Link>
       </div>
     </>
   );

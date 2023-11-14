@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map';
 import 'antd-button-color/dist/css/style.css';
@@ -25,6 +25,7 @@ const style3: React.CSSProperties = {
 };
 const arr1 = ['강원71자1565', '90', '차고지', '미운행'];
 const arr2 = ['강원70자8021', '33', '차고지', '미운행'];
+
 const App: React.FC = () => (
   <>
     <div

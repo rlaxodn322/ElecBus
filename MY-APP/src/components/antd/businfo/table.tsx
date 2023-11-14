@@ -8,6 +8,7 @@ const style: React.CSSProperties = {
   height: '100px',
   borderRadius: '20px',
   border: '1px solid black',
+  boxShadow: '1px 1px 1px 1px grey',
 };
 
 const App: React.FC = () => (
@@ -23,11 +24,10 @@ const App: React.FC = () => (
     >
       {[...Array(12)].map((_, index) => (
         <Col wrap="wrap" key={index} className="gutter-row" span={2}>
-          <div style={style}>고장정보</div>
+          <div style={style}></div>
         </Col>
       ))}
     </div>
-    
   </>
 );
 
