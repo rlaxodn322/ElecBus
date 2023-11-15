@@ -12,7 +12,8 @@ export const LogoWrapper = styled.div`
   justify-content: space-between;
   padding: 10px;
   padding-left: 80px;
-  background-color: #f7f7f7;
+  
+  background-color: linear-gradient(182.11deg, #f8f8f7 3.56%, white 80.44%);
 
   & img {
     height: 50px;

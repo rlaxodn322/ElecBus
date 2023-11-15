@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import MainLayout from '../../../layouts';
-import { Button } from 'antd';
+
 import React from 'react';
-import Link from 'next/link';
 import Table2 from '../../../components/antd/buslist/table2';
 import 'antd-button-color/dist/css/style.css';
 import Grid from '../../../components/antd/buslist/grid';
@@ -16,7 +15,7 @@ const MyPage = () => {
         <meta name="description" content="버스관리" />
       </Head>
       <div>
-        <div style={{ width: '1370px', height: '300px', marginTop: '100px', margin: '0 auto' }}>
+        <div style={{ width: '1370px', height: '300px', margin: '0 auto' }}>
           <Grid />
         </div>
       </div>
@@ -29,12 +28,7 @@ const MyPage = () => {
           marginTop: '50px',
         }}
       >
-        <Table2
-          style={{
-            width: '1370px',
-            height: '100%',
-          }}
-        />
+        <Table2 />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
         <Pagination />

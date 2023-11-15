@@ -1,7 +1,6 @@
-import Head from 'next/head';
 import MainLayout from '../../../layouts';
 import Table from '../../../components/antd/busimport/table';
-import Pagination from '../../../components/antd/pagination/table';
+
 const MyPage = () => {
   return (
     <>
@@ -13,8 +12,6 @@ const MyPage = () => {
       >
         <Table />
       </div>
-      <div></div>
-      <div></div>
     </>
   );
 };

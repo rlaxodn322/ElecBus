@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map';
 import 'antd-button-color/dist/css/style.css';
@@ -25,8 +25,12 @@ const style3: React.CSSProperties = {
   fontSize: '20px',
   fontWeight: 'bold',
 };
-const arr1 = ['강원71자1565', '90', '차고지', '미운행'];
-const arr2 = ['강원70자8021', '33', '엔진', '미운행'];
+const arr1 = ['서울71자1565', '90', '서울', '미운행'];
+const arr3 = ['강원71자1565', '90', '대구', '미운행'];
+const arr4 = ['충청71자1565', '90', '차고지', '미운행'];
+const arr5 = ['군산71자1565', '90', '차고지', '미운행'];
+const arr2 = ['대구71자1565', '90', '강원', '미운행'];
+const arr6 = ['강원70자8021', '33', '엔진', '미운행'];
 
 const App: React.FC = () => (
   <>
@@ -83,14 +87,21 @@ const App: React.FC = () => (
                     <div style={style2}>고장정보</div>
                   </div>
                   <div style={{ display: 'flex' }}>
-                    <div style={style3}>{arr1[0]}</div>
-                    <div style={style3}>{arr1[1]}</div>
-                    <div style={style3}>{arr2[2]}</div>
+                    <div style={style3}>{arr6[0]}</div>
+                    <div style={style3}>{arr6[1]}</div>
+                    <div style={style3}>{arr6[2]}</div>
                     <Button
-                      type="warning"
-                      style={{ marginTop: '16px', marginLeft: '60px', fontSize: '15px', fontWeight: 'bold' }}
+                      type="primary"
+                      danger
+                      style={{
+                        marginTop: '16px',
+                        marginLeft: '60px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                        boxShadow: '2px 2px 2px 2px lightgrey',
+                      }}
                     >
-                      상세정보
+                      고장정보
                     </Button>
                   </div>
                 </div>
@@ -106,7 +117,7 @@ const App: React.FC = () => (
                 <div>
                   <h1>보유차량</h1>
                   <h1 style={style}>
-                    5대<img style={style1} src="/icons/icons/bus.svg"></img>
+                    80대<img style={style1} src="/icons/icons/bus.svg"></img>
                   </h1>
                 </div>
               </Col>
@@ -114,17 +125,17 @@ const App: React.FC = () => (
                 <div>
                   <h1>운행차량</h1>
                   <h1 style={style}>
-                    53대<img style={style1} src="/icons/icons/bus-go.svg"></img>
+                    5대<img style={style1} src="/icons/icons/bus-go.svg"></img>
                   </h1>
                 </div>
               </Col>
             </Row>
-            <Row gutter={[16, 24]} style={{ marginTop: '-30px' }}>
+            <Row gutter={[16, 24]} style={{ marginTop: '-20px' }}>
               <Col className="gutter-row" span={10}>
                 <div>
                   <h1>대기차량</h1>
                   <h1 style={style}>
-                    27대<img style={style1} src="/icons/icons/bus-wait.svg"></img>
+                    73대<img style={style1} src="/icons/icons/bus-wait.svg"></img>
                   </h1>
                 </div>
               </Col>
@@ -140,7 +151,7 @@ const App: React.FC = () => (
           </div>
 
           <h1 style={{ color: 'black' }}>
-            <img style={{ marginTop: '130px', width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img> 운행중
+            <img style={{ marginTop: '160px', width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img> 운행중
             버스정보
           </h1>
           <Row>
@@ -173,7 +184,47 @@ const App: React.FC = () => (
                 <div style={style3}>{arr1[2]}</div>
                 <Button
                   type="warning"
-                  style={{ marginTop: '16px', marginLeft: '60px', fontSize: '15px', fontWeight: 'bold' }}
+                  style={{
+                    marginTop: '16px',
+                    marginLeft: '60px',
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                    boxShadow: '2px 2px 2px 2px lightgrey',
+                  }}
+                >
+                  상세정보
+                </Button>
+              </div>
+              <div style={{ display: 'flex' }}>
+                <div style={style3}>{arr2[0]}</div>
+                <div style={style3}>{arr2[1]}</div>
+                <div style={style3}>{arr2[2]}</div>
+                <Button
+                  type="warning"
+                  style={{
+                    marginTop: '16px',
+                    marginLeft: '60px',
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                    boxShadow: '2px 2px 2px 2px lightgrey',
+                  }}
+                >
+                  상세정보
+                </Button>
+              </div>
+              <div style={{ display: 'flex' }}>
+                <div style={style3}>{arr3[0]}</div>
+                <div style={style3}>{arr3[1]}</div>
+                <div style={style3}>{arr3[2]}</div>
+                <Button
+                  type="warning"
+                  style={{
+                    marginTop: '16px',
+                    marginLeft: '60px',
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                    boxShadow: '2px 2px 2px 2px lightgrey',
+                  }}
                 >
                   상세정보
                 </Button>

@@ -36,12 +36,15 @@ const App: React.FC = () => {
           <Input style={{ width: '300px' }} placeholder="시리얼넘버를 입력하세요." />
         </Form.Item>
 
-        <Form.Item style={{ marginTop: '100px', marginLeft: '100px' }} {...tailLayout}>
-          <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px grey' }} type="primary" htmlType="submit">
-            노선등록
+        <Form.Item style={{ marginTop: '100px' }} {...tailLayout}>
+          <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px lightgrey' }} htmlType="submit">
+            버스등록
           </Button>
+          <Link href="/auth/busdelete">
+            <Button style={{ boxShadow: '2px 2px 2px 2px lightgrey', marginRight: '20px' }}>버스삭제</Button>
+          </Link>
           <Link href="/auth/buslist">
-            <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} htmlType="button" onClick={onReset}>
+            <Button style={{ boxShadow: '2px 2px 2px 2px lightgrey' }} htmlType="button" onClick={onReset}>
               취소
             </Button>
           </Link>

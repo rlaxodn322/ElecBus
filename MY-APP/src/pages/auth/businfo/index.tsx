@@ -5,7 +5,6 @@ import BusChoice from '../../../components/antd/buschoice/table';
 import DateTable from '../../../components/antd/busdate/table';
 import ErrorTable from '../../../components/antd/buserror/table';
 import { Button } from 'antd';
-import Link from 'next/link';
 import Pagination from '../../../components/antd/pagination/table';
 const MyPage = () => {
   return (
@@ -87,9 +86,11 @@ const MyPage = () => {
         }}
       >
         <h1>에러기록</h1>
-        <Button size="large">엑셀 다운로드</Button>
+        <Button size="large" style={{ boxShadow: '2px 2px 2px 2px lightgrey' }}>
+          엑셀 다운로드
+        </Button>
       </div>
-      
+
       <ErrorTable />
 
       <div

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button } from 'antd';
+import { Col, Row } from 'antd';
 
 const headers = ['버스번호', '차량번호', '위치', '운행상태'];
 const data = [
@@ -10,7 +10,7 @@ const data = [
   ['강원71자1565', '90', '차고지', '미운행'],
 ];
 
-const renderRow = (items, isHeader = false) => (
+const renderRow = (items: string[], isHeader = false) => (
   <Row
     justify="space-evenly"
     style={{
@@ -36,7 +36,7 @@ const renderRow = (items, isHeader = false) => (
 const App: React.FC = () => (
   <>
     {renderRow(headers, true)}
-    {data.map((row, index) => renderRow(row))}
+    {data.map((row) => renderRow(row))}
   </>
 );
 

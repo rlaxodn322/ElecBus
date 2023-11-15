@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'antd';
+import { Col } from 'antd';
 
 const style: React.CSSProperties = {
   background: 'white',
@@ -11,21 +11,23 @@ const style: React.CSSProperties = {
   boxShadow: '1px 1px 1px 1px lightgrey',
 };
 
+const containerStyle: React.CSSProperties = {
+  width: '1370px',
+  display: 'flex',
+  alignItems: 'center',
+  margin: '0 auto',
+  paddingTop: '20px',
+};
+
 const App: React.FC = () => (
   <>
-    <div
-      style={{
-        width: '1370px',
-        display: 'flex',
-        alignItems: 'center',
-        margin: '0 auto',
-        paddingTop: '20px',
-      }}
-    >
+    <div style={containerStyle}>
       {[...Array(12)].map((_, index) => (
-        <Col wrap="wrap" key={index} className="gutter-row" span={2}>
-          <div style={style}></div>
-        </Col>
+        <div key={index} style={{ margin: '0 10px' }}>
+          <Col>
+            <div style={style}></div>
+          </Col>
+        </div>
       ))}
     </div>
   </>

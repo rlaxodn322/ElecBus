@@ -48,7 +48,9 @@ const App: React.FC = () => {
       <Form {...layout} ref={formRef} name="control-ref" onFinish={onFinish} style={{ maxWidth: 600 }}>
         <Form.Item name="bus" label="노선" rules={[{ required: true }]}>
           <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
-          <Button onClick={showModal}>노선검색</Button>
+          <Button style={{ boxShadow: '2px 2px 2px 2px lightgrey' }} onClick={showModal}>
+            노선검색
+          </Button>
         </Form.Item>
         <Modal title="노선 검색" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
           <Form.Item name="busnumber" label="차량번호" rules={[{ required: true }]}>
@@ -78,15 +80,13 @@ const App: React.FC = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item style={{ marginTop: '100px', marginLeft: '' }} {...tailLayout}>
-          <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px grey' }} type="primary" htmlType="submit">
+        <Form.Item style={{ marginTop: '45px', marginLeft: '' }} {...tailLayout}>
+          <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px lightgrey' }} htmlType="submit">
             노선등록
           </Button>
-          <Link href="/auth/busdelete">
-            <Button style={{ boxShadow: '2px 2px 2px 2px grey', marginRight: '20px' }}>버스삭제</Button>
-          </Link>
+
           <Link href="/auth/buslist">
-            <Button style={{ boxShadow: '2px 2px 2px 2px grey' }} htmlType="button" onClick={onReset}>
+            <Button style={{ boxShadow: '2px 2px 2px 2px lightgrey' }} htmlType="button" onClick={onReset}>
               취소
             </Button>
           </Link>
