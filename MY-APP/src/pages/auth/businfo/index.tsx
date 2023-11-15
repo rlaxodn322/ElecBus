@@ -6,7 +6,7 @@ import DateTable from '../../../components/antd/busdate/table';
 import ErrorTable from '../../../components/antd/buserror/table';
 import { Button } from 'antd';
 import Link from 'next/link';
-
+import Pagination from '../../../components/antd/pagination/table';
 const MyPage = () => {
   return (
     <>
@@ -89,8 +89,21 @@ const MyPage = () => {
         <h1>에러기록</h1>
         <Button size="large">엑셀 다운로드</Button>
       </div>
-
+      
       <ErrorTable />
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          width: '1370px',
+          height: '100%',
+          margin: '0 auto',
+          marginTop: '50px',
+        }}
+      >
+        <Pagination />
+      </div>
     </>
   );
 };

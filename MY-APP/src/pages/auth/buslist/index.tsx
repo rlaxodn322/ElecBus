@@ -3,13 +3,11 @@ import MainLayout from '../../../layouts';
 import { Button } from 'antd';
 import React from 'react';
 import Link from 'next/link';
-
+import Table2 from '../../../components/antd/buslist/table2';
 import 'antd-button-color/dist/css/style.css';
-
+import Grid from '../../../components/antd/buslist/grid';
+import Pagination from '../../../components/antd/pagination/table';
 const MyPage = () => {
-  const arr = ['버스번호', '차량번호', '위치', '운행상태'];
-  const arr1 = ['강원71자1565', '90', '차고지', '미운행'];
-
   return (
     <>
       <Head>
@@ -17,95 +15,29 @@ const MyPage = () => {
 
         <meta name="description" content="버스관리" />
       </Head>
-
-      <div
-        style={{
-          width: '1370px',
-          height: '180px',
-          display: 'flex',
-          justifyContent: 'center',
-          margin: '0 auto',
-          paddingTop: '50px',
-        }}
-      >
-        <div
-          style={{
-            width: '1370px',
-            background: 'skyblue',
-            height: '100px',
-            display: 'flex',
-            alignItems: 'center',
-            paddingLeft: '100px',
-            borderRadius: '10px',
-          }}
-        >
-          {arr.slice(0, 4).map((item, index) => (
-            <span key={index} style={{ color: 'white', fontSize: '40px', marginRight: '100px' }}>
-              {item}
-            </span>
-          ))}
+      <div>
+        <div style={{ width: '1370px', height: '300px', marginTop: '100px', margin: '0 auto' }}>
+          <Grid />
         </div>
       </div>
+
       <div
         style={{
           width: '1370px',
           height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
           margin: '0 auto',
-          paddingTop: '50px',
+          marginTop: '50px',
         }}
       >
-        {' '}
-        <div
+        <Table2
           style={{
             width: '1370px',
-            height: '100px',
-            display: 'flex',
-            alignItems: 'center',
-            paddingLeft: '100px',
-            borderRadius: '10px',
+            height: '100%',
           }}
-        >
-          {arr1.slice(0, 4).map((item, index) => (
-            <span key={index} style={{ color: 'black', fontSize: '40px', marginRight: '100px' }}>
-              {item}
-            </span>
-          ))}
-
-          <Button style={{ margin: '40px', boxShadow: '2px 2px 2px 2px grey' }}>상세정보</Button>
-          <Button style={{ boxShadow: '2px 2px 2px 2px grey' }}>정보변경</Button>
-        </div>
+        />
       </div>
-      <div
-        style={{
-          width: '1370px',
-          height: '200px',
-          display: 'flex',
-          justifyContent: 'flex-end',
-          margin: '0 auto',
-          paddingTop: '50px',
-          marginTop: '300px',
-        }}
-      >
-        <Link href="/auth/lineimport">
-          <Button size="large" style={{ boxShadow: '2px 2px 2px 2px grey', fontSize: '18px' }}>
-            노선등록
-          </Button>
-        </Link>
-        <Link href="/auth/busimport">
-          <Button style={{ boxShadow: '2px 2px 2px 2px grey', marginLeft: '20px', fontSize: '18px' }} size="large">
-            버스등록
-          </Button>
-        </Link>
-        <Link href="/auth/busdelete">
-          <Button
-            style={{ boxShadow: '2px 2px 2px 2px grey', marginLeft: '20px', marginRight: '70px', fontSize: '18px' }}
-            size="large"
-          >
-            버스삭제
-          </Button>
-        </Link>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
+        <Pagination />
       </div>
     </>
   );

@@ -25,30 +25,18 @@ const App: React.FC = () => {
   const onReset = () => {
     formRef.current?.resetFields();
   };
-  const arr2 = ['강원71자1565', '경기71자1565', '충청71자1565'];
-  const arr = ['노란버스', '파란버스', '초록버스'];
+
   return (
     <>
       <Form {...layout} ref={formRef} name="control-ref" onFinish={onFinish} style={{ maxWidth: 600 }}>
-        <Form.Item name="bus" label="노선" rules={[{ required: true }]}>
+        <Form.Item name="bus number" label="차량번호" rules={[{ required: true }]}>
           <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
         </Form.Item>
-        <Form.Item name="busnumber" label="차량번호" rules={[{ required: true }]}>
-          <Select style={{ width: '300px' }} placeholder="차량번호를 입력하세요." allowClear>
-            <Option value="male">{arr2[0]}</Option>
-            <Option value="female">{arr2[1]}</Option>
-            <Option value="other">{arr2[2]}</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item name="bus" label="버스차종" rules={[{ required: true }]}>
-          <Select style={{ width: '300px', margintop: '30px' }} placeholder="버스차종을 입력하세요." allowClear>
-            <Option value="male">{arr[0]}</Option>
-            <Option value="female">{arr[1]}</Option>
-            <Option value="other">{arr[2]}</Option>
-          </Select>
+        <Form.Item name="sirial" label="시리얼넘버" rules={[{ required: true }]}>
+          <Input style={{ width: '300px' }} placeholder="시리얼넘버를 입력하세요." />
         </Form.Item>
 
-        <Form.Item style={{ marginTop: '200px', marginLeft: '100px' }} {...tailLayout}>
+        <Form.Item style={{ marginTop: '100px', marginLeft: '100px' }} {...tailLayout}>
           <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px grey' }} type="primary" htmlType="submit">
             노선등록
           </Button>

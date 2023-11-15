@@ -8,12 +8,12 @@ const style: React.CSSProperties = {
   height: '150px',
   borderRadius: '20px',
   boxShadow: '2px 2px 2px 2px lightgrey',
+  display: 'flex',
+  justifyContent: 'space-between',
+  fontSize: '30px',
+  padding: '30px',
 };
-const style1: React.CSSProperties = {
-  marginLeft: '100px',
-  width: '80px',
-  marginTop: '10px',
-};
+const style1: React.CSSProperties = { fontSize: '20px' };
 const style2: React.CSSProperties = {
   marginLeft: '70px',
   fontSize: '20px',
@@ -26,7 +26,7 @@ const style3: React.CSSProperties = {
   fontWeight: 'bold',
 };
 const arr1 = ['강원71자1565', '90', '차고지', '미운행'];
-const arr2 = ['강원70자8021', '33', '차고지', '미운행'];
+const arr2 = ['강원70자8021', '33', '엔진', '미운행'];
 
 const App: React.FC = () => (
   <>
@@ -85,7 +85,7 @@ const App: React.FC = () => (
                   <div style={{ display: 'flex' }}>
                     <div style={style3}>{arr1[0]}</div>
                     <div style={style3}>{arr1[1]}</div>
-                    <div style={style3}>{arr1[2]}</div>
+                    <div style={style3}>{arr2[2]}</div>
                     <Button
                       type="warning"
                       style={{ marginTop: '16px', marginLeft: '60px', fontSize: '15px', fontWeight: 'bold' }}
@@ -104,34 +104,35 @@ const App: React.FC = () => (
             <Row style={{ marginTop: '50px' }} gutter={[16, 24]}>
               <Col className="gutter-row" span={10}>
                 <div>
+                  <h1>보유차량</h1>
                   <h1 style={style}>
-                    보유차량<img style={style1} src="/icons/icons/bus.svg"></img>
+                    5대<img style={style1} src="/icons/icons/bus.svg"></img>
                   </h1>
                 </div>
               </Col>
               <Col className="gutter-row" span={10}>
                 <div>
+                  <h1>운행차량</h1>
                   <h1 style={style}>
-                    운행차량
-                    <img style={style1} src="/icons/icons/bus-go.svg"></img>
+                    53대<img style={style1} src="/icons/icons/bus-go.svg"></img>
                   </h1>
                 </div>
               </Col>
             </Row>
-            <Row gutter={[16, 24]}>
+            <Row gutter={[16, 24]} style={{ marginTop: '-30px' }}>
               <Col className="gutter-row" span={10}>
                 <div>
+                  <h1>대기차량</h1>
                   <h1 style={style}>
-                    대기차량
-                    <img style={style1} src="/icons/icons/bus-wait.svg"></img>
+                    27대<img style={style1} src="/icons/icons/bus-wait.svg"></img>
                   </h1>
                 </div>
               </Col>
               <Col className="gutter-row" span={10}>
                 <div>
+                  <h1>고장차량</h1>
                   <h1 style={style}>
-                    고장차량
-                    <img style={style1} src="/icons/icons/bus-as.svg"></img>
+                    2대 <img style={style1} src="/icons/icons/bus-as.svg"></img>
                   </h1>
                 </div>
               </Col>
@@ -139,7 +140,7 @@ const App: React.FC = () => (
           </div>
 
           <h1 style={{ color: 'black' }}>
-            <img style={{ marginTop: '60px', width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img> 운행중
+            <img style={{ marginTop: '130px', width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img> 운행중
             버스정보
           </h1>
           <Row>

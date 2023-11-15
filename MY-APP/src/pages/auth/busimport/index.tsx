@@ -11,11 +11,7 @@ const MyPage = () => {
       <div
         style={{
           width: '1370px',
-          height: '500px',
-          display: 'flex',
-          justifyContent: 'center',
           margin: '0 auto',
-          paddingTop: '50px',
         }}
       >
         <Table />
