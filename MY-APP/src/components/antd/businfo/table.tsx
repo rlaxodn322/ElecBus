@@ -23,7 +23,7 @@ const App: React.FC = () => (
   <>
     <div style={containerStyle}>
       {[...Array(12)].map((_, index) => (
-        <div key={index} style={{ margin: '0 10px' }}>
+        <div key={index} style={{ margin: '0 10px', width: 'max-content' }}>
           <Col>
             <div style={style}></div>
           </Col>
