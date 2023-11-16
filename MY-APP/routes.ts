@@ -11,17 +11,16 @@ export const routes = [
     default: '/icons/sidebar/dashboard_default.svg',
     name: 'Dashboard',
   },
-
-  {
-    router: '/auth/businfo',
-    active: '/icons/sidebar/error_active.svg',
-    default: '/icons/sidebar/error_default.svg',
-    name: '오류관리',
-  },
   {
     router: '/auth/buslist',
     active: '/icons/sidebar/bus_active.svg',
     default: '/icons/sidebar/bus_default.svg',
     name: '버스관리',
+  },
+  {
+    router: '/auth/businfo',
+    active: '/icons/sidebar/error_active.svg',
+    default: '/icons/sidebar/error_default.svg',
+    name: '오류관리',
   },
 ];

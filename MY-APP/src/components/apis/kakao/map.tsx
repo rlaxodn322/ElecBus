@@ -77,5 +77,5 @@ export default function MapComponent() {
     kakaoMapScript.addEventListener('load', onLoadKakaoAPI, { passive: true });
   }, []);
 
-  return <div id="map" style={{ width: '500px', height: '500px', borderRadius: '20px', marginRight: '200px' }}></div>;
+  return <div id="map" style={{ width: '600px', height: '500px', borderRadius: '20px', marginRight: '200px' }}></div>;
 }
