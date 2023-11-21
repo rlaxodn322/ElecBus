@@ -41,7 +41,7 @@ const MapComponent = () => {
         // Customize the marker image and size
         const markerImage = new window.kakao.maps.MarkerImage(
           'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
-          new window.kakao.maps.Size(30, 30), // Width and height of the image
+          new window.kakao.maps.Size(5, 5), // Width and height of the image
         );
 
         // Add markers for each station
