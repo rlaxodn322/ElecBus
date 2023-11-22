@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map1';
+import Bus from '../../pages/bus';
 import 'antd-button-color/dist/css/style.css';
 const style: React.CSSProperties = {
   border: '1px solid lightgrey',
@@ -178,57 +179,8 @@ const App: React.FC = () => (
                 <div style={style2}>노선</div>
                 <div style={style2}>위치</div>
               </div>
-              <div style={{ display: 'flex' }}>
-                <div style={style3}>{arr1[0]}</div>
-                <div style={style3}>{arr1[1]}</div>
-                <div style={style3}>{arr1[2]}</div>
-                <Button
-                  type="warning"
-                  style={{
-                    marginTop: '16px',
-                    marginLeft: '60px',
-                    fontSize: '15px',
-                    fontWeight: 'bold',
-                    boxShadow: '2px 2px 2px 2px lightgrey',
-                  }}
-                >
-                  상세정보
-                </Button>
-              </div>
-              <div style={{ display: 'flex' }}>
-                <div style={style3}>{arr2[0]}</div>
-                <div style={style3}>{arr2[1]}</div>
-                <div style={style3}>{arr2[2]}</div>
-                <Button
-                  type="warning"
-                  style={{
-                    marginTop: '16px',
-                    marginLeft: '60px',
-                    fontSize: '15px',
-                    fontWeight: 'bold',
-                    boxShadow: '2px 2px 2px 2px lightgrey',
-                  }}
-                >
-                  상세정보
-                </Button>
-              </div>
-              <div style={{ display: 'flex' }}>
-                <div style={style3}>{arr3[0]}</div>
-                <div style={style3}>{arr3[1]}</div>
-                <div style={style3}>{arr3[2]}</div>
-                <Button
-                  type="warning"
-                  style={{
-                    marginTop: '16px',
-                    marginLeft: '60px',
-                    fontSize: '15px',
-                    fontWeight: 'bold',
-                    boxShadow: '2px 2px 2px 2px lightgrey',
-                  }}
-                >
-                  상세정보
-                </Button>
-              </div>
+                <Bus/>
+             
             </div>
           </Row>
         </Col>
