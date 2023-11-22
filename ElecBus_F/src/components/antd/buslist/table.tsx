@@ -46,13 +46,17 @@ const App: React.FC = () => (
           style={{ maxWidth: 600 }}
           validateMessages={validateMessages}
         >
-          <Form.Item name={['user', 'name']} label="버스이름" rules={[{ required: true }]}>
-            <Input />
+          <Form.Item name={['user', 'busName']} label="버스이름" rules={[{ required: true }]}>
+            <div>
+              <Input />
+            </div>
           </Form.Item>
-          <Form.Item name={['user', 'name']} label="버스번호" rules={[{ required: true }]}>
-            <Input />
+          <Form.Item name={['user', 'busNumber']} label="버스번호" rules={[{ required: true }]}>
+            <div>
+              <Input />
+            </div>
           </Form.Item>
-          <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+          <Form.Item name="buscommit" wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
             <Button type="primary" htmlType="submit">
               버스등록
             </Button>

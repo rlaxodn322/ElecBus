@@ -35,6 +35,7 @@ const FormDisabledDemo: React.FC = () => {
         Form disabled
       </Checkbox>
       <Form
+        name="exampleForm"
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"

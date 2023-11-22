@@ -46,41 +46,41 @@ const App: React.FC = () => {
   return (
     <>
       <Form {...layout} ref={formRef} name="control-ref" onFinish={onFinish} style={{ maxWidth: 600 }}>
-        <Form.Item name="bus" label="노선" rules={[{ required: true }]}>
+        <Form.Item name="busRoute" label="노선" rules={[{ required: true }]}>
           <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
           <Button style={{ boxShadow: '2px 2px 2px 2px lightgrey' }} onClick={showModal}>
             노선검색
           </Button>
         </Form.Item>
         <Modal title="노선 검색" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-          <Form.Item name="busnumber" label="차량번호" rules={[{ required: true }]}>
+          <Form.Item name="stationsNumber" label="차량번호" rules={[{ required: true }]}>
             <Select style={{ width: '300px' }} placeholder="도시를 선택해주세요." allowClear>
               <Option value="male">{city[0]}</Option>
               <Option value="female">{city[1]}</Option>
               <Option value="other">{city[2]}</Option>
             </Select>
           </Form.Item>
-          <Form.Item name="bus" label="노선" rules={[{ required: true }]}>
+          <Form.Item name="busRouteSearch" label="노선" rules={[{ required: true }]}>
             <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
           </Form.Item>
         </Modal>
 
-        <Form.Item name="busnumber" label="차량번호" rules={[{ required: true }]}>
+        <Form.Item name="busNumber" label="차량번호" rules={[{ required: true }]}>
           <Select style={{ width: '300px' }} placeholder="차량번호를 입력하세요." allowClear>
             <Option value="male">{arr2[0]}</Option>
             <Option value="female">{arr2[1]}</Option>
             <Option value="other">{arr2[2]}</Option>
           </Select>
         </Form.Item>
-        <Form.Item name="bus" label="버스차종" rules={[{ required: true }]}>
-          <Select style={{ width: '300px', margintop: '30px' }} placeholder="버스차종을 입력하세요." allowClear>
+        <Form.Item name="busType" label="버스차종" rules={[{ required: true }]}>
+          <Select style={{ width: '300px' }} placeholder="버스차종을 입력하세요." allowClear>
             <Option value="male">{arr[0]}</Option>
             <Option value="female">{arr[1]}</Option>
             <Option value="other">{arr[2]}</Option>
           </Select>
         </Form.Item>
 
-        <Form.Item style={{ marginTop: '45px', marginLeft: '' }} {...tailLayout}>
+        <Form.Item name="stations" style={{ marginTop: '45px' }} {...tailLayout}>
           <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px lightgrey' }} htmlType="submit">
             노선등록
           </Button>

@@ -103,7 +103,7 @@ const MapComponent = () => {
 
             const polyline = new window.kakao.maps.Polyline({
               path: linePaths[linePathIndex],
-              strokeWeight: 7,
+              strokeWeight: 3,
               strokeColor: linePathIndex === 0 ? '#FF0000' : 'blue',
               strokeOpacity: 0.7,
               strokeStyle: 'solid',
@@ -123,7 +123,7 @@ const MapComponent = () => {
         };
 
         const fetchBusDataAndCreateMarkers = async () => {
-          await fetchAndCreateMarkers('/api/stations', 0, 0, new window.kakao.maps.Size(10, 10));
+          await fetchAndCreateMarkers('/api/stations', 0, 0, new window.kakao.maps.Size(5, 5));
         };
 
         const fetchAndCreateBusMarkers = async (url, markerIndex, busImageSrc) => {
@@ -167,7 +167,7 @@ const MapComponent = () => {
         };
 
         fetchBusDataAndCreateMarkers();
-        setInterval(fetchBusDataAndCreateMarkers, 5000);
+        setInterval(fetchBusDataAndCreateMarkers, 30000000);
 
         setInterval(
           () =>
