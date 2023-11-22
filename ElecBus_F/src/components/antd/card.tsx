@@ -26,6 +26,7 @@ const style3: React.CSSProperties = {
   fontSize: '20px',
   fontWeight: 'bold',
 };
+
 const arr1 = ['서울71자1565', '90', '서울', '미운행'];
 const arr3 = ['강원71자1565', '90', '대구', '미운행'];
 const arr4 = ['충청71자1565', '90', '차고지', '미운행'];
@@ -179,8 +180,7 @@ const App: React.FC = () => (
                 <div style={style2}>노선</div>
                 <div style={style2}>위치</div>
               </div>
-                <Bus/>
-             
+              <Bus style={{marginTop:'100px'}} />
             </div>
           </Row>
         </Col>
