@@ -1,11 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const BusRouteMap = () => {
-  const [busStops, setBusStops] = useState([]);
-  const [buses, setBuses] = useState([]);
-  const [hoveredStop, setHoveredStop] = useState(null);
-  const [hoveredBuses, setHoveredBuses] = useState([]);
+interface BusStop {
+  stationId: string;
+  stationName: string;
+  // 다른 정류장 속성들을 필요에 따라 추가할 수 있음
+}
+
+interface Bus {
+  stationId: string;
+  busNumber: string;
+  content: string;
+  // 다른 버스 속성들을 필요에 따라 추가할 수 있음
+}
+
+interface HoveredBus {
+  stationId: string;
+  busNumber: string;
+  content: string;
+}
+
+const BusRouteMap: React.FC = () => {
+  const [busStops, setBusStops] = useState<BusStop[]>([]);
+  const [buses, setBuses] = useState<Bus[]>([]);
+  const [hoveredStop, setHoveredStop] = useState<string | null>(null);
+  const [hoveredBuses, setHoveredBuses] = useState<HoveredBus[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,14 +33,14 @@ const BusRouteMap = () => {
         const dataStations = responseStations.data;
 
         if (dataStations && dataStations.stations) {
-          const stops = dataStations.stations;
+          const stops: BusStop[] = dataStations.stations;
           setBusStops(stops);
         } else {
           console.error('예상하지 못한 정류장 데이터 형식:', dataStations);
         }
 
         const responseBuses = await axios.get('http://localhost:3000/api/bus');
-        const dataBuses = responseBuses.data.stations;
+        const dataBuses: Bus[] = responseBuses.data.stations;
 
         if (Array.isArray(dataBuses)) {
           setBuses(dataBuses);
@@ -42,7 +61,6 @@ const BusRouteMap = () => {
     // 컴포넌트 언마운트 시 clearInterval 호출하여 메모리 누수 방지
     return () => clearInterval(intervalId);
   }, []);
-
   // SVG 너비, 높이, 여백 설정
   const svgWidth = 1000;
   const svgHeight = 200;
