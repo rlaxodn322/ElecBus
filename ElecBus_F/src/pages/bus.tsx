@@ -176,7 +176,7 @@ const BusRouteMap: React.FC = () => {
                       width={enlargedBusRadius * 2}
                       height={enlargedBusRadius * 2}
                       x={-enlargedBusRadius}
-                      y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 50}
+                      y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 70}
                     />
 
                     {/* Content */}
