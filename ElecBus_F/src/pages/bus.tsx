@@ -62,7 +62,7 @@ const BusRouteMap: React.FC = () => {
     return () => clearInterval(intervalId);
   }, []);
   // SVG 너비, 높이, 여백 설정
-  const svgWidth = 200;
+  const svgWidth = 300;
   const svgHeight = 1500;
   const margin = 20;
 
@@ -142,9 +142,11 @@ const BusRouteMap: React.FC = () => {
             onMouseEnter={() => handleMouseEnterStop(stop.stationId)}
             onMouseLeave={handleMouseLeaveStop}
           >
-            {/* 정류장 원 그리기 */}
-            <circle r={stopRadius} fill={hoveredStop === stop.stationId ? 'red' : 'black'} />
-
+            {/* 정류장 ▼ 그리기 */}
+            <polygon
+              points={`0,${stopRadius * 1} ${stopRadius},-${stopRadius * 1.5} -${stopRadius},-${stopRadius * 1.5}`}
+              fill={hoveredStop === stop.stationId ? 'red' : 'black'}
+            />
             {/* 정류장 이름 표시 */}
             {hoveredStop === stop.stationId && (
               <text
@@ -172,8 +174,8 @@ const BusRouteMap: React.FC = () => {
                     {/* 큰 이미지로 버스 표시 */}
                     <image
                       href={busImageSrc}
-                      width={enlargedBusRadius * 2}
-                      height={enlargedBusRadius * 2}
+                      width={enlargedBusRadius * 1.5}
+                      height={enlargedBusRadius * 1.5}
                       x={enlargedBusRadius}
                       y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 20}
                     />
