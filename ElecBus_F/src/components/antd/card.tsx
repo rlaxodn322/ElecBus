@@ -3,6 +3,7 @@ import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map1';
 import Bus from '../../pages/bus';
 import 'antd-button-color/dist/css/style.css';
+
 const style: React.CSSProperties = {
   border: '1px solid lightgrey',
   width: '280px',
@@ -14,7 +15,7 @@ const style: React.CSSProperties = {
   fontSize: '30px',
   padding: '30px',
 };
-const style1: React.CSSProperties = { fontSize: '20px' };
+const style1: React.CSSProperties = { marginRight: '20px' };
 const style2: React.CSSProperties = {
   marginLeft: '70px',
   fontSize: '20px',
@@ -26,7 +27,15 @@ const style3: React.CSSProperties = {
   fontSize: '20px',
   fontWeight: 'bold',
 };
-
+const parentStyle: React.CSSProperties = {
+  width: '100%', // 조절 필요
+  maxHeight: '600px', // 조절 필요
+  overflowY: 'auto',
+  margin: '0 auto',
+  border: '2px solid lightgrey',
+  height: '600px',
+  boxShadow: '3px 3px 3px 3px lightgrey',
+};
 const arr1 = ['서울71자1565', '90', '서울', '미운행'];
 const arr3 = ['강원71자1565', '90', '대구', '미운행'];
 const arr4 = ['충청71자1565', '90', '차고지', '미운행'];
@@ -156,33 +165,36 @@ const App: React.FC = () => (
             <img style={{ marginTop: '160px', width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img> 운행중
             버스정보
           </h1>
-          <Row>
-            <div
-              style={{
-                border: '2px solid lightgrey',
-                width: '600px',
-                height: '600px',
-                boxShadow: '3px 3px 3px 3px lightgrey',
-              }}
-            >
-              <div
-                style={{
-                  border: '1px solid lightgrey',
-                  width: '600px',
-                  height: '50px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  background: 'white',
-                  color: 'black',
-                }}
-              >
-                <div style={style2}>차량번호</div>
-                <div style={style2}>노선</div>
-                <div style={style2}>위치</div>
+          <div
+            style={{
+              height: '100%',
+              display: 'flex',
+
+              margin: '0 auto',
+              paddingTop: '20px',
+            }}
+          >
+            <Row>
+              <div style={parentStyle}>
+                <div
+                  style={{
+                    border: '1px solid lightgrey',
+                    width: '600px',
+                    height: '50px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    background: 'white',
+                    color: 'black',
+                  }}
+                >
+                  <div style={style2}>
+                    <h1>버스 노선도</h1>
+                  </div>
+                </div>
+                <Bus />
               </div>
-              <Bus style={{marginTop:'100px'}} />
-            </div>
-          </Row>
+            </Row>
+          </div>
         </Col>
       </Row>
     </div>
