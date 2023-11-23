@@ -61,9 +61,10 @@ const BusRouteMap: React.FC = () => {
     // 컴포넌트 언마운트 시 clearInterval 호출하여 메모리 누수 방지
     return () => clearInterval(intervalId);
   }, []);
+
   // SVG 너비, 높이, 여백 설정
-  const svgWidth = 300;
-  const svgHeight = 1500;
+  const svgWidth = 500;
+  const svgHeight = 2000;
   const margin = 20;
 
   // 뷰포트 내부 요소들의 간격 및 크기 설정
@@ -112,24 +113,37 @@ const BusRouteMap: React.FC = () => {
       <svg width={svgWidth} height={svgHeight} style={{ cursor: 'pointer' }}>
         {/* 노선 곡선 그리기 */}
         {busStops.map((stop, index) => {
-          if (index < busStops.length - 1) {
-            const startX = svgWidth / 2;
-            const startY = margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1);
-            const endX = svgWidth / 2;
-            const endY = margin + ((index + 1) * (svgHeight - 2 * margin)) / (busStops.length - 1);
+          const startX = svgWidth / 2;
+          const startY = margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1);
+          const endX = svgWidth / 2;
+          const endY = margin + ((index + 1) * (svgHeight - 2 * margin)) / (busStops.length - 1);
 
-            // 중간 지점 계산
-            const [midX, midY] = calculateCurveMidPoint(startX, startY, endX, endY);
+          // 중간 지점 계산
+          const [midX, midY] = calculateCurveMidPoint(startX, startY, endX, endY);
 
-            return (
+          return (
+            <g key={index}>
               <path
-                key={index}
                 d={`M${startX} ${startY} Q${midX} ${midY} ${endX} ${endY}`}
                 style={{ stroke: 'black', fill: 'none', strokeWidth: lineStrokeWidth }}
               />
-            );
-          }
-          return null;
+              {/* 중간 지점에 회차점 마커 표시 */}
+              {index === Math.floor(busStops.length / 2) && (
+                <g>
+                  <circle cx={midX} cy={midY} r={stopRadius * 1.5} fill="green" />
+                  <text
+                    x={midX - 40}
+                    y={midY}
+                    textAnchor="middle"
+                    alignmentBaseline="middle"
+                    style={{ fontSize: '20px', fill: 'black', fontWeight: 'bold' }}
+                  >
+                    회차
+                  </text>
+                </g>
+              )}
+            </g>
+          );
         })}
 
         {/* 정류장 표시 */}
@@ -150,10 +164,10 @@ const BusRouteMap: React.FC = () => {
             {/* 정류장 이름 표시 */}
             {hoveredStop === stop.stationId && (
               <text
-                x={-busRadius * 10}
+                x={-busRadius * 17}
                 textAnchor="middle"
                 style={{
-                  fontSize: '10px',
+                  fontSize: '15px',
                   fill: 'black',
                   visibility: hoveredStop ? 'visible' : 'hidden',
                 }}
@@ -176,20 +190,20 @@ const BusRouteMap: React.FC = () => {
                       href={busImageSrc}
                       width={enlargedBusRadius * 1.5}
                       height={enlargedBusRadius * 1.5}
-                      x={enlargedBusRadius}
+                      x={enlargedBusRadius + 30}
                       y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 20}
                     />
                     {/* Content */}
                     {hoveredBuses[busIndex] && (
                       <foreignObject
-                        x={-enlargedBusRadius * 2 + 60}
-                        y={-enlargedBusRadius - 10}
+                        x={-enlargedBusRadius * 2 + 80}
+                        y={-enlargedBusRadius - 30}
                         width="200"
                         height="200"
                       >
                         <div
                           style={{
-                            fontSize: '15px',
+                            fontSize: '20px',
                             color: 'black',
                             visibility: 'visible',
                             marginLeft: '7px',

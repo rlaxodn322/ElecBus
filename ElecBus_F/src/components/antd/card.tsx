@@ -15,7 +15,7 @@ const style: React.CSSProperties = {
   fontSize: '30px',
   padding: '30px',
 };
-const style1: React.CSSProperties = { marginRight: '20px' };
+const style1: React.CSSProperties = { marginRight: '20px', fontSize: '20px', fontWeight: 'bold' };
 const style2: React.CSSProperties = {
   marginLeft: '70px',
   fontSize: '20px',
@@ -187,9 +187,7 @@ const App: React.FC = () => (
                     color: 'black',
                   }}
                 >
-                  <div style={style2}>
-                    <h1>버스 노선도</h1>
-                  </div>
+                  <div style={style2}>버스 노선도</div>
                 </div>
                 <Bus />
               </div>
