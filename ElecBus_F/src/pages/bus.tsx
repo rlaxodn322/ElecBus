@@ -98,13 +98,6 @@ const BusRouteMap: React.FC = () => {
     });
   };
 
-  // 곡선의 중간 지점을 계산하는 함수
-  const calculateCurveMidPoint = (x1, y1, x2, y2) => {
-    const cx = (x1 + x2) / 2;
-    const cy = (y1 + y2) / 2;
-    return [cx, cy];
-  };
-
   const busImageSrc = 'https://www.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=55212&fileTy=MEDIA&fileNo=2';
   const enlargedBusRadius = 30;
 
@@ -118,30 +111,15 @@ const BusRouteMap: React.FC = () => {
           const endX = svgWidth / 2;
           const endY = margin + ((index + 1) * (svgHeight - 2 * margin)) / (busStops.length - 1);
 
-          // 중간 지점 계산
-          const [midX, midY] = calculateCurveMidPoint(startX, startY, endX, endY);
-
           return (
             <g key={index}>
-              <path
-                d={`M${startX} ${startY} Q${midX} ${midY} ${endX} ${endY}`}
+              <line
+                x1={startX}
+                y1={startY}
+                x2={endX}
+                y2={endY}
                 style={{ stroke: 'black', fill: 'none', strokeWidth: lineStrokeWidth }}
               />
-              {/* 중간 지점에 회차점 마커 표시 */}
-              {index === Math.floor(busStops.length / 2) && (
-                <g>
-                  <circle cx={midX} cy={midY} r={stopRadius * 1.5} fill="green" />
-                  <text
-                    x={midX - 40}
-                    y={midY}
-                    textAnchor="middle"
-                    alignmentBaseline="middle"
-                    style={{ fontSize: '20px', fill: 'black', fontWeight: 'bold' }}
-                  >
-                    회차
-                  </text>
-                </g>
-              )}
             </g>
           );
         })}
