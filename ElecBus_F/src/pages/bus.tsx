@@ -63,7 +63,7 @@ const BusRouteMap: React.FC = () => {
   }, []);
 
   // SVG 너비, 높이, 여백 설정
-  const svgWidth = 500;
+  const svgWidth = 300;
   const svgHeight = 2000;
   const margin = 20;
 
@@ -102,7 +102,102 @@ const BusRouteMap: React.FC = () => {
   const enlargedBusRadius = 30;
 
   return (
-    <div>
+    <div style={{ display: 'flex' }}>
+      <svg width={svgWidth} height={svgHeight} style={{ cursor: 'pointer' }}>
+        {/* 노선 곡선 그리기 */}
+        {busStops.map((stop, index) => {
+          const startX = svgWidth / 2;
+          const startY = margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1);
+          const endX = svgWidth / 2;
+          const endY = margin + ((index + 1) * (svgHeight - 2 * margin)) / (busStops.length - 1);
+
+          return (
+            <g key={index}>
+              <line
+                x1={startX}
+                y1={startY}
+                x2={endX}
+                y2={endY}
+                style={{ stroke: 'black', fill: 'none', strokeWidth: lineStrokeWidth }}
+              />
+            </g>
+          );
+        })}
+
+        {/* 정류장 표시 */}
+        {busStops.map((stop, index) => (
+          <g
+            key={index}
+            transform={`translate(${svgWidth / 2}, ${
+              margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1)
+            })`}
+            onMouseEnter={() => handleMouseEnterStop(stop.stationId)}
+            onMouseLeave={handleMouseLeaveStop}
+          >
+            {/* 정류장 ▼ 그리기 */}
+            <polygon
+              points={`0,${stopRadius * 1} ${stopRadius},-${stopRadius * 1.5} -${stopRadius},-${stopRadius * 1.5}`}
+              fill={hoveredStop === stop.stationId ? 'red' : 'black'}
+            />
+            {/* 정류장 이름 표시 */}
+            {hoveredStop === stop.stationId && (
+              <text
+                x={-busRadius * 17}
+                textAnchor="middle"
+                style={{
+                  fontSize: '15px',
+                  fill: 'black',
+                  visibility: hoveredStop ? 'visible' : 'hidden',
+                }}
+              >
+                {stop.stationName}
+              </text>
+            )}
+
+            {/* 버스 표시 */}
+            {buses.map((bus, busIndex) => {
+              if (bus.stationId === stop.stationId) {
+                return (
+                  <g
+                    key={busIndex}
+                    onMouseEnter={() => handleMouseEnterBus(busIndex, bus.stationId, bus.busNumber, bus.content)}
+                    onMouseLeave={() => handleMouseLeaveBus(busIndex)}
+                  >
+                    {/* 큰 이미지로 버스 표시 */}
+                    <image
+                      href={busImageSrc}
+                      width={enlargedBusRadius * 1.5}
+                      height={enlargedBusRadius * 1.5}
+                      x={enlargedBusRadius + 30}
+                      y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 20}
+                    />
+                    {/* Content */}
+                    {hoveredBuses[busIndex] && (
+                      <foreignObject
+                        x={-enlargedBusRadius * 2 + 80}
+                        y={-enlargedBusRadius - 30}
+                        width="200"
+                        height="200"
+                      >
+                        <div
+                          style={{
+                            fontSize: '20px',
+                            color: 'black',
+                            visibility: 'visible',
+                            marginLeft: '7px',
+                          }}
+                          dangerouslySetInnerHTML={{ __html: hoveredBuses[busIndex].content }}
+                        />
+                      </foreignObject>
+                    )}
+                  </g>
+                );
+              }
+              return null;
+            })}
+          </g>
+        ))}
+      </svg>
       <svg width={svgWidth} height={svgHeight} style={{ cursor: 'pointer' }}>
         {/* 노선 곡선 그리기 */}
         {busStops.map((stop, index) => {
