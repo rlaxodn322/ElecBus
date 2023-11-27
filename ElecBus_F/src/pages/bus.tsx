@@ -151,7 +151,7 @@ const BusRouteMap: React.FC = () => {
                 x={-busRadius * 17}
                 textAnchor="middle"
                 style={{
-                  fontSize: '15px',
+                  fontSize: '10px',
                   fill: 'black',
                   visibility: hoveredStop ? 'visible' : 'hidden',
                 }}
