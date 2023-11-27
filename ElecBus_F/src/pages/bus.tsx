@@ -25,6 +25,7 @@ const BusRouteMap: React.FC = () => {
   const [buses, setBuses] = useState<Bus[]>([]);
   const [hoveredStop, setHoveredStop] = useState<string | null>(null);
   const [hoveredBuses, setHoveredBuses] = useState<HoveredBus[]>([]);
+  const [turnYn, setTurnYn] = useState<string>('N'); // Assuming turnYn is a state variable
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +49,9 @@ const BusRouteMap: React.FC = () => {
         } else {
           console.error('예상하지 못한 버스 데이터 형식:', responseBuses.data);
         }
+
+        // Set the turnYn value
+        setTurnYn(dataStations.turnYn);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
       }
@@ -104,107 +108,17 @@ const BusRouteMap: React.FC = () => {
   return (
     <div style={{ display: 'flex' }}>
       <svg width={svgWidth} height={svgHeight} style={{ cursor: 'pointer' }}>
-        {/* 노선 곡선 그리기 */}
+        {/* 수정된 노선 그리기 조건 */}
         {busStops.map((stop, index) => {
           const startX = svgWidth / 2;
           const startY = margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1);
           const endX = svgWidth / 2;
           const endY = margin + ((index + 1) * (svgHeight - 2 * margin)) / (busStops.length - 1);
 
-          return (
-            <g key={index}>
-              <line
-                x1={startX}
-                y1={startY}
-                x2={endX}
-                y2={endY}
-                style={{ stroke: 'black', fill: 'none', strokeWidth: lineStrokeWidth }}
-              />
-            </g>
-          );
-        })}
-
-        {/* 정류장 표시 */}
-        {busStops.map((stop, index) => (
-          <g
-            key={index}
-            transform={`translate(${svgWidth / 2}, ${
-              margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1)
-            })`}
-            onMouseEnter={() => handleMouseEnterStop(stop.stationId)}
-            onMouseLeave={handleMouseLeaveStop}
-          >
-            {/* 정류장 ▼ 그리기 */}
-            <polygon
-              points={`0,${stopRadius * 1} ${stopRadius},-${stopRadius * 1.5} -${stopRadius},-${stopRadius * 1.5}`}
-              fill={hoveredStop === stop.stationId ? 'red' : 'black'}
-            />
-            {/* 정류장 이름 표시 */}
-            {hoveredStop === stop.stationId && (
-              <text
-                x={-busRadius * 17}
-                textAnchor="middle"
-                style={{
-                  fontSize: '15px',
-                  fill: 'black',
-                  visibility: hoveredStop ? 'visible' : 'hidden',
-                }}
-              >
-                {stop.stationName}
-              </text>
-            )}
-
-            {/* 버스 표시 */}
-            {buses.map((bus, busIndex) => {
-              if (bus.stationId === stop.stationId) {
-                return (
-                  <g
-                    key={busIndex}
-                    onMouseEnter={() => handleMouseEnterBus(busIndex, bus.stationId, bus.busNumber, bus.content)}
-                    onMouseLeave={() => handleMouseLeaveBus(busIndex)}
-                  >
-                    {/* 큰 이미지로 버스 표시 */}
-                    <image
-                      href={busImageSrc}
-                      width={enlargedBusRadius * 1.5}
-                      height={enlargedBusRadius * 1.5}
-                      x={enlargedBusRadius + 30}
-                      y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 20}
-                    />
-                    {/* Content */}
-                    {hoveredBuses[busIndex] && (
-                      <foreignObject
-                        x={-enlargedBusRadius * 2 + 80}
-                        y={-enlargedBusRadius - 30}
-                        width="200"
-                        height="200"
-                      >
-                        <div
-                          style={{
-                            fontSize: '20px',
-                            color: 'black',
-                            visibility: 'visible',
-                            marginLeft: '7px',
-                          }}
-                          dangerouslySetInnerHTML={{ __html: hoveredBuses[busIndex].content }}
-                        />
-                      </foreignObject>
-                    )}
-                  </g>
-                );
-              }
-              return null;
-            })}
-          </g>
-        ))}
-      </svg>
-      <svg width={svgWidth} height={svgHeight} style={{ cursor: 'pointer' }}>
-        {/* 노선 곡선 그리기 */}
-        {busStops.map((stop, index) => {
-          const startX = svgWidth / 2;
-          const startY = margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1);
-          const endX = svgWidth / 2;
-          const endY = margin + ((index + 1) * (svgHeight - 2 * margin)) / (busStops.length - 1);
+          // 수정된 조건: turnYn이 'Y'이면 노선을 그리지 않음
+          if (stop.turnYn === 'Y') {
+            return null;
+          }
 
           return (
             <g key={index}>

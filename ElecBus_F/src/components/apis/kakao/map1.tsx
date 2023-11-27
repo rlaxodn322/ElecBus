@@ -74,6 +74,7 @@ const MapComponent = () => {
             const data = await response.json();
 
             // stations 배열 초기화
+
             stations[linePathIndex] = [];
 
             for (const station of data.stations) {
