@@ -173,7 +173,7 @@ const BusRouteMap: React.FC = () => {
                       href={busImageSrc}
                       width={enlargedBusRadius * 1.5}
                       height={enlargedBusRadius * 1.5}
-                      x={enlargedBusRadius + 30}
+                      x={enlargedBusRadius + 20}
                       y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 20}
                     />
                     {/* Content */}
@@ -186,7 +186,7 @@ const BusRouteMap: React.FC = () => {
                       >
                         <div
                           style={{
-                            fontSize: '20px',
+                            fontSize: '15px',
                             color: 'black',
                             visibility: 'visible',
                             marginLeft: '7px',
