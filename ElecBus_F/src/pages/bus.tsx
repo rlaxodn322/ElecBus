@@ -143,7 +143,7 @@ const BusRouteMap: React.FC = () => {
             {/* 정류장 ▼ 그리기 */}
             <polygon
               points={`0,${stopRadius * 1} ${stopRadius},-${stopRadius * 1.5} -${stopRadius},-${stopRadius * 1.5}`}
-              fill={hoveredStop === stop.stationId ? 'black' : 'blue'}
+              fill={hoveredStop === stop.stationId ? 'red' : 'blue'}
             />
             {/* 정류장 이름 표시 */}
             {hoveredStop === stop.stationId && (
@@ -175,7 +175,7 @@ const BusRouteMap: React.FC = () => {
                       width={enlargedBusRadius * 1.5}
                       height={enlargedBusRadius * 1.5}
                       x={enlargedBusRadius + 20}
-                      y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 20}
+                      y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 40}
                     />
                     {/* Content */}
                     {hoveredBuses[busIndex] && (
