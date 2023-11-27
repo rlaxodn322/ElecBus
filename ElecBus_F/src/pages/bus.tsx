@@ -25,7 +25,7 @@ const BusRouteMap: React.FC = () => {
   const [buses, setBuses] = useState<Bus[]>([]);
   const [hoveredStop, setHoveredStop] = useState<string | null>(null);
   const [hoveredBuses, setHoveredBuses] = useState<HoveredBus[]>([]);
-  const [turnYn, setTurnYn] = useState<string>('N'); // Assuming turnYn is a state variable
+  const [turnYn, setTurnYn] = useState<string>('N');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +35,13 @@ const BusRouteMap: React.FC = () => {
 
         if (dataStations && dataStations.stations) {
           const stops: BusStop[] = dataStations.stations;
+          const turnYnIndex = stops.findIndex((stop) => stop.turnYn === 'Y');
+
+          if (turnYnIndex !== -1) {
+            // If turnYn is 'Y', remove data from turnYnIndex onward
+            stops.splice(turnYnIndex);
+          }
+
           setBusStops(stops);
         } else {
           console.error('예상하지 못한 정류장 데이터 형식:', dataStations);
@@ -49,9 +56,6 @@ const BusRouteMap: React.FC = () => {
         } else {
           console.error('예상하지 못한 버스 데이터 형식:', responseBuses.data);
         }
-
-        // Set the turnYn value
-        setTurnYn(dataStations.turnYn);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
       }
@@ -68,7 +72,7 @@ const BusRouteMap: React.FC = () => {
 
   // SVG 너비, 높이, 여백 설정
   const svgWidth = 300;
-  const svgHeight = 2000;
+  const svgHeight = 1000;
   const margin = 20;
 
   // 뷰포트 내부 요소들의 간격 및 크기 설정
@@ -106,19 +110,14 @@ const BusRouteMap: React.FC = () => {
   const enlargedBusRadius = 30;
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div>
+      <h1 style={{ marginLeft: '125px' }}>상행</h1>
       <svg width={svgWidth} height={svgHeight} style={{ cursor: 'pointer' }}>
-        {/* 수정된 노선 그리기 조건 */}
         {busStops.map((stop, index) => {
           const startX = svgWidth / 2;
           const startY = margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1);
           const endX = svgWidth / 2;
           const endY = margin + ((index + 1) * (svgHeight - 2 * margin)) / (busStops.length - 1);
-
-          // 수정된 조건: turnYn이 'Y'이면 노선을 그리지 않음
-          if (stop.turnYn === 'Y') {
-            return null;
-          }
 
           return (
             <g key={index}>
@@ -133,7 +132,6 @@ const BusRouteMap: React.FC = () => {
           );
         })}
 
-        {/* 정류장 표시 */}
         {busStops.map((stop, index) => (
           <g
             key={index}
