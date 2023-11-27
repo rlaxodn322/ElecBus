@@ -4,14 +4,13 @@ import axios from 'axios';
 interface BusStop {
   stationId: string;
   stationName: string;
-  // 다른 정류장 속성들을 필요에 따라 추가할 수 있음
+  turnYn: string; // 'Y'이면 해당 정류장부터 그립니다.
 }
 
 interface Bus {
   stationId: string;
   busNumber: string;
   content: string;
-  // 다른 버스 속성들을 필요에 따라 추가할 수 있음
 }
 
 interface HoveredBus {
@@ -22,7 +21,6 @@ interface HoveredBus {
 
 const BusRouteMap: React.FC = () => {
   const [busStops, setBusStops] = useState<BusStop[]>([]);
-
   const [buses, setBuses] = useState<Bus[]>([]);
   const [hoveredStop, setHoveredStop] = useState<string | null>(null);
   const [hoveredBuses, setHoveredBuses] = useState<HoveredBus[]>([]);
@@ -36,9 +34,10 @@ const BusRouteMap: React.FC = () => {
         if (dataStations && dataStations.stations) {
           const stops: BusStop[] = dataStations.stations;
           const turnYnIndex = stops.findIndex((stop) => stop.turnYn === 'Y');
+
           if (turnYnIndex !== -1) {
-            // If turnYn is 'Y', remove data from turnYnIndex onward
-            stops.splice(turnYnIndex);
+            // If turnYn is 'Y', keep stops starting from turnYnIndex
+            stops.splice(0, turnYnIndex);
           }
 
           setBusStops(stops);
@@ -110,7 +109,7 @@ const BusRouteMap: React.FC = () => {
 
   return (
     <div>
-      <h1 style={{ marginLeft: '125px' }}>상행</h1>
+      <h1 style={{ marginLeft: '125px' }}>하행</h1>
       <svg width={svgWidth} height={svgHeight} style={{ cursor: 'pointer' }}>
         {busStops.map((stop, index) => {
           const startX = svgWidth / 2;

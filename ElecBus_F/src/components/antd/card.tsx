@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map1';
 import Bus from '../../pages/bus';
+import Bus1 from '../../pages/bus1';
 import 'antd-button-color/dist/css/style.css';
 
 const style: React.CSSProperties = {
@@ -17,34 +18,29 @@ const style: React.CSSProperties = {
 };
 const style1: React.CSSProperties = { marginRight: '20px', fontSize: '20px', fontWeight: 'bold' };
 const style2: React.CSSProperties = {
-  marginLeft: '70px',
+  marginLeft: '90px',
   fontSize: '20px',
   fontWeight: 'bold',
 };
 const style3: React.CSSProperties = {
   marginTop: '20px',
-  marginLeft: '60px',
+  marginLeft: '80px',
   fontSize: '20px',
   fontWeight: 'bold',
 };
 const parentStyle: React.CSSProperties = {
-  width: '100%', // 조절 필요
-  maxHeight: '600px', // 조절 필요
+  // 조절 필요
+  width: '300px',
   overflowY: 'auto',
   margin: '0 auto',
   border: '2px solid lightgrey',
   height: '600px',
   boxShadow: '3px 3px 3px 3px lightgrey',
 };
-const arr1 = ['서울71자1565', '90', '서울', '미운행'];
-const arr3 = ['강원71자1565', '90', '대구', '미운행'];
-const arr4 = ['충청71자1565', '90', '차고지', '미운행'];
-const arr5 = ['군산71자1565', '90', '차고지', '미운행'];
-const arr2 = ['대구71자1565', '90', '강원', '미운행'];
+
 const arr6 = ['강원70자8021', '33', '엔진', '미운행'];
 
 const App: React.FC = () => (
-  
   <>
     <div
       style={{
@@ -180,7 +176,7 @@ const App: React.FC = () => (
                 <div
                   style={{
                     border: '1px solid lightgrey',
-                    width: '600px',
+                    width: '300px',
                     height: '50px',
                     display: 'flex',
                     alignItems: 'center',
@@ -188,9 +184,25 @@ const App: React.FC = () => (
                     color: 'black',
                   }}
                 >
-                  <div style={style2}>버스 노선도</div>
+                  <div style={style2}>상행 노선도</div>
                 </div>
                 <Bus />
+              </div>
+              <div style={parentStyle}>
+                <div
+                  style={{
+                    border: '1px solid lightgrey',
+                    width: '300px',
+                    height: '50px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    background: 'white',
+                    color: 'black',
+                  }}
+                >
+                  <div style={style2}>하행 노선도</div>
+                </div>
+                <Bus1 />
               </div>
             </Row>
           </div>
