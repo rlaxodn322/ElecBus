@@ -62,7 +62,7 @@ const BusRouteMap: React.FC = () => {
     fetchData();
 
     // 주기적으로 버스 위치 업데이트
-    const intervalId = setInterval(fetchData, 5000); // 5초마다 업데이트
+    const intervalId = setInterval(fetchData, 10000); // 5초마다 업데이트
 
     // 컴포넌트 언마운트 시 clearInterval 호출하여 메모리 누수 방지
     return () => clearInterval(intervalId);
@@ -175,7 +175,7 @@ const BusRouteMap: React.FC = () => {
                       height={enlargedBusRadius * 1.5}
                       x={enlargedBusRadius + 20}
                       // y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 40}
-                      y={busIndex * busGap }
+                      y={busIndex * busGap}
                     />
                     {/* Content */}
                     {hoveredBuses[busIndex] && (

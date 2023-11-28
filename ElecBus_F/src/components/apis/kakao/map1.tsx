@@ -182,7 +182,7 @@ const MapComponent = () => {
         };
 
         fetchBusDataAndCreateMarkers();
-        setInterval(fetchBusDataAndCreateMarkers, 30000000);
+        const intervalId = setInterval(fetchBusDataAndCreateMarkers, 30000000);
 
         setInterval(
           () =>
@@ -194,6 +194,7 @@ const MapComponent = () => {
           5000,
         );
       });
+      return () => clearInterval(intervalId);
 
       function makeOverListener(map, marker, infowindow) {
         return function () {
