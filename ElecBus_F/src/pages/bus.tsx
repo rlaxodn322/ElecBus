@@ -63,7 +63,7 @@ const BusRouteMap: React.FC = () => {
     fetchData();
 
     // 주기적으로 버스 위치 업데이트
-    const intervalId = setInterval(fetchData, 10000); // 5초마다 업데이트
+    const intervalId = setInterval(fetchData, 5000); // 5초마다 업데이트
 
     // 컴포넌트 언마운트 시 clearInterval 호출하여 메모리 누수 방지
     return () => clearInterval(intervalId);
@@ -89,10 +89,10 @@ const BusRouteMap: React.FC = () => {
     setHoveredStop(null);
   };
 
-  const handleMouseEnterBus = (busIndex, stationId, busNumber, content) => {
+  const handleMouseEnterBus = (busIndex, stationId, busNumber, content, remainSeatCnt) => {
     setHoveredBuses((prev) => {
       const newHoveredBuses = [...prev];
-      newHoveredBuses[busIndex] = { stationId, busNumber, content };
+      newHoveredBuses[busIndex] = { stationId, busNumber, content, remainSeatCnt };
       return newHoveredBuses;
     });
   };
@@ -166,7 +166,9 @@ const BusRouteMap: React.FC = () => {
                 return (
                   <g
                     key={busIndex}
-                    onMouseEnter={() => handleMouseEnterBus(busIndex, bus.stationId, bus.busNumber, bus.content)}
+                    onMouseEnter={() =>
+                      handleMouseEnterBus(busIndex, bus.stationId, bus.busNumber, bus.content, bus.remainSeatCnt)
+                    }
                     onMouseLeave={() => handleMouseLeaveBus(busIndex)}
                   >
                     {/* 큰 이미지로 버스 표시 */}
@@ -180,9 +182,24 @@ const BusRouteMap: React.FC = () => {
                     />
                     {/* Content */}
                     {hoveredBuses[busIndex] && (
+                      <text
+                        x={-enlargedBusRadius * 2 + 130}
+                        y={-enlargedBusRadius + 20}
+                        textAnchor="middle"
+                        style={{
+                          fontSize: '15px',
+                          fill: 'black',
+                          visibility: hoveredBuses[busIndex] ? 'visible' : 'hidden',
+                        }}
+                      >
+                        {`남은좌석: ${hoveredBuses[busIndex].remainSeatCnt}`}
+                      </text>
+                    )}
+                    {/* Content */}
+                    {hoveredBuses[busIndex] && (
                       <foreignObject
                         x={-enlargedBusRadius * 2 + 80}
-                        y={-enlargedBusRadius - 13}
+                        y={-enlargedBusRadius - 20}
                         width="200"
                         height="200"
                       >
