@@ -31,17 +31,7 @@ const MyPage = () => {
       >
         <Table />
       </div>
-      <div
-        key="table2" // 고유한 키 추가
-        style={{
-          width: '1370px',
-          display: 'flex',
-          justifyContent: 'center',
-          margin: '0 auto',
-        }}
-      >
-        <Table />
-      </div>
+
       <h1
         style={{
           width: '1370px',
@@ -95,7 +85,7 @@ const MyPage = () => {
           엑셀 다운로드
         </Button>
       </div>
-      <ErrorTable key="errorTable" /> // 고유한 키 추가
+      <ErrorTable key="errorTable" />
       <div
         key="paginationContainer" // 고유한 키 추가
         style={{

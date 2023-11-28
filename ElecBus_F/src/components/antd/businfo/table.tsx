@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'antd';
+import { Row, Col } from 'antd';
 
 const style: React.CSSProperties = {
   background: 'white',
@@ -13,24 +13,22 @@ const style: React.CSSProperties = {
 
 const containerStyle: React.CSSProperties = {
   width: '1370px',
-  display: 'flex',
-  alignItems: 'center',
   margin: '0 auto',
   paddingTop: '20px',
 };
 
 const App: React.FC = () => (
-  <>
-    <div style={containerStyle}>
-      {[...Array(12)].map((_, index) => (
-        <div key={index} style={{ margin: '0 10px', width: 'max-content' }}>
-          <Col key={index}>
+  <div style={containerStyle}>
+    <Row gutter={16}>
+      {[...Array(24)].map((_, index) => (
+        <Col key={index} span={2}>
+          <div style={{ margin: '5px', width: 'max-content' }}>
             <div style={style}>상태정보</div>
-          </Col>
-        </div>
+          </div>
+        </Col>
       ))}
-    </div>
-  </>
+    </Row>
+  </div>
 );
 
 export default App;
