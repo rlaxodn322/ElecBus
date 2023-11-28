@@ -24,7 +24,7 @@ const App: React.FC = () => (
     <div style={containerStyle}>
       {[...Array(12)].map((_, index) => (
         <div key={index} style={{ margin: '0 10px', width: 'max-content' }}>
-          <Col>
+          <Col key={index}>
             <div style={style}>상태정보</div>
           </Col>
         </div>

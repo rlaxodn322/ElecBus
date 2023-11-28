@@ -175,13 +175,14 @@ const BusRouteMap: React.FC = () => {
                       width={enlargedBusRadius * 1.5}
                       height={enlargedBusRadius * 1.5}
                       x={enlargedBusRadius + 20}
-                      y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 40}
+                      // y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 40}
+                      y={busIndex * busGap}
                     />
                     {/* Content */}
                     {hoveredBuses[busIndex] && (
                       <foreignObject
                         x={-enlargedBusRadius * 2 + 80}
-                        y={-enlargedBusRadius - 30}
+                        y={-enlargedBusRadius - 13}
                         width="200"
                         height="200"
                       >

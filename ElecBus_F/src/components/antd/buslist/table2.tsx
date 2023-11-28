@@ -26,9 +26,9 @@ const renderRow = (items: string[], isHeader = false) => (
     }}
   >
     {items.map((item, index) => (
-      <Col key={index} span={4}>
+      <div key={index} style={{ flex: 1 }}>
         {item}
-      </Col>
+      </div>
     ))}
   </Row>
 );
@@ -36,7 +36,15 @@ const renderRow = (items: string[], isHeader = false) => (
 const App: React.FC = () => (
   <>
     {renderRow(headers, true)}
-    {data.map((row) => renderRow(row))}
+    {data.map((row, rowIndex) => (
+      <div key={`row-${rowIndex}`} style={{ display: 'flex', flex: 1 }}>
+        {row.map((item, columnIndex) => (
+          <div key={`col-${row[0]}-${columnIndex}`} style={{ flex: 1 }}>
+            {item}
+          </div>
+        ))}
+      </div>
+    ))}
   </>
 );
 

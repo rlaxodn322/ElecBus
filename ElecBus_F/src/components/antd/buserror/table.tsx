@@ -10,8 +10,9 @@ const data = [
   ['Day5', 'Car5', 'Error5', 'Err5', 'Check5'],
 ];
 
-const renderRow = (items, isHeader = false) => (
+const renderRow = (items, isHeader = false, rowIndex) => (
   <Row
+    key={isHeader ? 'header' : `row-${rowIndex}`}
     justify="space-evenly"
     style={{
       width: '1370px',
@@ -24,7 +25,7 @@ const renderRow = (items, isHeader = false) => (
     }}
   >
     {items.map((item, index) => (
-      <Col key={index} span={4}>
+      <Col key={isHeader ? `header-${index}` : `col-${rowIndex}-${index}`} span={4}>
         {item}
       </Col>
     ))}
@@ -33,8 +34,8 @@ const renderRow = (items, isHeader = false) => (
 
 const App: React.FC = () => (
   <>
-    {renderRow(headers, true)}
-    {data.map((row, index) => renderRow(row))}
+    {renderRow(headers, true, 0)}
+    {data.map((row, index) => renderRow(row, false, index + 1))}
   </>
 );
 

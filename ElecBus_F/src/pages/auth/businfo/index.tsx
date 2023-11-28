@@ -6,6 +6,7 @@ import DateTable from '../../../components/antd/busdate/table';
 import ErrorTable from '../../../components/antd/buserror/table';
 import { Button } from 'antd';
 import Pagination from '../../../components/antd/pagination/table';
+
 const MyPage = () => {
   return (
     <>
@@ -19,6 +20,7 @@ const MyPage = () => {
         차량제어기 상태정보
       </h1>
       <div
+        key="table1" // 고유한 키 추가
         style={{
           width: '1370px',
           display: 'flex',
@@ -30,6 +32,7 @@ const MyPage = () => {
         <Table />
       </div>
       <div
+        key="table2" // 고유한 키 추가
         style={{
           width: '1370px',
           display: 'flex',
@@ -51,8 +54,8 @@ const MyPage = () => {
       >
         통계 정보
       </h1>
-
       <div
+        key="busChoice" // 고유한 키 추가
         style={{
           width: '1370px',
           display: 'flex',
@@ -64,6 +67,7 @@ const MyPage = () => {
         <BusChoice />
       </div>
       <div
+        key="dateTable" // 고유한 키 추가
         style={{
           width: '1370px',
           display: 'flex',
@@ -75,6 +79,7 @@ const MyPage = () => {
         <DateTable />
       </div>
       <div
+        key="errorTableContainer" // 고유한 키 추가
         style={{
           width: '1370px',
           display: 'flex',
@@ -90,10 +95,9 @@ const MyPage = () => {
           엑셀 다운로드
         </Button>
       </div>
-
-      <ErrorTable />
-
+      <ErrorTable key="errorTable" /> // 고유한 키 추가
       <div
+        key="paginationContainer" // 고유한 키 추가
         style={{
           display: 'flex',
           justifyContent: 'center',

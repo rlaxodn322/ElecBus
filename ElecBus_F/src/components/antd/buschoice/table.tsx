@@ -31,6 +31,7 @@ const App: React.FC = () => (
     displayRender={displayRender}
     onChange={onChange}
     placeholder="버스를 선택하세요."
+    key="cascader-key" // 고유한 key prop 추가
   />
 );
 
