@@ -56,17 +56,17 @@ const MapComponent = () => {
         const stations = [];
         const linePaths = [[], []];
         const markers = [[], []];
-        function clearMarkersAndPaths(markers, paths) {
-          for (const marker of markers) {
-            marker.setMap(null);
-          }
-          markers.length = 0;
+        // function clearMarkersAndPaths(markers, paths) {
+        //   for (const marker of markers) {
+        //     marker.setMap(null);
+        //   }
+        //   markers.length = 0;
 
-          for (const path of paths) {
-            path.setMap(null);
-          }
-          paths.length = 0;
-        }
+        //   for (const path of paths) {
+        //     path.setMap(null);
+        //   }
+        //   paths.length = 0;
+        // }
 
         const fetchAndCreateMarkers = async (url, linePathIndex, markerIndex, markerSize) => {
           try {
@@ -77,9 +77,24 @@ const MapComponent = () => {
 
             stations[linePathIndex] = [];
 
+            // for (const station of data.stations) {
+            //   // 마커 이미지 경로 추가
+            //   station.markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png';
+
+            //   const markerImage = new window.kakao.maps.MarkerImage(station.markerImageSrc, markerSize);
+            //   const marker = new window.kakao.maps.Marker({
+            //     map: map,
+            //     position: new window.kakao.maps.LatLng(station.y, station.x),
+            //     image: markerImage,
+            //   });
+
             for (const station of data.stations) {
               // 마커 이미지 경로 추가
-              station.markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png';
+              const markerImageSrc =
+                station.turnYn === 'Y'
+                  ? 'https://www.svgrepo.com/show/529833/round-transfer-vertical.svg'
+                  : 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png';
+              station.markerImageSrc = markerImageSrc;
 
               const markerImage = new window.kakao.maps.MarkerImage(station.markerImageSrc, markerSize);
               const marker = new window.kakao.maps.Marker({
@@ -87,7 +102,6 @@ const MapComponent = () => {
                 position: new window.kakao.maps.LatLng(station.y, station.x),
                 image: markerImage,
               });
-
               linePaths[linePathIndex].push(marker.getPosition());
 
               const infoWindow = new window.kakao.maps.InfoWindow({
@@ -124,7 +138,7 @@ const MapComponent = () => {
         };
 
         const fetchBusDataAndCreateMarkers = async () => {
-          await fetchAndCreateMarkers('/api/stations', 0, 0, new window.kakao.maps.Size(5, 5));
+          await fetchAndCreateMarkers('/api/stations', 0, 0, new window.kakao.maps.Size(20, 20));
         };
 
         const fetchAndCreateBusMarkers = async (url, markerIndex, busImageSrc) => {
