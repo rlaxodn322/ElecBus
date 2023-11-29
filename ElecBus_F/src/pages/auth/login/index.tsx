@@ -145,7 +145,7 @@ const LoginPage = () => {
         </LoginBar>
         <ButtonWrapper>
           <Button size="large" onClick={loginStart} loading={loading}>
-            로그인
+            LOGIN
           </Button>
           <span className="button-gap" />
           <a href="/auth/signup">
