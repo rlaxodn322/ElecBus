@@ -148,7 +148,7 @@ const BusRouteMap: React.FC = () => {
                 y={-25}
                 textAnchor="middle"
                 style={{
-                  fontSize: '12px',
+                  fontSize: '15px',
                   fill: 'black',
                   visibility: hoveredStop ? 'visible' : 'hidden',
                 }}
@@ -179,8 +179,8 @@ const BusRouteMap: React.FC = () => {
                     {/* Content */}
                     {hoveredBuses[busIndex] && (
                       <text
-                        x={enlargedBusRadius - 20}
-                        y={enlargedBusRadius + 10}
+                        x={enlargedBusRadius - 100}
+                        y={enlargedBusRadius + 6}
                         textAnchor="middle"
                         style={{
                           fontSize: '15px',
@@ -188,17 +188,12 @@ const BusRouteMap: React.FC = () => {
                           visibility: hoveredBuses[busIndex] ? 'visible' : 'hidden',
                         }}
                       >
-                        {`남은좌석: ${hoveredBuses[busIndex].remainSeatCnt}`}
+                        {`남은좌석: ${hoveredBuses[busIndex].remainSeatCnt}/`}
                       </text>
                     )}
                     {/* Content */}
                     {hoveredBuses[busIndex] && (
-                      <foreignObject
-                        y={enlargedBusRadius * 2 - 100}
-                        x={enlargedBusRadius + 20}
-                        width="200"
-                        height="200"
-                      >
+                      <foreignObject y={enlargedBusRadius * 2 - 40} x={enlargedBusRadius - 60} width="200" height="200">
                         <div
                           style={{
                             fontSize: '15px',
