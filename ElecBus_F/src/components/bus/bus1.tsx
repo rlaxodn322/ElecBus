@@ -69,8 +69,8 @@ const BusRouteMap: React.FC = () => {
   }, []);
 
   // SVG 너비, 높이, 여백 설정
-  const svgWidth = 300;
-  const svgHeight = 1000;
+  const svgWidth = 1200;
+  const svgHeight = 100;
   const margin = 20;
 
   // 뷰포트 내부 요소들의 간격 및 크기 설정
@@ -109,21 +109,18 @@ const BusRouteMap: React.FC = () => {
 
   return (
     <div>
-      <h1 style={{ marginLeft: '125px' }}>하행</h1>
+      <h3>4403하행</h3>
       <svg width={svgWidth} height={svgHeight} style={{ cursor: 'pointer' }}>
         {busStops.map((stop, index) => {
-          const startX = svgWidth / 2;
-          const startY = margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1);
-          const endX = svgWidth / 2;
-          const endY = margin + ((index + 1) * (svgHeight - 2 * margin)) / (busStops.length - 1);
-
+          const startX = margin + (index * (svgWidth - 2 * margin)) / (busStops.length - 1);
+          const endX = margin + ((index + 1) * (svgWidth - 2 * margin)) / (busStops.length - 1);
           return (
             <g key={index}>
               <line
                 x1={startX}
-                y1={startY}
                 x2={endX}
-                y2={endY}
+                y1={svgHeight / 2}
+                y2={svgHeight / 2}
                 style={{ stroke: 'green', fill: 'none', strokeWidth: lineStrokeWidth }}
               />
             </g>
@@ -133,21 +130,22 @@ const BusRouteMap: React.FC = () => {
         {busStops.map((stop, index) => (
           <g
             key={index}
-            transform={`translate(${svgWidth / 2}, ${
-              margin + (index * (svgHeight - 2 * margin)) / (busStops.length - 1)
+            transform={`translate(${margin + (index * (svgWidth - 2 * margin)) / (busStops.length - 1)}, ${
+              svgHeight / 2
             })`}
             onMouseEnter={() => handleMouseEnterStop(stop.stationId)}
             onMouseLeave={handleMouseLeaveStop}
           >
-            {/* 정류장 ▼ 그리기 */}
+            {/* 정류장 ► 그리기 */}
             <polygon
-              points={`0,${stopRadius * 1} ${stopRadius},-${stopRadius * 1.5} -${stopRadius},-${stopRadius * 1.5}`}
+              points={`0,${stopRadius * 2} ${stopRadius * 3},0 0,-${stopRadius * 2}`}
               fill={hoveredStop === stop.stationId ? 'red' : 'green'}
             />
             {/* 정류장 이름 표시 */}
             {hoveredStop === stop.stationId && (
               <text
-                x={-busRadius * 17}
+                x={busRadius + 5}
+                y={-25}
                 textAnchor="middle"
                 style={{
                   fontSize: '12px',
@@ -173,17 +171,16 @@ const BusRouteMap: React.FC = () => {
                     {/* 큰 이미지로 버스 표시 */}
                     <image
                       href={busImageSrc}
-                      width={enlargedBusRadius * 1.5}
                       height={enlargedBusRadius * 1.5}
-                      x={enlargedBusRadius + 20}
-                      // y={busIndex * busGap + (buses.length - 1 - busIndex) * busGap - enlargedBusRadius + 40}
-                      y={busIndex * busGap}
+                      width={enlargedBusRadius * 1.5}
+                      x={busIndex * busGap}
+                      y={-22}
                     />
                     {/* Content */}
                     {hoveredBuses[busIndex] && (
                       <text
-                        x={-enlargedBusRadius * 2 + 130}
-                        y={-enlargedBusRadius + 20}
+                        x={enlargedBusRadius - 20}
+                        y={enlargedBusRadius + 10}
                         textAnchor="middle"
                         style={{
                           fontSize: '15px',
@@ -197,8 +194,8 @@ const BusRouteMap: React.FC = () => {
                     {/* Content */}
                     {hoveredBuses[busIndex] && (
                       <foreignObject
-                        x={-enlargedBusRadius * 2 + 80}
-                        y={-enlargedBusRadius - 20}
+                        y={enlargedBusRadius * 2 - 100}
+                        x={enlargedBusRadius + 20}
                         width="200"
                         height="200"
                       >

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map1';
-import Bus from '../../pages/bus';
-import Bus1 from '../../pages/bus1';
+import Bus from '../bus/bus';
+import Bus1 from '../bus/bus1';
 import 'antd-button-color/dist/css/style.css';
 import axios from 'axios';
 const style: React.CSSProperties = {
@@ -30,11 +30,10 @@ const style3: React.CSSProperties = {
 };
 const parentStyle: React.CSSProperties = {
   // 조절 필요
-  width: '300px',
+  width: '600px',
   overflowY: 'auto',
-  margin: '0 auto',
   border: '2px solid lightgrey',
-  height: '700px',
+  height: '200px',
   boxShadow: '3px 3px 3px 3px lightgrey',
 };
 
@@ -186,44 +185,16 @@ const App: React.FC = () => {
             </h1>
             <div
               style={{
-                height: '100%',
                 display: 'flex',
-
                 margin: '0 auto',
                 paddingTop: '20px',
               }}
             >
               <Row>
                 <div style={parentStyle}>
-                  <div
-                    style={{
-                      border: '1px solid lightgrey',
-                      width: '300px',
-                      height: '50px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      background: 'white',
-                      color: 'black',
-                    }}
-                  >
-                    <div style={style2}>상행 노선도</div>
-                  </div>
                   <Bus />
                 </div>
                 <div style={parentStyle}>
-                  <div
-                    style={{
-                      border: '1px solid lightgrey',
-                      width: '300px',
-                      height: '50px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      background: 'white',
-                      color: 'black',
-                    }}
-                  >
-                    <div style={style2}>하행 노선도</div>
-                  </div>
                   <Bus1 />
                 </div>
               </Row>
