@@ -105,7 +105,7 @@ const BusRouteMap: React.FC = () => {
     });
   };
 
-  const busImageSrc = 'https://www.visitseoul.net/comm/getImage?srvcId=MEDIA&parentSn=55212&fileTy=MEDIA&fileNo=2';
+  const busImageSrc = '/icons/icons/bus-move.svg';
   const enlargedBusRadius = 30;
 
   return (
