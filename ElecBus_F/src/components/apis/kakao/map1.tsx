@@ -50,7 +50,7 @@ const MapComponent = () => {
         const container = document.getElementById('map');
         const map = new window.kakao.maps.Map(container, {
           center: new window.kakao.maps.LatLng(37.2635727, 127.0286009),
-          level: 10,
+          level: 12,
         });
 
         const stations = [];
