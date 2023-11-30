@@ -56,37 +56,13 @@ const MapComponent = () => {
         const stations = [];
         const linePaths = [[], []];
         const markers = [[], []];
-        // function clearMarkersAndPaths(markers, paths) {
-        //   for (const marker of markers) {
-        //     marker.setMap(null);
-        //   }
-        //   markers.length = 0;
-
-        //   for (const path of paths) {
-        //     path.setMap(null);
-        //   }
-        //   paths.length = 0;
-        // }
 
         const fetchAndCreateMarkers = async (url, linePathIndex, markerIndex, markerSize) => {
           try {
             const response = await fetch('http://localhost:3000/api/stations');
             const data = await response.json();
 
-            // stations 배열 초기화
-
             stations[linePathIndex] = [];
-
-            // for (const station of data.stations) {
-            //   // 마커 이미지 경로 추가
-            //   station.markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png';
-
-            //   const markerImage = new window.kakao.maps.MarkerImage(station.markerImageSrc, markerSize);
-            //   const marker = new window.kakao.maps.Marker({
-            //     map: map,
-            //     position: new window.kakao.maps.LatLng(station.y, station.x),
-            //     image: markerImage,
-            //   });
 
             for (const station of data.stations) {
               // 마커 이미지 경로 추가

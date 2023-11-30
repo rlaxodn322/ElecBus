@@ -3,6 +3,8 @@ import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map1';
 import Bus from '../bus/bus';
 import Bus1 from '../bus/bus1';
+import Bus2 from '../bus/bus2';
+import Bus22 from '../bus/bus22';
 import 'antd-button-color/dist/css/style.css';
 import axios from 'axios';
 const style: React.CSSProperties = {
@@ -198,10 +200,10 @@ const App: React.FC = () => {
                   <Bus1 />
                 </div>
                 <div style={parentStyle}>
-                  <Bus />
+                  <Bus2 />
                 </div>
                 <div style={parentStyle}>
-                  <Bus1 />
+                  <Bus22 />
                 </div>
               </Row>
             </div>

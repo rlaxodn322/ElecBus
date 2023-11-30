@@ -28,19 +28,26 @@ const App: React.FC = () => {
     formRef.current?.resetFields();
   };
 
-  const arr2 = ['강원71자1565', '경기71자1565', '충청71자1565'];
-  const arr = ['노란버스', '파란버스', '초록버스'];
-  const city = ['원주', '충주', '강원'];
+  const bus = ['가', '나', '다'];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);
   };
-
-  const handleOk = () => {
-    modalFormRef.current?.submit();
-    setIsModalOpen(false);
+  const handleOk = async () => {
+    try {
+      const values = await modalFormRef.current?.validateFields();
+      formRef.current?.setFieldsValue({
+        busRouteMain: values.busRouteSearch,
+        busNumberMain: values.stationsNumber,
+        // 다른 필드에 대한 설정도 필요하다면 여기에 추가
+      });
+      console.log(values.busRouteMain);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Validation failed:', error);
+    }
   };
 
   const handleCancel = () => {
@@ -51,12 +58,14 @@ const App: React.FC = () => {
     <>
       {/* 메인 폼 */}
       <Form {...layout} ref={formRef} name="main-form" onFinish={onFinish} style={{ maxWidth: 600 }}>
-        <Form.Item key="busRoute" name="busRoute" label="노선" rules={[{ required: true }]}>
+        <Form.Item key="busRouteMain" name="busRouteMain" label="노선" rules={[{ required: true }]}>
           <div style={{ display: 'flex' }}>
             <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
-            <Button style={{ boxShadow: '2px 2px 2px 2px lightgrey' }} onClick={showModal}>
-              노선검색
-            </Button>
+          </div>
+        </Form.Item>
+        <Form.Item key="busNumberMain" name="busNumberMain" label="차량번호" rules={[{ required: true }]}>
+          <div style={{ display: 'flex' }}>
+            <Input style={{ width: '300px' }} placeholder="차량번호를 입력하세요." />
           </div>
         </Form.Item>
 
@@ -64,7 +73,11 @@ const App: React.FC = () => {
 
         <Form.Item key="stations" name="stations" style={{ marginTop: '45px' }} {...tailLayout}>
           <div>
-            <Button style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px lightgrey' }} htmlType="submit">
+            <Button
+              onClick={showModal}
+              style={{ marginRight: '20px', boxShadow: '2px 2px 2px 2px lightgrey' }}
+              htmlType="submit"
+            >
               노선등록
             </Button>
             <Link href="/auth/buslist">
@@ -77,20 +90,9 @@ const App: React.FC = () => {
       </Form>
 
       {/* 모달 폼 */}
-      <Modal title="노선 검색" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="등록 " open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <Form ref={modalFormRef} name="modal-form" {...layout}>
-          <Form.Item key="stationsNumber" name="stationsNumber" label="차량번호" rules={[{ required: true }]}>
-            <Select style={{ width: '300px' }} placeholder="도시를 선택해주세요." allowClear>
-              {city.map((c) => (
-                <Option key={c} value={c}>
-                  {c}
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
-          <Form.Item key="busRouteSearch" name="busRouteSearch" label="노선" rules={[{ required: true }]}>
-            <Input style={{ width: '300px' }} placeholder="노선을 입력하세요." />
-          </Form.Item>
+          등록하시겠습니까?
         </Form>
       </Modal>
     </>
