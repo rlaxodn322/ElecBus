@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import type { LayoutProps } from '../types/pageWithLayout';
-import MainHeader from '../components/Headers/index';
-import MainNavbar from '../components/Navbars/index';
+import type { LayoutProps } from '../../types/pageWithLayout';
+import MainHeader from '../../components/Headers/index';
+import MainNavbar from '../../components/Navbars/index';
 
 const MainLayout: LayoutProps = ({ children }) => {
   return (

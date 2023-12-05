@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import MainLayout from '../../../layouts';
+import MainLayout from '../../../layouts/Main';
 import { Button } from 'antd';
 import React from 'react';
 import Link from 'next/link';

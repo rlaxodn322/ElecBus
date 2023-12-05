@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import MainLayout from '../../../layouts';
+import MainLayout from '../../../layouts/Main';
 import { logInAPI } from '../../../components/apis/user/user';
 import { useSetRecoilState } from 'recoil';
 import Swal from 'sweetalert2';

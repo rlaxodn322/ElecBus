@@ -4,37 +4,67 @@ import { backUrl } from '../../../config/config';
 axios.defaults.baseURL = backUrl;
 axios.defaults.withCredentials = true;
 
-// 내 정보 불러오기 API
 export async function loadMyInfoAPI() {
-  console.log('loadMyInfo');
   return await axios.get('/').then((response) => response.data);
+  // return await ( fetch())
 }
 
-// 로그인 API
-export function logInAPI(data: any) {
-  console.log('로그인', data);
-  return axios.post('/user/login', data).then((response) => response.data);
+// export function loadMyInfoAPI({ storeCode, options }) {
+//   return useQuery(['user', storeCode], () =>
+//     axios.get(`/api/users`).then((response) => response.data)
+//   );
+// }
+
+export async function logInAPI(data: FormData) {
+  console.log('login', data);
+  return await axios.post('/user/login', data).then((response) => response.data);
 }
 
-// 로그아웃 API
 export function logOutAPI() {
   return axios.post('/user/logout').then((response) => response.data);
 }
 
-// 회원가입 API
-export function signUpAPI(data: any) {
-  console.log('회원가입', data);
+export function signUpAPI(data: FormData) {
   return axios.post('/user', data).then((response) => response.data);
 }
 
-// 회원 수정 API
-export function updateUserAPI(data: any) {
-  console.log('회원 수정', data);
-  return axios.patch('/user', data).then((response) => response.data);
-}
+// import axios from 'axios';
+// import { backUrl } from '../../../config/config';
 
-// 회원 삭제 API
-export function deleteUserAPI(email: string) {
-  console.log('회원 삭제', email);
-  return axios.delete('/user', { data: { email } }).then((response) => response.data);
-}
+// axios.defaults.baseURL = backUrl;
+// axios.defaults.withCredentials = true;
+
+// // 내 정보 불러오기 API
+// export async function loadMyInfoAPI() {
+//   console.log('loadMyInfo');
+//   return await axios.get('/').then((response) => response.data);
+// }
+
+// // 로그인 API
+// export function logInAPI(data: any) {
+//   console.log('로그인', data);
+//   return axios.post('/user/login', data).then((response) => response.data);
+// }
+
+// // 로그아웃 API
+// export function logOutAPI() {
+//   return axios.post('/user/logout').then((response) => response.data);
+// }
+
+// // 회원가입 API
+// export function signUpAPI(data: any) {
+//   console.log('회원가입', data);
+//   return axios.post('/user', data).then((response) => response.data);
+// }
+
+// // 회원 수정 API
+// export function updateUserAPI(data: any) {
+//   console.log('회원 수정', data);
+//   return axios.patch('/user', data).then((response) => response.data);
+// }
+
+// // 회원 삭제 API
+// export function deleteUserAPI(email: string) {
+//   console.log('회원 삭제', email);
+//   return axios.delete('/user', { data: { email } }).then((response) => response.data);
+// }

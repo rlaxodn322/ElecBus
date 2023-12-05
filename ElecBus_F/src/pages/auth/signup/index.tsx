@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React, { useState, useCallback, useRef } from 'react';
-import MainLayout from '../../../layouts';
+import MainLayout from '../../../layouts/Main';
 import { CheckError, TitleWrapper, PageSignUp, SignUpBar, SignUpInput, ButtonWrapper } from './style';
 import { Button } from 'antd';
 import { useRouter } from 'next/router';

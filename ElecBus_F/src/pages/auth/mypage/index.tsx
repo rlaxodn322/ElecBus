@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Button, message } from 'antd';
-import MainLayout from '../../../layouts';
+import MainLayout from '../../../layouts/Main';
 import { PageProfile, ProfileTitle, ProfileInfo, ButtonWrapper } from './style';
 import { deleteUserAPI } from '../../../components/apis/user/user';
 import EditModal from '../../../components/Modals/auth';

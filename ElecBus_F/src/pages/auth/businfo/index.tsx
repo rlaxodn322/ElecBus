@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import MainLayout from '../../../layouts';
+import MainLayout from '../../../layouts/Main';
 import Table from '../../../components/antd/businfo/table';
 import BusChoice from '../../../components/antd/buschoice/table';
 import DateTable from '../../../components/antd/busdate/table';

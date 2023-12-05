@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import MainLayout from '../layouts';
+import MainLayout from '../layouts/Main';
 import { Page } from './style';
 // import App from '../components/antd/timeline';
 import Card from '../components/antd/card';
@@ -16,7 +16,6 @@ const Home = () => {
       <Card></Card>
 
       <Page></Page>
-
     </>
   );
 };

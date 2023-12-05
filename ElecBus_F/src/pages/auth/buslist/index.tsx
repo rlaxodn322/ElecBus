@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import MainLayout from '../../../layouts';
+import MainLayout from '../../../layouts/Main';
 
 import React from 'react';
 import Table2 from '../../../components/antd/buslist/table2';
