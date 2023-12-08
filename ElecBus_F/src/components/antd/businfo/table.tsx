@@ -75,6 +75,23 @@ const App: React.FC = () => {
   const [currentVersionIndex, setCurrentVersionIndex] = useState('');
   const [enteredVersion, setEnteredVersion] = useState('');
   const [currentVersionData, setCurrentVersionData] = useState([]);
+  const [displayedVersion, setDisplayedVersion] = useState('');
+
+  const handleButtonClick = () => {
+    const enteredIndex = parseInt(enteredVersion) - 1;
+    if (!isNaN(enteredIndex) && enteredIndex >= 0 && enteredIndex <= 9) {
+      setCurrentVersionIndex(enteredIndex);
+      setCurrentVersionData(generateDummyData(enteredIndex));
+      setDisplayedVersion(enteredVersion);
+    } else {
+      alert(`${enteredVersion}호기는 없습니다.`);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEnteredVersion(e.target.value);
+    setDisplayedVersion(''); // 입력이 바뀌면 displayedVersion 초기화
+  };
 
   useEffect(() => {
     // 서버에서만 실행되도록 체크
@@ -82,56 +99,52 @@ const App: React.FC = () => {
       // 1초마다 업데이트
       const intervalId = setInterval(() => {
         setCurrentVersionData(generateDummyData(currentVersionIndex));
-      }, 10);
+      }, 1000);
 
       // 컴포넌트가 언마운트될 때 clearInterval을 통해 인터벌 제거
       return () => clearInterval(intervalId);
     }
   }, [currentVersionIndex]);
 
-  const handleSearch = () => {
-    const enteredIndex = parseInt(enteredVersion) - 1;
-    if (!isNaN(enteredIndex) && enteredIndex >= 0 && enteredIndex <= 9) {
-      setCurrentVersionIndex(enteredIndex);
-      setCurrentVersionData(generateDummyData(enteredIndex));
-    } else {
-      alert(`${enteredVersion}호기는 없습니다.`);
-    }
-  };
-
   return (
     <div style={containerStyle}>
       <Input
-        placeholder="Basic usage"
-        type="text"
         placeholder="호기를 입력하세요"
+        type="text"
         value={enteredVersion}
-        onChange={(e) => setEnteredVersion(e.target.value)}
+        onChange={handleInputChange}
         style={{ width: '200px' }}
       />
 
-      <Button onClick={handleSearch} type="primary">
-        검색
+      <Button onClick={handleButtonClick} type="primary">
+        확인
       </Button>
 
-      <Row gutter={1}>
-        {currentVersionData.map((data, index) => (
-          <Col key={index} span={2.5}>
+      {displayedVersion && (
+        <Row gutter={1}>
+          <Col span={24}>
             <div style={{ margin: '5px', width: 'max-content' }}>
-              <div
-                style={{
-                  ...style,
-                  background: determineBackgroundColor(data.label, data.info),
-                  color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
-                }}
-              >
-                <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
-                {data.info && <div>{data.info}</div>}
-              </div>
+              <h1>{displayedVersion}호기 상태정보</h1>
             </div>
           </Col>
-        ))}
-      </Row>
+          {currentVersionData.map((data, index) => (
+            <Col key={index} span={2.5}>
+              <div style={{ margin: '5px', width: 'max-content' }}>
+                <div
+                  style={{
+                    ...style,
+                    background: determineBackgroundColor(data.label, data.info),
+                    color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
+                  }}
+                >
+                  <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
+                  {data.info && <div>{data.info}</div>}
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      )}
     </div>
   );
 };
