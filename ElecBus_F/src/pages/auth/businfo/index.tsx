@@ -81,7 +81,7 @@ const MyPage = () => {
           marginTop: '50px',
         }}
       >
-        <Pagination />
+        {/* <Pagination /> */}
       </div>
     </>
   );

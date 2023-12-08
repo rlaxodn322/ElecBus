@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
-
+import { Button, Input } from 'antd';
 const style: React.CSSProperties = {
   padding: '8px 0',
   width: '150px',
@@ -70,19 +70,32 @@ const determineBackgroundColor = (label, info) => {
 
 const App: React.FC = () => {
   const [currentVersionIndex, setCurrentVersionIndex] = useState(0);
+  const [enteredVersion, setEnteredVersion] = useState('');
+  const [currentVersionData, setCurrentVersionData] = useState(generateDummyData(currentVersionIndex));
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVersionIndex((prevIndex) => (prevIndex === 9 ? 0 : prevIndex + 1)); // 순환하도록 변경
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentVersionData = generateDummyData(currentVersionIndex);
-
+  const handleSearch = () => {
+    const enteredIndex = parseInt(enteredVersion) - 1;
+    if (!isNaN(enteredIndex) && enteredIndex >= 0 && enteredIndex <= 9) {
+      setCurrentVersionIndex(enteredIndex);
+      setCurrentVersionData(generateDummyData(enteredIndex));
+    } else {
+      alert('해당 호기는 없습니다.');
+    }
+  };
   return (
     <div style={containerStyle}>
+      <Input
+        placeholder="Basic usage"
+        type="text"
+        placeholder="호기를 입력하세요"
+        value={enteredVersion}
+        onChange={(e) => setEnteredVersion(e.target.value)}
+        style={{ width: '200px' }} // Set the width to 100%
+      />
+
+      <Button onClick={handleSearch} type="primary">
+        검색
+      </Button>
       <h1 style={{ textAlign: 'center', fontSize: '24px', marginBottom: '20px' }}>{currentVersionIndex + 1}호기</h1>
       <Row gutter={1}>
         {currentVersionData.map((data, index) => (
