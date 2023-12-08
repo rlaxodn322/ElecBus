@@ -42,7 +42,7 @@ const ErrorTable: React.FC = () => (
     >
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
-          <tr style={{ borderBottom: '1px solid #ddd', backgroundColor: '#1890ff', color: 'white' }}>
+          <tr style={{ borderBottom: '1px solid #ddd', backgroundColor: '#64adf1', color: 'white' }}>
             {headers.map((header, index) => (
               <th key={`header-${index}`} style={{ padding: '12px', textAlign: 'center', border: '1px solid #ddd' }}>
                 {header}

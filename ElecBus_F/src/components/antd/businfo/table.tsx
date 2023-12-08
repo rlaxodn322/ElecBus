@@ -52,19 +52,19 @@ const determineBackgroundColor = (label, info) => {
     if (label === '운행상태' && info === '주차 중') {
       backgroundColor = '#FF6347'; // Red
     } else if (label === '운행상태' && info === '운행 중') {
-      backgroundColor = '#00FF7F'; // Green
+      backgroundColor = '#39f7a4'; // Green
     } else if (label === '배터리 소화기 상태' && info === '이상') {
       backgroundColor = '#FF6347'; // Red
     } else if (label.includes('온도')) {
       const temperature = parseInt(info);
-      backgroundColor = temperature > 40 ? '#FF6347' : '#00FF7F';
+      backgroundColor = temperature > 40 ? '#FF6347' : '#39f7a4';
     } else if (label === '충전 상태' && info === '충전 중') {
-      backgroundColor = '#00FF7F'; // Green
+      backgroundColor = '#39f7a4'; // Green
     } else if (label === '주행 거리') {
       const distance = parseInt(info.split(' ')[0]); // '100 km'에서 숫자 값 추출
-      backgroundColor = distance < 100 ? '#FF6347' : '#00FF7F';
+      backgroundColor = distance < 100 ? '#FF6347' : '#39f7a4';
     } else {
-      backgroundColor = '#00FF7F'; // Green
+      backgroundColor = '#39f7a4'; // Green
     }
   }
 
@@ -144,6 +144,12 @@ const App: React.FC = () => {
             </Col>
           ))}
         </Row>
+      )}
+
+      {!displayedVersion && (
+        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          해당 호기를 입력 후 검색 버튼을 클릭하여 상태 정보를 확인하세요.
+        </div>
       )}
     </div>
   );

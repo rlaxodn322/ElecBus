@@ -54,7 +54,7 @@ const ErrorTable: React.FC = () => (
       >
         <thead>
           <tr
-            style={{ borderBottom: '1px solid #ddd', backgroundColor: '#1890ff', fontWeight: 'bold', color: 'white' }}
+            style={{ borderBottom: '1px solid #ddd', backgroundColor: '#64adf1', fontWeight: 'bold', color: 'white' }}
           >
             {headers.map((header, index) => (
               <th
