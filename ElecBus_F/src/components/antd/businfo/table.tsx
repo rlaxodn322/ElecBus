@@ -40,13 +40,7 @@ const generateDummyData = (version) => {
     { label: '충전 상태', info: version % 2 === 0 ? '충전 중' : '미충전' },
     { label: '주행 거리', info: `${Math.floor(Math.random() * 201) + 100} km` },
     { label: '배터리 용량', info: `${Math.floor(Math.random() * 21) + 30} kWh` },
-    { label: '충전소 거리', info: `${Math.floor(Math.random() * 101) + 50} km` },
-    // 추가적인 전기차 관련 dummy data
     { label: '충전 시간', info: `${Math.floor(Math.random() * 6) + 1} 시간` },
-    { label: '평균 주행 속도', info: `${Math.floor(Math.random() * 51) + 50} km/h` },
-    { label: '배터리 수명', info: `${Math.floor(Math.random() * 501) + 500} 충전` },
-    { label: '과거 주행 기록', info: version % 2 === 0 ? '있음' : '없음' },
-    // 더 많은 전기차 관련 dummy data 추가 가능
   ];
 };
 
@@ -64,6 +58,11 @@ const determineBackgroundColor = (label, info) => {
   } else if (label.includes('온도')) {
     const temperature = parseInt(info);
     return temperature > 40 ? '#FF6347' : '#00FF7F';
+  } else if (label === '충전 상태' && info === '충전 중') {
+    return '#00FF7F'; // Green
+  } else if (label === '주행 거리') {
+    const distance = parseInt(info.split(' ')[0]); // Extract numeric value from '100 km'
+    return distance < 100 ? '#FF6347' : '#00FF7F';
   } else {
     return '#00FF7F'; // Green
   }
@@ -74,8 +73,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentVersionIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
-    }, 500);
+      setCurrentVersionIndex((prevIndex) => (prevIndex === 9 ? 0 : prevIndex + 1)); // 순환하도록 변경
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -84,6 +83,7 @@ const App: React.FC = () => {
 
   return (
     <div style={containerStyle}>
+      <h1 style={{ textAlign: 'center', fontSize: '24px', marginBottom: '20px' }}>{currentVersionIndex + 1}호기</h1>
       <Row gutter={1}>
         {currentVersionData.map((data, index) => (
           <Col key={index} span={2.5}>
