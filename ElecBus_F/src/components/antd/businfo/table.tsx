@@ -74,15 +74,20 @@ const determineBackgroundColor = (label, info) => {
 const App: React.FC = () => {
   const [currentVersionIndex, setCurrentVersionIndex] = useState('');
   const [enteredVersion, setEnteredVersion] = useState('');
-
   const [currentVersionData, setCurrentVersionData] = useState([]);
 
   useEffect(() => {
     // 서버에서만 실행되도록 체크
     if (typeof window === 'undefined') {
-      setCurrentVersionData(generateDummyData(currentVersionIndex));
+      // 1초마다 업데이트
+      const intervalId = setInterval(() => {
+        setCurrentVersionData(generateDummyData(currentVersionIndex));
+      }, 10);
+
+      // 컴포넌트가 언마운트될 때 clearInterval을 통해 인터벌 제거
+      return () => clearInterval(intervalId);
     }
-  }, []);
+  }, [currentVersionIndex]);
 
   const handleSearch = () => {
     const enteredIndex = parseInt(enteredVersion) - 1;
@@ -102,13 +107,13 @@ const App: React.FC = () => {
         placeholder="호기를 입력하세요"
         value={enteredVersion}
         onChange={(e) => setEnteredVersion(e.target.value)}
-        style={{ width: '200px' }} // Set the width to 100%
+        style={{ width: '200px' }}
       />
 
       <Button onClick={handleSearch} type="primary">
         검색
       </Button>
-      {/* <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>{currentVersionIndex + 1}</h1> */}
+
       <Row gutter={1}>
         {currentVersionData.map((data, index) => (
           <Col key={index} span={2.5}>
