@@ -57,18 +57,6 @@ const MyPage = () => {
         <BusChoice />
       </div>
       <div
-        key="dateTable" // 고유한 키 추가
-        style={{
-          width: '1370px',
-          display: 'flex',
-          justifyContent: 'flex-start',
-          margin: '0 auto',
-          paddingTop: '10px',
-        }}
-      >
-        <DateTable />
-      </div>
-      <div
         key="errorTableContainer" // 고유한 키 추가
         style={{
           width: '1370px',

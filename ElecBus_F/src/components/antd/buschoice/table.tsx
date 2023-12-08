@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cascader } from 'antd';
+import { Cascader, DatePicker, Space, Button } from 'antd';
 
 interface Option {
   value: string;
@@ -7,7 +7,7 @@ interface Option {
   children?: Option[];
 }
 
-const options: Option[] = [
+const busOptions: Option[] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -18,21 +18,30 @@ const options: Option[] = [
   },
 ];
 
-const onChange = (value: string[]) => {
-  console.log(value);
+const BusAndDatePicker: React.FC = () => {
+  const onChange = (value: string[]) => {
+    console.log(value);
+  };
+
+  // Just show the latest item.
+  const displayRender = (labels: string[]) => labels[labels.length - 1];
+  const { RangePicker } = DatePicker;
+  return (
+    <Space direction="vertical" size={12}>
+      <Cascader
+        options={busOptions}
+        expandTrigger="hover"
+        displayRender={displayRender}
+        onChange={onChange}
+        placeholder="버스를 선택하세요."
+        key="cascader-key"
+      />
+      <RangePicker key="range-picker-key" />
+      <Button style={{ boxShadow: '2px 2px 2px 2px lightgrey' }} key="search-button-key">
+        검색
+      </Button>
+    </Space>
+  );
 };
 
-// Just show the latest item.
-const displayRender = (labels: string[]) => labels[labels.length - 1];
-const App: React.FC = () => (
-  <Cascader
-    options={options}
-    expandTrigger="hover"
-    displayRender={displayRender}
-    onChange={onChange}
-    placeholder="버스를 선택하세요."
-    key="cascader-key" // 고유한 key prop 추가
-  />
-);
-
-export default App;
+export default BusAndDatePicker;

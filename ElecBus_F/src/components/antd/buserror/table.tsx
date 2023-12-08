@@ -54,7 +54,7 @@ const ErrorTable: React.FC = () => (
       key="excelDownload"
       style={{
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         width: '1370px',
         margin: '0 auto',
         marginTop: '20px',
