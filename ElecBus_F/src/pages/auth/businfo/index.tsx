@@ -67,7 +67,7 @@ const MyPage = () => {
           marginTop: '20px',
         }}
       >
-        <h1>에러기록</h1>
+        <h1>Error Log </h1>
       </div>
       <div
         style={{
