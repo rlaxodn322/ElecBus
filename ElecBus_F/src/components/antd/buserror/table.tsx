@@ -10,17 +10,17 @@ const generateDummyData = (numRows) => {
   for (let i = 1; i <= numRows; i++) {
     const row = [
       `2023-12-0${i}`, // Date format might vary based on your requirements
-      `Car-${i}`,
-      `Error Location ${i}`,
-      `Error Description ${i}`,
-      `Note ${i}`,
+      `${i}호기`,
+      `배터리${i}`,
+      `배터리부족${i}`,
+      '',
     ];
     dummyData.push(row);
   }
   return dummyData;
 };
 
-const data = generateDummyData(15); // You can change the number of rows here
+const data = generateDummyData(15);
 
 const convertToExcel = () => {
   const excelData = [headers, ...data];
