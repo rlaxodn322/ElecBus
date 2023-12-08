@@ -11,8 +11,6 @@ const MyPage = () => {
       >
         <Table />
       </div>
-      <div></div>
-      <div></div>
     </>
   );
 };

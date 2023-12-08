@@ -40,9 +40,9 @@ const App: React.FC = () => {
           <Input style={inputStyle} placeholder="시리얼넘버를 입력하세요." />
         </Form.Item>
 
-        <Form.Item name="busCommit" style={{ marginTop: '100px', ...tailLayout }}>
+        <Form.Item name="busCommit" style={{ marginTop: '50px', ...tailLayout, marginLeft: '100px' }}>
           <div>
-            <Button style={buttonStyle} htmlType="submit">
+            <Button style={{ ...buttonStyle }} htmlType="submit">
               버스등록
             </Button>
             <Link href="/auth/busdelete">
