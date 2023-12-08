@@ -3,7 +3,6 @@ import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map1';
 import Bus from '../bus/bus';
 import Bus1 from '../bus/bus1';
-
 import 'antd-button-color/dist/css/style.css';
 import axios from 'axios';
 const style: React.CSSProperties = {
