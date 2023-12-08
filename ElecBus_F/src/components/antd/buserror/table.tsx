@@ -39,18 +39,32 @@ const ErrorTable: React.FC = () => (
   <>
     <div
       style={{
-        height: '300px',
+        maxHeight: '300px', // Change height to maxHeight
         overflowY: 'auto',
-        border: '1px solid lightgrey',
         borderRadius: '8px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
       }}
     >
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table
+        style={{
+          width: '100%',
+          borderCollapse: 'collapse',
+          borderSpacing: 0,
+        }}
+      >
         <thead>
-          <tr style={{ borderBottom: '1px solid #ddd', backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>
+          <tr
+            style={{ borderBottom: '1px solid #ddd', backgroundColor: '#1890ff', fontWeight: 'bold', color: 'white' }}
+          >
             {headers.map((header, index) => (
-              <th key={`header-${index}`} style={{ padding: '12px', textAlign: 'center', border: '1px solid #ddd' }}>
+              <th
+                key={`header-${index}`}
+                style={{
+                  padding: '12px',
+                  textAlign: 'center',
+                  border: '1px solid #ddd',
+                }}
+              >
                 {header}
               </th>
             ))}
@@ -62,7 +76,12 @@ const ErrorTable: React.FC = () => (
               {row.map((item, colIndex) => (
                 <td
                   key={`col-${rowIndex}-${colIndex}`}
-                  style={{ padding: '12px', textAlign: 'center', border: '1px solid #ddd' }}
+                  style={{
+                    padding: '12px',
+                    textAlign: 'center',
+                    border: '1px solid #ddd',
+                    backgroundColor: rowIndex % 2 === 0 ? '#f2f2f2' : 'white', // Alternate row colors
+                  }}
                 >
                   {item}
                 </td>
@@ -76,8 +95,8 @@ const ErrorTable: React.FC = () => (
       <Button
         size="large"
         style={{
-          boxShadow: '2px 2px 2px 2px lightgrey',
-          backgroundColor: '#1890ff',
+          boxShadow: '2px 2px 2px 2px #d9d9d9',
+          backgroundColor: '#52c41a', // Green color
           color: 'white',
           border: 'none',
         }}

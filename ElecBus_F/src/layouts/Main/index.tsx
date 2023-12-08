@@ -19,6 +19,7 @@ const MainLayout: LayoutProps = ({ children }) => {
 export default MainLayout;
 
 const Layout = styled.section`
+
   margin: 0 auto;
   background-color: white;
 `;
