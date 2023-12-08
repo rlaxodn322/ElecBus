@@ -52,19 +52,19 @@ const determineBackgroundColor = (label, info) => {
     if (label === '운행상태' && info === '주차 중') {
       backgroundColor = '#FF6347'; // Red
     } else if (label === '운행상태' && info === '운행 중') {
-      backgroundColor = '#39f7a4'; // Green
+      backgroundColor = '#b2f5d8'; // Green
     } else if (label === '배터리 소화기 상태' && info === '이상') {
       backgroundColor = '#FF6347'; // Red
     } else if (label.includes('온도')) {
       const temperature = parseInt(info);
-      backgroundColor = temperature > 40 ? '#FF6347' : '#39f7a4';
+      backgroundColor = temperature > 40 ? '#FF6347' : '#b2f5d8';
     } else if (label === '충전 상태' && info === '충전 중') {
-      backgroundColor = '#39f7a4'; // Green
+      backgroundColor = '#b2f5d8'; // Green
     } else if (label === '주행 거리') {
       const distance = parseInt(info.split(' ')[0]); // '100 km'에서 숫자 값 추출
-      backgroundColor = distance < 100 ? '#FF6347' : '#39f7a4';
+      backgroundColor = distance < 100 ? '#FF6347' : '#b2f5d8';
     } else {
-      backgroundColor = '#39f7a4'; // Green
+      backgroundColor = '#b2f5d8'; // Green
     }
   }
 
