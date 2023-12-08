@@ -124,7 +124,7 @@ const App: React.FC = () => {
         <Row gutter={1}>
           <Col span={24}>
             <div style={{ margin: '5px', width: 'max-content' }}>
-              <h1>{displayedVersion}호기 상태정보</h1>
+              <h1>{displayedVersion} 상태정보</h1>
             </div>
           </Col>
           {currentVersionData.map((data, index) => (
