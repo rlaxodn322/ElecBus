@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { Button, Input } from 'antd';
+
 const style: React.CSSProperties = {
   padding: '8px 0',
-  width: '150px',
-  height: '150px',
+  width: '160px',
+  height: '80px',
   borderRadius: '20px',
   border: '1px solid lightgrey',
   boxShadow: '1px 1px 1px 1px lightgrey',
@@ -44,34 +45,44 @@ const generateDummyData = (version) => {
   ];
 };
 
-const dummyDataVersions = Array.from({ length: 10 }, (_, index) => generateDummyData(index));
-
-console.log(dummyDataVersions);
-
 const determineBackgroundColor = (label, info) => {
-  if (label === '운행상태' && info === '주차 중') {
-    return '#FF6347'; // Red
-  } else if (label === '운행상태' && info === '운행 중') {
-    return '#00FF7F'; // Green
-  } else if (label === '배터리 소화기 상태' && info === '이상') {
-    return '#FF6347'; // Red
-  } else if (label.includes('온도')) {
-    const temperature = parseInt(info);
-    return temperature > 40 ? '#FF6347' : '#00FF7F';
-  } else if (label === '충전 상태' && info === '충전 중') {
-    return '#00FF7F'; // Green
-  } else if (label === '주행 거리') {
-    const distance = parseInt(info.split(' ')[0]); // Extract numeric value from '100 km'
-    return distance < 100 ? '#FF6347' : '#00FF7F';
-  } else {
-    return '#00FF7F'; // Green
+  let backgroundColor = 'transparent';
+
+  if (info) {
+    if (label === '운행상태' && info === '주차 중') {
+      backgroundColor = '#FF6347'; // Red
+    } else if (label === '운행상태' && info === '운행 중') {
+      backgroundColor = '#00FF7F'; // Green
+    } else if (label === '배터리 소화기 상태' && info === '이상') {
+      backgroundColor = '#FF6347'; // Red
+    } else if (label.includes('온도')) {
+      const temperature = parseInt(info);
+      backgroundColor = temperature > 40 ? '#FF6347' : '#00FF7F';
+    } else if (label === '충전 상태' && info === '충전 중') {
+      backgroundColor = '#00FF7F'; // Green
+    } else if (label === '주행 거리') {
+      const distance = parseInt(info.split(' ')[0]); // '100 km'에서 숫자 값 추출
+      backgroundColor = distance < 100 ? '#FF6347' : '#00FF7F';
+    } else {
+      backgroundColor = '#00FF7F'; // Green
+    }
   }
+
+  return backgroundColor;
 };
 
 const App: React.FC = () => {
-  const [currentVersionIndex, setCurrentVersionIndex] = useState(0);
+  const [currentVersionIndex, setCurrentVersionIndex] = useState('');
   const [enteredVersion, setEnteredVersion] = useState('');
-  const [currentVersionData, setCurrentVersionData] = useState(generateDummyData(currentVersionIndex));
+
+  const [currentVersionData, setCurrentVersionData] = useState([]);
+
+  useEffect(() => {
+    // 서버에서만 실행되도록 체크
+    if (typeof window === 'undefined') {
+      setCurrentVersionData(generateDummyData(currentVersionIndex));
+    }
+  }, []);
 
   const handleSearch = () => {
     const enteredIndex = parseInt(enteredVersion) - 1;
@@ -82,6 +93,7 @@ const App: React.FC = () => {
       alert(`${enteredVersion}호기는 없습니다.`);
     }
   };
+
   return (
     <div style={containerStyle}>
       <Input
@@ -96,7 +108,7 @@ const App: React.FC = () => {
       <Button onClick={handleSearch} type="primary">
         검색
       </Button>
-      <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>{currentVersionIndex + 1}호기</h1>
+      {/* <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>{currentVersionIndex + 1}</h1> */}
       <Row gutter={1}>
         {currentVersionData.map((data, index) => (
           <Col key={index} span={2.5}>
@@ -109,7 +121,7 @@ const App: React.FC = () => {
                 }}
               >
                 <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
-                <div>{data.info}</div>
+                {data.info && <div>{data.info}</div>}
               </div>
             </div>
           </Col>

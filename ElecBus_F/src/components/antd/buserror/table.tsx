@@ -41,13 +41,16 @@ const ErrorTable: React.FC = () => (
       style={{
         height: '300px',
         overflowY: 'auto',
+        border: '1px solid lightgrey',
+        borderRadius: '8px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
       }}
     >
-      <table style={{ width: '100%' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
-          <tr style={{ borderBottom: '1px solid black', fontWeight: 'bold' }}>
+          <tr style={{ borderBottom: '1px solid #ddd', backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>
             {headers.map((header, index) => (
-              <th key={`header-${index}`} style={{ padding: '10px', textAlign: 'center' }}>
+              <th key={`header-${index}`} style={{ padding: '12px', textAlign: 'center', border: '1px solid #ddd' }}>
                 {header}
               </th>
             ))}
@@ -55,9 +58,12 @@ const ErrorTable: React.FC = () => (
         </thead>
         <tbody>
           {data.map((row, rowIndex) => (
-            <tr key={`row-${rowIndex}`}>
+            <tr key={`row-${rowIndex}`} style={{ borderBottom: '1px solid #ddd' }}>
               {row.map((item, colIndex) => (
-                <td key={`col-${rowIndex}-${colIndex}`} style={{ padding: '10px', textAlign: 'center' }}>
+                <td
+                  key={`col-${rowIndex}-${colIndex}`}
+                  style={{ padding: '12px', textAlign: 'center', border: '1px solid #ddd' }}
+                >
                   {item}
                 </td>
               ))}
@@ -67,7 +73,16 @@ const ErrorTable: React.FC = () => (
       </table>
     </div>
     <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
-      <Button size="large" style={{ boxShadow: '2px 2px 2px 2px lightgrey' }} onClick={convertToExcel}>
+      <Button
+        size="large"
+        style={{
+          boxShadow: '2px 2px 2px 2px lightgrey',
+          backgroundColor: '#1890ff',
+          color: 'white',
+          border: 'none',
+        }}
+        onClick={convertToExcel}
+      >
         엑셀 다운로드
       </Button>
     </div>

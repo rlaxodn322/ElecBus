@@ -69,7 +69,17 @@ const MyPage = () => {
       >
         <h1>에러기록</h1>
       </div>
-      <ErrorTable key="errorTable" />
+      <div
+        style={{
+          width: '1370px',
+          margin: '0 auto',
+          paddingTop: '20px',
+          alignItems: 'center',
+        }}
+      >
+        <ErrorTable key="errorTable" />
+      </div>
+
       <div
         key="paginationContainer" // 고유한 키 추가
         style={{
