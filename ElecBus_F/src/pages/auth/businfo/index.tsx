@@ -81,9 +81,6 @@ const MyPage = () => {
         }}
       >
         <h1>에러기록</h1>
-        <Button size="large" style={{ boxShadow: '2px 2px 2px 2px lightgrey' }}>
-          엑셀 다운로드
-        </Button>
       </div>
       <ErrorTable key="errorTable" />
       <div

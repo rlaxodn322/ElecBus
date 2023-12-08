@@ -3,8 +3,7 @@ import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map1';
 import Bus from '../bus/bus';
 import Bus1 from '../bus/bus1';
-import Bus2 from '../bus/bus2';
-import Bus22 from '../bus/bus22';
+
 import 'antd-button-color/dist/css/style.css';
 import axios from 'axios';
 const style: React.CSSProperties = {
@@ -43,7 +42,7 @@ const arr6 = ['강원70자8021', '33', '엔진', '미운행'];
 
 const App: React.FC = () => {
   const [operationalBuses, setOperationalBuses] = useState<number>(0);
-
+  
   useEffect(() => {
     const fetchOperationalBuses = async () => {
       try {
@@ -58,7 +57,7 @@ const App: React.FC = () => {
 
     // 페이지가 로드될 때와 일정 주기로 운행 중인 버스 수량을 업데이트
     fetchOperationalBuses();
-    const intervalId = setInterval(fetchOperationalBuses, 500000); // 5초마다 업데이트
+    const intervalId = setInterval(fetchOperationalBuses, 5000); // 5초마다 업데이트
 
     return () => clearInterval(intervalId); // 컴포넌트 언마운트 시 clearInterval 호출
   }, []);
@@ -91,7 +90,7 @@ const App: React.FC = () => {
               <div style={{ width: '600px', height: '750px', borderRadius: '20px' }}>
                 <h1 style={{ color: 'black' }}>
                   <img style={{ marginTop: '10px', width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img>{' '}
-                  운행중 고장정보
+                  운행중 버스정보
                 </h1>
                 <Row>
                   <div
@@ -115,25 +114,12 @@ const App: React.FC = () => {
                     >
                       <div style={style2}>차량번호</div>
                       <div style={style2}>노선</div>
-                      <div style={style2}>고장정보</div>
+                      <div style={style2}>남은좌석</div>
                     </div>
                     <div style={{ display: 'flex' }}>
                       <div style={style3}>{arr6[0]}</div>
                       <div style={style3}>{arr6[1]}</div>
                       <div style={style3}>{arr6[2]}</div>
-                      <Button
-                        type="primary"
-                        danger
-                        style={{
-                          marginTop: '16px',
-                          marginLeft: '60px',
-                          fontSize: '15px',
-                          fontWeight: 'bold',
-                          boxShadow: '2px 2px 2px 2px lightgrey',
-                        }}
-                      >
-                        고장정보
-                      </Button>
                     </div>
                   </div>
                 </Row>

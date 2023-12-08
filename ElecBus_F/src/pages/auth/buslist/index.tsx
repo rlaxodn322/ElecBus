@@ -18,11 +18,9 @@ const MyPage = () => {
       <div style={{ width: '1370px', height: '300px', margin: '0 auto' }}>
         <Grid />
       </div>
-
       <div style={{ width: '1370px', height: '100%', margin: '0 auto', marginTop: '50px' }}>
         <Table2 />
       </div>
-
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
         <Pagination />
       </div>
