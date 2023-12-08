@@ -25,7 +25,7 @@ const MyPage = () => {
           display: 'flex',
           justifyContent: 'center',
           margin: '0 auto',
-          paddingTop: '50px',
+          paddingTop: '20px',
         }}
       >
         <Table />

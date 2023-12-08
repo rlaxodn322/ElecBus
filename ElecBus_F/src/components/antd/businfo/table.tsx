@@ -79,7 +79,7 @@ const App: React.FC = () => {
       setCurrentVersionIndex(enteredIndex);
       setCurrentVersionData(generateDummyData(enteredIndex));
     } else {
-      alert('해당 호기는 없습니다.');
+      alert(`${enteredVersion}호기는 없습니다.`);
     }
   };
   return (
@@ -96,7 +96,7 @@ const App: React.FC = () => {
       <Button onClick={handleSearch} type="primary">
         검색
       </Button>
-      <h1 style={{ textAlign: 'center', fontSize: '24px', marginBottom: '20px' }}>{currentVersionIndex + 1}호기</h1>
+      <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>{currentVersionIndex + 1}호기</h1>
       <Row gutter={1}>
         {currentVersionData.map((data, index) => (
           <Col key={index} span={2.5}>
