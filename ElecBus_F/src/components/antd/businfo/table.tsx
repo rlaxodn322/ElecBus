@@ -90,21 +90,7 @@ const App: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredVersion(e.target.value);
-    setDisplayedVersion(''); // 입력이 바뀌면 displayedVersion 초기화
   };
-
-  useEffect(() => {
-    // 서버에서만 실행되도록 체크
-    if (typeof window === 'undefined') {
-      // 1초마다 업데이트
-      const intervalId = setInterval(() => {
-        setCurrentVersionData(generateDummyData(currentVersionIndex));
-      }, 1000);
-
-      // 컴포넌트가 언마운트될 때 clearInterval을 통해 인터벌 제거
-      return () => clearInterval(intervalId);
-    }
-  }, [currentVersionIndex]);
 
   return (
     <div style={containerStyle}>
@@ -124,7 +110,7 @@ const App: React.FC = () => {
         <Row gutter={1}>
           <Col span={24}>
             <div style={{ margin: '5px', width: 'max-content' }}>
-              <h1>{displayedVersion} 상태정보</h1>
+              <h1>{displayedVersion}호기 상태정보</h1>
             </div>
           </Col>
           {currentVersionData.map((data, index) => (
