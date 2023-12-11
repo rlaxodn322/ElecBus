@@ -24,6 +24,7 @@ const MyPage = () => {
           justifyContent: 'center',
           margin: '0 auto',
           paddingTop: '20px',
+          height: '100%',
         }}
       >
         <Table />
