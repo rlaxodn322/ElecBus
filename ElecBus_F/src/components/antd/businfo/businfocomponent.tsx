@@ -27,7 +27,9 @@ const BusInfoComponent: React.FC<{ busNumber: number }> = ({ busNumber }) => {
 
   return (
     <div className="businfo" style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-      <button style={style} onClick={handleButtonClick}>{`${busNumber}호기`}</button>
+      <button style={style} onClick={handleButtonClick}>
+        ddd{`${busNumber}호기`}
+      </button>
       {/* 다른 정보 표시 */}
     </div>
   );
