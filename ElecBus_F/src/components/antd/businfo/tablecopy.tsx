@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 const style: React.CSSProperties = {
   padding: '8px 0',
-  width: '300px',
+  width: '200px',
   height: '100px',
   borderRadius: '20px',
   border: '1px solid lightgrey',
@@ -17,7 +17,20 @@ const style: React.CSSProperties = {
   textAlign: 'center',
   fontSize: '18px',
 };
-
+const style1: React.CSSProperties = {
+  padding: '8px 0',
+  width: '100px',
+  height: '80px',
+  borderRadius: '20px',
+  border: '1px solid lightgrey',
+  boxShadow: '1px 1px 1px 1px lightgrey',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  fontSize: '18px',
+};
 const containerStyle: React.CSSProperties = {
   width: '1370px',
   margin: '0 auto',
@@ -122,6 +135,28 @@ const generateDummyData = (version) => {
   return fixedDummyData[version];
 };
 
+const generateDummyData1 = () => {
+  // 고정된 더미 데이터
+  const fixedDummyData1 = [
+    [
+      { label: '온도1', info: '0˚C' },
+      { label: '온도2', info: '0˚C' },
+      { label: '가스1', info: '0%LEL' },
+      { label: '가스2', info: '0%LEL' },
+      { label: '환풍기', info: 'OFF' },
+      { label: '압력1', info: '0 Bar' },
+      { label: '압력2', info: '0 Bar' },
+      { label: '소화수 입력밸브', info: 'OFF' },
+      { label: '드레인 밸브', info: 'OFF' },
+      { label: '수위Low', info: 'OFF' },
+      { label: '배터리 소화기 상태', info: 'OFF' },
+    ],
+  ];
+
+  const result = fixedDummyData1;
+
+  return result;
+};
 const determineBackgroundColor = (label, info) => {
   let backgroundColor = 'transparent';
 
@@ -165,42 +200,82 @@ const App: React.FC = () => {
   };
 
   const currentVersionData = generateDummyData(selectedVersion);
-
+  const sohaData = generateDummyData1(selectedVersion); // 기존 코드
+  console.log(sohaData);
+  console.log(currentVersionData);
   return (
-    <div style={containerStyle}>
-      <div style={{ width: '800px' }}>
-        <Row gutter={1}>
-          <Col span={24}>
-            <div style={{ margin: '5px', width: 'max-content' }}>
-              <h1>상태정보</h1>
-            </div>
-          </Col>
-        </Row>
-        <Row gutter={1}>
-          {currentVersionData.map((data, index) => (
-            <Col key={index} span={2.5}>
-              <div style={{ margin: '5px', width: 'max-content' }}>
-                <div
-                  style={{
-                    ...style,
-                    background: determineBackgroundColor(data.label, data.info),
-                    color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
-                  }}
-                >
-                  <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
-                  {data.info && <div>{data.info}</div>}
-                </div>
-              </div>
-            </Col>
-          ))}
-        </Row>
-      </div>
-      <div>gd</div>
+    <>
+      <div style={containerStyle}>
+        <div style={{ width: '1370px', height: '100px' }}>
+          <span
+            style={{
+              fontSize: '30px',
+              background: '#005cce',
+              color: 'white',
+              padding: '20px',
+              borderRadius: '10px',
+              fontWeight: 'bold',
+            }}
+          >
+            {selectedVersion + 1}호
+          </span>
+        </div>
 
-      <Link href="/">
-        <button>이전</button>
-      </Link>
-    </div>
+        <div style={{ width: '1370px', display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ width: '70%' }}>
+            <h1> 화재 방지 시스템</h1>
+            <Row gutter={1}>
+              {currentVersionData.map((data, index) => (
+                <Col key={index} span={7.8}>
+                  <div style={{ margin: '5px', width: 'max-content' }}>
+                    <div
+                      style={{
+                        ...style,
+                        background: determineBackgroundColor(data.label, data.info),
+                        color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
+                      }}
+                    >
+                      <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
+                      {data.info && <div>{data.info}</div>}
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </div>
+
+          <div style={{ width: '30%' }}>
+            <h1> 화재 방지 시스템</h1>
+            <Row className="soha">
+              {/* sohaData의 첫 번째 배열만 사용 */}
+              {sohaData[0].map((data, index) => (
+                <Col key={index} span={7.5}>
+                  <div style={{ margin: '5px', width: 'max-content' }}>
+                    <div
+                      style={{
+                        ...style1,
+                        background: determineBackgroundColor(data.label, data.info),
+                        color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
+                      }}
+                    >
+                      <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
+                      {data.info && <div>{data.info}</div>}
+                    </div>
+                  </div>
+                </Col>
+              ))}
+              <Col>
+                <img src={'/images/img.jpg'} style={{ width: '350px', height: '300px' }} alt="soha-image" />
+              </Col>
+            </Row>
+          </div>
+        </div>
+
+        <Link href="/">
+          <button>이전</button>
+        </Link>
+      </div>
+    </>
   );
 };
 
