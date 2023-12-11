@@ -27,7 +27,7 @@ const style2: React.CSSProperties = {
 
 const parentStyle: React.CSSProperties = {
   // 조절 필요
-  width: '580px',
+  width: '600px',
   overflowY: 'auto',
   alignItems: 'center',
   border: '2px solid lightgrey',
@@ -36,7 +36,7 @@ const parentStyle: React.CSSProperties = {
 };
 const parentStyle1: React.CSSProperties = {
   // 조절 필요
-  width: '579px',
+  width: '558px',
   overflowY: 'auto',
   alignItems: 'center',
   boxShadow: '3px 3px 3px 3px lightgrey',
@@ -88,31 +88,31 @@ const App: React.FC = () => {
               <img style={{ width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img> 운행지도
             </h1>
             <MapComponent></MapComponent>
+            <h1 style={{ color: 'black' }}>
+              <img style={{ marginTop: '10px', width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img> 운행중
+              버스정보
+            </h1>
             <div
               style={{
-                width: '1370px',
+                display: 'flex',
                 margin: '0 auto',
+                paddingTop: '20px',
               }}
             >
-              <div style={{ width: '600px', height: '750px', borderRadius: '20px' }}>
-                <h1 style={{ color: 'black' }}>
-                  <img style={{ marginTop: '10px', width: '20px', color: 'black' }} src="/icons/icons/map.svg"></img>{' '}
-                  운행중 버스정보
-                </h1>
-                <Row>
-                  <div
-                    style={{
-                      border: '2px solid lightgrey',
-                      width: '600px',
-                      height: '600px',
-                      boxShadow: '3px 3px 3px 3px lightgrey',
-                      overflowY: 'auto',
-                    }}
-                  >
-                    <div className="businfo">{busInfoList}</div>
-                  </div>
-                </Row>
-              </div>
+              <Row>
+                <div style={parentStyle}>
+                  <Bus />
+                </div>
+                <div style={parentStyle}>
+                  <Bus1 />
+                </div>
+                {/* <div style={parentStyle}>
+                  <Bus2 />
+                </div>
+                <div style={parentStyle}>
+                  <Bus22 />
+                </div> */}
+              </Row>
             </div>
           </Col>
 
@@ -162,25 +162,25 @@ const App: React.FC = () => {
             </h1>
             <div
               style={{
-                display: 'flex',
+                width: '1370px',
                 margin: '0 auto',
-                paddingTop: '20px',
               }}
             >
-              <Row>
-                <div style={parentStyle}>
-                  <Bus />
-                </div>
-                <div style={parentStyle}>
-                  <Bus1 />
-                </div>
-                {/* <div style={parentStyle}>
-                  <Bus2 />
-                </div>
-                <div style={parentStyle}>
-                  <Bus22 />
-                </div> */}
-              </Row>
+              <div style={{ width: '580px', height: '750px', borderRadius: '20px' }}>
+                <Row>
+                  <div
+                    style={{
+                      border: '2px solid lightgrey',
+                      width: '600px',
+                      height: '600px',
+                      boxShadow: '3px 3px 3px 3px lightgrey',
+                      overflowY: 'auto',
+                    }}
+                  >
+                    <div className="businfo">{busInfoList}</div>
+                  </div>
+                </Row>
+              </div>
             </div>
           </Col>
         </Row>

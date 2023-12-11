@@ -7,7 +7,7 @@ const headers = ['버스번호', '차량번호', '위치', '운행상태'];
 const generateDummyData = (numRows) => {
   const dummyData = [];
   for (let i = 1; i <= numRows; i++) {
-    const row = [`강원${i}자1565`, `${i * 10}`, '차고지', Math.random() < 0.5 ? '운행 중' : '미운행'];
+    const row = [`강원${i}자1565`, `${i * 10}`, '차고지', i % 2 === 0 ? '운행 중' : '미운행'];
     dummyData.push(row);
   }
   return dummyData;
@@ -16,7 +16,14 @@ const generateDummyData = (numRows) => {
 const busDummyData = generateDummyData(10);
 
 const convertToExcel = () => {
-  const excelData = [headers, ...busDummyData];
+  const updatedBusDummyData = busDummyData.map((row) => [
+    row[0],
+    row[1],
+    row[2],
+    Math.random() < 0.5 ? '운행 중' : '미운행',
+  ]);
+
+  const excelData = [headers, ...updatedBusDummyData];
 
   if (XLSX.utils) {
     const ws = XLSX.utils.aoa_to_sheet(excelData);

@@ -5,7 +5,6 @@ import React from 'react';
 import Table2 from '../../../components/antd/buslist/table3';
 import 'antd-button-color/dist/css/style.css';
 import Grid from '../../../components/antd/buslist/grid';
-import Pagination from '../../../components/antd/pagination/table';
 
 const MyPage = () => {
   return (
