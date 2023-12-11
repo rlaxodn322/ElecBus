@@ -19,7 +19,7 @@ const style: React.CSSProperties = {
 };
 const style1: React.CSSProperties = {
   padding: '8px 0',
-  width: '100px',
+  width: '120px',
   height: '80px',
   borderRadius: '20px',
   border: '1px solid lightgrey',
@@ -29,7 +29,7 @@ const style1: React.CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
-  fontSize: '18px',
+  fontSize: '13px',
 };
 const containerStyle: React.CSSProperties = {
   width: '1370px',
@@ -57,6 +57,14 @@ const generateDummyData = (version) => {
       { label: '주행 거리', info: '150 km' },
       { label: '배터리 용량', info: '40 kWh' },
       { label: '충전 시간', info: '3 시간' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
     ],
     [
       { label: '운행상태', info: '운행 중2' },
@@ -75,6 +83,14 @@ const generateDummyData = (version) => {
       { label: '주행 거리', info: '120 km' },
       { label: '배터리 용량', info: '35 kWh' },
       { label: '충전 시간', info: '2.8 시간' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
     ],
     [
       { label: '운행상태', info: '주차 중' },
@@ -93,6 +109,14 @@ const generateDummyData = (version) => {
       { label: '주행 거리', info: '70 km' },
       { label: '배터리 용량', info: '28 kWh' },
       { label: '충전 시간', info: '2.2 시간' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
     ],
     [
       { label: '운행상태', info: '운행 중3' },
@@ -111,6 +135,14 @@ const generateDummyData = (version) => {
       { label: '주행 거리', info: '160 km' },
       { label: '배터리 용량', info: '42 kWh' },
       { label: '충전 시간', info: '3.2 시간' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
     ],
     [
       { label: '운행상태', info: '주차 중' },
@@ -129,6 +161,14 @@ const generateDummyData = (version) => {
       { label: '주행 거리', info: '60 km' },
       { label: '배터리 용량', info: '25 kWh' },
       { label: '충전 시간', info: '2 시간' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
+      { label: 'Tray', info: '' },
     ],
   ];
 
@@ -178,6 +218,8 @@ const determineBackgroundColor = (label, info) => {
     } else {
       backgroundColor = '#b2f5d8'; // Green
     }
+  } else {
+    backgroundColor = 'lightblue';
   }
 
   return backgroundColor;
@@ -223,7 +265,7 @@ const App: React.FC = () => {
 
         <div style={{ width: '1370px', display: 'flex', justifyContent: 'space-between' }}>
           <div style={{ width: '70%' }}>
-            <h1> 화재 방지 시스템</h1>
+            <h1> {selectedVersion + 1}호기 상태정보</h1>
             <Row gutter={1}>
               {currentVersionData.map((data, index) => (
                 <Col key={index} span={7.8}>
@@ -265,15 +307,20 @@ const App: React.FC = () => {
                 </Col>
               ))}
               <Col>
-                <img src={'/images/img.jpg'} style={{ width: '350px', height: '300px' }} alt="soha-image" />
+                <img
+                  src={'/images/img.jpg'}
+                  style={{ width: '350px', height: '300px', marginTop: '20px' }}
+                  alt="soha-image"
+                />
               </Col>
             </Row>
           </div>
         </div>
-
-        <Link href="/">
-          <button>이전</button>
-        </Link>
+        <div style={{ display: 'flex', justifyContent: 'end' }}>
+          <Link href="/">
+            <Button type="info">이전</Button>
+          </Link>
+        </div>
       </div>
     </>
   );
