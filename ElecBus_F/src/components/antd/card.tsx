@@ -3,8 +3,10 @@ import { Col, Row, Button } from 'antd';
 import MapComponent from '../apis/kakao/map1';
 import Bus from '../bus/bus';
 import Bus1 from '../bus/bus1';
+import BusInfoComponent from './businfo/businfocomponent';
 import 'antd-button-color/dist/css/style.css';
 import axios from 'axios';
+
 const style: React.CSSProperties = {
   border: '1px solid lightgrey',
   width: '280px',
@@ -22,26 +24,28 @@ const style2: React.CSSProperties = {
   fontSize: '20px',
   fontWeight: 'bold',
 };
-const style3: React.CSSProperties = {
-  marginTop: '20px',
-  marginLeft: '80px',
-  fontSize: '20px',
-  fontWeight: 'bold',
-};
+
 const parentStyle: React.CSSProperties = {
   // 조절 필요
-  width: '600px',
+  width: '580px',
   overflowY: 'auto',
+  alignItems: 'center',
   border: '2px solid lightgrey',
   height: '200px',
   boxShadow: '3px 3px 3px 3px lightgrey',
 };
-
-const arr6 = ['강원70자8021', '33', '엔진', '미운행'];
-
+const parentStyle1: React.CSSProperties = {
+  // 조절 필요
+  width: '579px',
+  overflowY: 'auto',
+  alignItems: 'center',
+  boxShadow: '3px 3px 3px 3px lightgrey',
+  height: '150px',
+  marginTop: '10px',
+};
 const App: React.FC = () => {
   const [operationalBuses, setOperationalBuses] = useState<number>(0);
-  
+
   useEffect(() => {
     const fetchOperationalBuses = async () => {
       try {
@@ -60,7 +64,11 @@ const App: React.FC = () => {
 
     return () => clearInterval(intervalId); // 컴포넌트 언마운트 시 clearInterval 호출
   }, []);
-
+  const busInfoList = Array.from({ length: 10 }, (_, index) => (
+    <div key={index} style={{ ...parentStyle1 }}>
+      <BusInfoComponent busNumber={index + 1} />
+    </div>
+  ));
   return (
     <>
       <div
@@ -98,28 +106,10 @@ const App: React.FC = () => {
                       width: '600px',
                       height: '600px',
                       boxShadow: '3px 3px 3px 3px lightgrey',
+                      overflowY: 'auto',
                     }}
                   >
-                    <div
-                      style={{
-                        border: '1px solid lightgrey',
-                        width: '600px',
-                        height: '50px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        background: 'white',
-                        color: 'black',
-                      }}
-                    >
-                      <div style={style2}>차량번호</div>
-                      <div style={style2}>노선</div>
-                      <div style={style2}>남은좌석</div>
-                    </div>
-                    <div style={{ display: 'flex' }}>
-                      <div style={style3}>{arr6[0]}</div>
-                      <div style={style3}>{arr6[1]}</div>
-                      <div style={style3}>{arr6[2]}</div>
-                    </div>
+                    <div className="businfo">{busInfoList}</div>
                   </div>
                 </Row>
               </div>
