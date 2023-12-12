@@ -77,12 +77,7 @@ const App: React.FC = () => {
             </Link>
           </div>
         </Form.Item>
-        <div className="carnum">
-          <h1>차량번호</h1>
-        </div>
-        <div className="seialnum">
-          <h1>시리얼넘버</h1>
-        </div>
+        
       </Form>
     </>
   );
