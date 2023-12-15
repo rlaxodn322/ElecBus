@@ -106,12 +106,6 @@ const App: React.FC = () => {
                 <div style={parentStyle}>
                   <Bus1 />
                 </div>
-                {/* <div style={parentStyle}>
-                  <Bus2 />
-                </div>
-                <div style={parentStyle}>
-                  <Bus22 />
-                </div> */}
               </Row>
             </div>
           </Col>
