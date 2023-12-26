@@ -75,14 +75,21 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('Fetching data...'); // 추가한 부분
         const response = await axios.get('http://localhost:3000/mqtt/getdata');
         const data = response.data;
 
-        setMqttData(data);
+        // 마지막 데이터를 선택합니다.
+        const lastData = data[data.length - 1];
+        console.log('Last Data:', lastData);
+        // 새 데이터가 있는 경우에만 상태를 설정합니다.
+        if (JSON.stringify(lastData) !== JSON.stringify(mqttData)) {
+          setMqttData(lastData);
 
-        // 만약 버스 번호가 있다면 해당 버스 데이터로 설정
-        if (busNumber) {
-          setSelectedVersion(Number(busNumber) - 1);
+          // 만약 버스 번호가 있다면 해당 버스 데이터로 설정
+          if (busNumber) {
+            setSelectedVersion(Number(busNumber) - 1);
+          }
         }
       } catch (error) {
         console.error('MQTT 데이터를 불러오는 중 에러 발생:', error);
@@ -90,13 +97,19 @@ const App: React.FC = () => {
     };
 
     fetchData();
+
+    // Set up interval to fetch data every 5 seconds
+    const intervalId = setInterval(fetchData, 5000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
   }, [busNumber]);
 
   // 현재 선택한 버전의 데이터를 가져옵니다.
-  const currentVersionData = selectedVersion < mqttData.length ? mqttData[selectedVersion].data : [];
+  const currentVersionData = selectedVersion < mqttData.length ? mqttData[selectedVersion]?.data || [] : [];
 
   // 이제 generateDummyData1 함수 대신에 실제 서버에서 받아온 데이터를 사용합니다.
-  const sohaData = mqttData.length > 0 ? mqttData[0].data : [];
+  const sohaData = mqttData.data;
   return (
     <>
       <div style={containerStyle}>
@@ -119,7 +132,7 @@ const App: React.FC = () => {
           <div style={{ width: '70%' }}>
             <h1> {selectedVersion + 1}호기 상태정보</h1>
             <Row gutter={1}>
-              {currentVersionData.map((data, index) => (
+              {sohaData.map((data, index) => (
                 <Col key={index} span={7.8}>
                   <div style={{ margin: '5px', width: 'max-content' }}>
                     <div
