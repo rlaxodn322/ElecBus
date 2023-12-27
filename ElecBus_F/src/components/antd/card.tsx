@@ -64,7 +64,7 @@ const App: React.FC = () => {
 
     return () => clearInterval(intervalId); // 컴포넌트 언마운트 시 clearInterval 호출
   }, []);
-  const busInfoList = Array.from({ length: 10 }, (_, index) => (
+  const busInfoList = Array.from({ length: 1 }, (_, index) => (
     <div key={index} style={{ ...parentStyle1 }}>
       <BusInfoComponent busNumber={index + 1} />
     </div>
@@ -164,6 +164,7 @@ const App: React.FC = () => {
                 <Row>
                   <div
                     style={{
+                      padding: '10px',
                       border: '2px solid lightgrey',
                       width: '600px',
                       height: '600px',

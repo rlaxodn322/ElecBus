@@ -6,8 +6,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 const style: React.CSSProperties = {
   padding: '8px 0',
-  width: '200px',
-  height: '100px',
+  width: '120px',
+  height: '80px',
   borderRadius: '20px',
   border: '1px solid lightgrey',
   boxShadow: '1px 1px 1px 1px lightgrey',
@@ -16,7 +16,7 @@ const style: React.CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
-  fontSize: '18px',
+  fontSize: '12px',
 };
 const style1: React.CSSProperties = {
   padding: '8px 0',
@@ -116,7 +116,7 @@ const App: React.FC = () => {
         <div style={{ width: '1370px', height: '100px' }}>
           <span
             style={{
-              fontSize: '30px',
+              fontSize: '20px',
               background: '#005cce',
               color: 'white',
               padding: '20px',
@@ -126,6 +126,7 @@ const App: React.FC = () => {
           >
             {selectedVersion + 1}호
           </span>
+         
         </div>
 
         <div style={{ width: '1370px', display: 'flex', justifyContent: 'space-between' }}>
@@ -135,7 +136,7 @@ const App: React.FC = () => {
               {sohaData && sohaData.length > 0 ? (
                 sohaData.map((data, index) => (
                   <Col key={index} span={7.8}>
-                    <div style={{ margin: '5px', width: 'max-content' }}>
+                    <div style={{ margin: '2px', width: 'max-content' }}>
                       <div
                         style={{
                           ...style,
@@ -158,7 +159,7 @@ const App: React.FC = () => {
           <div style={{ width: '30%' }}>
             <h1> 화재 방지 시스템</h1>
             <Row className="soha">
-              {sohaData && sohaData.length > 0 ? (
+              {/* {sohaData && sohaData.length > 0 ? (
                 sohaData.map((data, index) => (
                   <Col key={index} span={7.5}>
                     <div style={{ margin: '5px', width: 'max-content' }}>
@@ -177,11 +178,11 @@ const App: React.FC = () => {
                 ))
               ) : (
                 <div>데이터가 없습니다.</div>
-              )}
+              )} */}
               <Col>
                 <img
-                  src={'/images/img.jpg'}
-                  style={{ width: '350px', height: '300px', marginTop: '20px' }}
+                  src={'/images/bus.jpg'}
+                  style={{ width: '450px', height: '300px', marginTop: '20px' }}
                   alt="soha-image"
                 />
               </Col>
@@ -190,7 +191,7 @@ const App: React.FC = () => {
         </div>
         <div style={{ display: 'flex', justifyContent: 'end' }}>
           <Link href="/">
-            <Button type="info">이전</Button>
+            <Button style={{boxShadow:'1px 1px 1px 1px'}}>이전</Button>
           </Link>
         </div>
       </div>
