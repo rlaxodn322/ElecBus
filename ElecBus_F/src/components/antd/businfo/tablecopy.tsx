@@ -132,22 +132,26 @@ const App: React.FC = () => {
           <div style={{ width: '70%' }}>
             <h1> {selectedVersion + 1}호기 상태정보</h1>
             <Row gutter={1}>
-              {sohaData.map((data, index) => (
-                <Col key={index} span={7.8}>
-                  <div style={{ margin: '5px', width: 'max-content' }}>
-                    <div
-                      style={{
-                        ...style,
-                        background: determineBackgroundColor(data.label, data.info),
-                        color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
-                      }}
-                    >
-                      <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
-                      {data.info && <div>{data.info}</div>}
+              {sohaData && sohaData.length > 0 ? (
+                sohaData.map((data, index) => (
+                  <Col key={index} span={7.8}>
+                    <div style={{ margin: '5px', width: 'max-content' }}>
+                      <div
+                        style={{
+                          ...style,
+                          background: determineBackgroundColor(data.label, data.info),
+                          color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
+                        }}
+                      >
+                        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
+                        {data.info && <div>{data.info}</div>}
+                      </div>
                     </div>
-                  </div>
-                </Col>
-              ))}
+                  </Col>
+                ))
+              ) : (
+                <div>데이터가 없습니다.</div>
+              )}
             </Row>
           </div>
 
