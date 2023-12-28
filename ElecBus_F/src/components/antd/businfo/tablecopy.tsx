@@ -46,7 +46,11 @@ const containerStyle: React.CSSProperties = {
   paddingLeft: '50px',
   paddingBottom: '20px',
 };
-
+const hoverStyle: React.CSSProperties = {
+  transform: 'scale(1.1)',
+  transition: 'transform 0.3s ease',
+  // 여기에 hover 시에 변경되어야 할 스타일을 추가하세요.
+};
 const determineBackgroundColor = (label, info) => {
   let backgroundColor = 'transparent';
 
@@ -80,6 +84,7 @@ const App: React.FC = () => {
   const { busNumber } = router.query;
   const [selectedVersion, setSelectedVersion] = useState(0);
   const [mqttData, setMqttData] = useState([]);
+  const [hoverStates, setHoverStates] = useState([]);
 
   const [blink, setBlink] = useState(false);
   useEffect(() => {
@@ -101,6 +106,7 @@ const App: React.FC = () => {
           if (busNumber) {
             setSelectedVersion(Number(busNumber) - 1);
           }
+          setHoverStates(Array(lastData.data.length).fill(false));
         }
       } catch (error) {
         console.error('MQTT 데이터를 불러오는 중 에러 발생:', error);
@@ -153,16 +159,22 @@ const App: React.FC = () => {
             <Row gutter={1}>
               {sohaData && sohaData.length > 0 ? (
                 sohaData.map((data, index) => (
-                  <Col key={index} span={7.8}>
+                  <Col
+                    key={index}
+                    span={7.8}
+                    onMouseEnter={() => setHoverStates((prev) => prev.map((state, i) => (i === index ? true : state)))}
+                    onMouseLeave={() => setHoverStates((prev) => prev.map((state, i) => (i === index ? false : state)))}
+                  >
                     <div style={{ margin: '5px', width: 'max-content' }}>
                       <div
                         style={{
                           ...style,
                           background: determineBackgroundColor(data.label, data.info),
+                          ...(hoverStates[index] && hoverStyle),
                         }}
                       >
                         <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
-                        {data.info && <div style={{ color: blink ? 'red' : 'black' }}>{data.info}</div>}
+                        {data.info && <div style={{ color: blink ? 'white' : 'black' }}>{data.info}</div>}
                       </div>
                     </div>
                   </Col>
