@@ -10,7 +10,7 @@ const style: React.CSSProperties = {
   width: '115px',
   height: '70px',
   borderRadius: '10px',
-  borderBottm: '1px  solid lightgrey',
+  borderBottom: '1px  solid lightgrey',
   borderRight: '1px  solid lightgrey',
   borderLeft: '1px  solid lightgrey',
   boxShadow: '1px 1px 1px 1px lightgrey',
@@ -187,7 +187,7 @@ const App: React.FC = () => {
 
           <div
             style={{
-              width: '30%',
+              width: '40%',
             }}
           >
             <h1> 화재 방지 시스템</h1>
@@ -215,7 +215,7 @@ const App: React.FC = () => {
               <Col>
                 <img
                   src={'/images/bus.jpg'}
-                  style={{ width: '350px', height: '200px', marginTop: '20px' }}
+                  style={{ width: '450px', height: '280px', marginTop: '20px' }}
                   alt="soha-image"
                 />
               </Col>
