@@ -22,7 +22,7 @@ const Weather = () => {
   });
 
   useEffect(() => {
-    const city = 'Andong'; //원하는 지역 검색하여 변경
+    const city = 'Hwaseong'; //원하는 지역 검색하여 변경
     const apiKey = 'c5597f52c85276cd2e0898b8d3d77ea0';
     const lang = 'kr';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=${lang}`;
@@ -53,7 +53,7 @@ const Weather = () => {
       ) : (
         <>
           {/* <WeatherIcon src={imgSrc} alt="Weather Icon" /> */}
-          <WeatherCloud>위치 : text</WeatherCloud>
+          <WeatherCloud>위치 : Hwaseong-si</WeatherCloud>
           <WeatherCloud>날씨 : {desc}</WeatherCloud>
           <WeatherTemp>온도 : {temp}°C</WeatherTemp>
           <WeatherDesc>습도 : {humidity}%</WeatherDesc>

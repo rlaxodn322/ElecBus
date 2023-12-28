@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Button, Input, Flex, Spin } from 'antd';
+import { Row, Col, Button, Spin, Flex } from 'antd';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -83,9 +83,10 @@ const App: React.FC = () => {
   const router = useRouter();
   const { busNumber } = router.query;
   const [selectedVersion, setSelectedVersion] = useState(0);
-  const [mqttData, setMqttData] = useState([]);
-  const [hoverStates, setHoverStates] = useState([]);
+  const [mqttData, setMqttData] = useState<any[]>([]);
+  const [hoverStates, setHoverStates] = useState<boolean[]>([]);
   const [blink, setBlink] = useState(false);
+
   const [dummyData, setDummyData] = useState(generateDummyData());
   useEffect(() => {
     const fetchData = async () => {

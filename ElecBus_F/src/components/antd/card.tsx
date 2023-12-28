@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Row, Button } from 'antd';
+import { Col, Row } from 'antd';
 import MapComponent from '../apis/kakao/map1';
 import Bus from '../bus/bus';
 import Bus1 from '../bus/bus1';
@@ -19,11 +19,6 @@ const style: React.CSSProperties = {
   padding: '30px',
 };
 const style1: React.CSSProperties = { marginRight: '20px', fontSize: '20px', fontWeight: 'bold' };
-const style2: React.CSSProperties = {
-  marginLeft: '90px',
-  fontSize: '20px',
-  fontWeight: 'bold',
-};
 
 const parentStyle: React.CSSProperties = {
   // 조절 필요
