@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import MainLayout from '../../../layouts/Main';
 import Table from '../../../components/antd/businfo/tablecopy';
-import BusChoice from '../../../components/antd/buschoice/table';
-import ErrorTable from '../../../components/antd/buserror/table';
 
 const MyPage = () => {
   return (

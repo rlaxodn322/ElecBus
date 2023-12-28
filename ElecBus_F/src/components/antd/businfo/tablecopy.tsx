@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col } from 'antd';
-import { Button, Input } from 'antd';
+import { Row, Col, Button, Input, Flex, Spin } from 'antd';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -22,22 +22,18 @@ const style: React.CSSProperties = {
   fontSize: '11px',
 };
 const style1: React.CSSProperties = {
-  padding: '8px 0',
-  width: '120px',
-  height: '80px',
-  borderRadius: '20px',
-  border: '1px solid lightgrey',
-  boxShadow: '1px 1px 1px 1px lightgrey',
+  paddingTop: '25%',
   display: 'flex',
-  flexDirection: 'column',
   justifyContent: 'center',
+  width: '100%',
+
   alignItems: 'center',
   textAlign: 'center',
-  fontSize: '13px',
+  fontSize: '30px',
 };
 const style2: React.CSSProperties = {
   padding: '8px 0',
-  width: '110px',
+  width: '160px',
   height: '50px',
   borderRadius: '10px',
   border: '1px solid lightgrey',
@@ -47,7 +43,7 @@ const style2: React.CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
-  fontSize: '13px',
+  fontSize: '11px',
 };
 const containerStyle: React.CSSProperties = {
   background: 'white',
@@ -57,41 +53,15 @@ const containerStyle: React.CSSProperties = {
   boxShadow: '0px 0px 0px 0px',
   border: '1px solid lightgrey',
   borderRadius: '10px',
-  paddingLeft: '50px',
+  paddingLeft: '20px',
   paddingBottom: '20px',
 };
 const hoverStyle: React.CSSProperties = {
   transform: 'scale(1.1)',
-  transition: 'transform 0.3s ease',
+  transition: 'transform 0.5s ease',
   // 여기에 hover 시에 변경되어야 할 스타일을 추가하세요.
 };
-const determineBackgroundColor = (label, info) => {
-  let backgroundColor = 'transparent';
 
-  // if (info) {
-  //   if (label === '운행상태' && info === '주차 중') {
-  //     backgroundColor = '#FF6347'; // Red
-  //   } else if (label === '운행상태' && info === '운행 중') {
-  //     backgroundColor = '#b2f5d8'; // Green
-  //   } else if (label === '배터리 소화기 상태' && info === '이상') {
-  //     backgroundColor = '#FF6347'; // Red
-  //   } else if (label.includes('온도')) {
-  //     const temperature = parseInt(info);
-  //     backgroundColor = temperature > 40 ? '#FF6347' : '#b2f5d8';
-  //   } else if (label === '충전 상태' && info === '충전 중') {
-  //     backgroundColor = '#b2f5d8'; // Green
-  //   } else if (label === '주행 거리') {
-  //     const distance = parseInt(info.split(' ')[0]); // '100 km'에서 숫자 값 추출
-  //     backgroundColor = distance < 100 ? '#FF6347' : '#b2f5d8';
-  //   } else {
-  //     backgroundColor = '#b2f5d8'; // Green
-  //   }
-  // } else {
-  //   backgroundColor = 'lightblue';
-  // }
-
-  return backgroundColor;
-};
 const generateDummyData = () => {
   const dummyData = [
     { label: '온도1', info: `0°C` },
@@ -162,25 +132,10 @@ const App: React.FC = () => {
     return () => clearTimeout(blinkTimeout);
   }, [blink]);
   // 이제 generateDummyData1 함수 대신에 실제 서버에서 받아온 데이터를 사용합니다.
-  const sohaData = mqttData.data;
+  const sohaData = mqttData?.data || [];
   return (
     <>
       <div style={containerStyle}>
-        {/* <div style={{ width: '1370px', height: '100px' }}>
-          <span
-            style={{
-              fontSize: '20px',
-              background: '#005cce',
-              color: 'white',
-              padding: '20px',
-              borderRadius: '10px',
-              fontWeight: 'bold',
-            }}
-          >
-            {selectedVersion + 1}호
-          </span>
-        </div> */}
-
         <div style={{ width: '1370px', display: 'flex', justifyContent: 'space-between' }}>
           <div
             style={{
@@ -201,7 +156,6 @@ const App: React.FC = () => {
                       <div
                         style={{
                           ...style,
-                          background: determineBackgroundColor(data.label, data.info),
                           ...(hoverStates[index] && hoverStyle),
                         }}
                       >
@@ -212,7 +166,11 @@ const App: React.FC = () => {
                   </Col>
                 ))
               ) : (
-                <div>데이터가 없습니다.</div>
+                <div style={{ ...style1 }}>
+                  <Flex align="center" gap="middle">
+                    <Spin size="large" />
+                  </Flex>
+                </div>
               )}
             </Row>
           </div>
@@ -226,13 +184,11 @@ const App: React.FC = () => {
             <Row className="soha">
               {dummyData && dummyData.length > 0 ? (
                 dummyData.map((data, index) => (
-                  <Col key={index} span={5}>
+                  <Col key={index} span={6.5}>
                     <div style={{ margin: '5px', width: 'max-content' }}>
                       <div
                         style={{
                           ...style2,
-                          background: determineBackgroundColor(data.label, data.info),
-                          color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
                         }}
                       >
                         <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{data.label}</div>
