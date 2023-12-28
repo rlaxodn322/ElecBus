@@ -35,6 +35,20 @@ const style1: React.CSSProperties = {
   textAlign: 'center',
   fontSize: '13px',
 };
+const style2: React.CSSProperties = {
+  padding: '8px 0',
+  width: '110px',
+  height: '50px',
+  borderRadius: '10px',
+  border: '1px solid lightgrey',
+  boxShadow: '1px 1px 1px 1px lightgrey',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  fontSize: '13px',
+};
 const containerStyle: React.CSSProperties = {
   background: 'white',
   width: '1370px',
@@ -78,15 +92,31 @@ const determineBackgroundColor = (label, info) => {
 
   return backgroundColor;
 };
+const generateDummyData = () => {
+  const dummyData = [
+    { label: '온도1', info: `0°C` },
+    { label: '온도2', info: `0°C` },
+    { label: '가스1', info: `0%LEL` },
+    { label: '가스2', info: `0%LEL` },
+    { label: '환풍기', info: `OFF ` },
+    { label: '압력1', info: `0 kPa` },
+    { label: '압력2', info: `0 kPa` },
+    { label: '소화수입력밸브', info: `OFF` },
+    { label: '드레인밸브', info: `OFF` },
+    { label: '수위 LOW', info: `OFF` },
+    { label: '수위 HIGH', info: `OFF` },
+  ];
 
+  return dummyData;
+};
 const App: React.FC = () => {
   const router = useRouter();
   const { busNumber } = router.query;
   const [selectedVersion, setSelectedVersion] = useState(0);
   const [mqttData, setMqttData] = useState([]);
   const [hoverStates, setHoverStates] = useState([]);
-
   const [blink, setBlink] = useState(false);
+  const [dummyData, setDummyData] = useState(generateDummyData());
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -98,6 +128,8 @@ const App: React.FC = () => {
         const lastData = data[data.length - 1];
         console.log('Last Data:', lastData);
         // 새 데이터가 있는 경우에만 상태를 설정합니다.
+        const dummyData = generateDummyData();
+        setDummyData(dummyData);
         if (JSON.stringify(lastData) !== JSON.stringify(mqttData)) {
           setBlink(true);
           setMqttData(lastData);
@@ -192,13 +224,13 @@ const App: React.FC = () => {
           >
             <h1> 화재 방지 시스템</h1>
             <Row className="soha">
-              {/* {sohaData && sohaData.length > 0 ? (
-                sohaData.map((data, index) => (
-                  <Col key={index} span={7.5}>
+              {dummyData && dummyData.length > 0 ? (
+                dummyData.map((data, index) => (
+                  <Col key={index} span={5}>
                     <div style={{ margin: '5px', width: 'max-content' }}>
                       <div
                         style={{
-                          ...style1,
+                          ...style2,
                           background: determineBackgroundColor(data.label, data.info),
                           color: determineBackgroundColor(data.label, data.info) === '#FF6347' ? 'white' : '#333',
                         }}
@@ -211,7 +243,7 @@ const App: React.FC = () => {
                 ))
               ) : (
                 <div>데이터가 없습니다.</div>
-              )} */}
+              )}
               <Col>
                 <img
                   src={'/images/bus.jpg'}
