@@ -91,7 +91,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log('Fetching data...'); // 추가한 부분
+        console.log('Fetching data...!'); // 추가한 부분
         const response = await axios.get('http://localhost:3000/mqtt/getdata');
         const data = response.data;
 
