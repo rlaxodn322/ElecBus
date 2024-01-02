@@ -167,7 +167,7 @@ const MapComponent = () => {
               0,
               'https://www.freeiconspng.com/uploads/school-bus-icon-12.png',
             ),
-          5000,
+          20000,
         );
       });
       return () => clearInterval(intervalId);

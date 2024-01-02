@@ -55,7 +55,7 @@ const App: React.FC = () => {
 
     // 페이지가 로드될 때와 일정 주기로 운행 중인 버스 수량을 업데이트
     fetchOperationalBuses();
-    const intervalId = setInterval(fetchOperationalBuses, 5000); // 5초마다 업데이트
+    const intervalId = setInterval(fetchOperationalBuses, 20000); // 5초마다 업데이트
 
     return () => clearInterval(intervalId); // 컴포넌트 언마운트 시 clearInterval 호출
   }, []);
