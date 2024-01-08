@@ -79,7 +79,6 @@ const App: React.FC = () => {
               버스등록
             </Button>
 
-            {/* 버스삭제 버튼 */}
             <Button style={{ ...buttonStyle, marginRight: '20px' }} onClick={() => router.push('/auth/busdelete')}>
               버스삭제
             </Button>
