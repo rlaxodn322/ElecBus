@@ -2,7 +2,12 @@ import styled from '@emotion/styled';
 
 export const Page = styled.section`
   // display: inline-flex;
-  // display: flex;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
   // flex-wrap: wrap;
   // width: auto;
   // height: auto;

@@ -13,8 +13,15 @@ const MyPage = () => {
         <title>오류관리</title>
         <meta name="description" content="오류관리" />
       </Head>
+
       <h1
-        style={{ width: '1370px', display: 'flex', justifyContent: 'flex-start', margin: '0 auto', paddingTop: '20px' }}
+        style={{
+          width: '1370px',
+          display: 'flex',
+          justifyContent: 'flex-start',
+          margin: '0 auto',
+          paddingTop: '20px',
+        }}
       >
         차량제어기 상태정보
       </h1>
@@ -30,7 +37,6 @@ const MyPage = () => {
       >
         <Table />
       </div>
-
       <h1
         style={{
           width: '1370px',
@@ -79,7 +85,6 @@ const MyPage = () => {
       >
         <ErrorTable key="errorTable" />
       </div>
-
       <div
         key="paginationContainer" // 고유한 키 추가
         style={{

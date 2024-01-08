@@ -19,13 +19,11 @@ const MainLayout: LayoutProps = ({ children }) => {
 export default MainLayout;
 
 const Layout = styled.section`
-
   margin: 0 auto;
   background-color: white;
 `;
 
 const ContentsWrapper = styled.div`
-  max-width: 1800px;
   width: 100%;
   margin: 0 80px;
   min-height: 82.5dvh;

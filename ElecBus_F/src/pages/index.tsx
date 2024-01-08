@@ -13,9 +13,10 @@ const Home = () => {
         <title>HOME</title>
         <meta name="description" content="text." />
       </Head>
-      <Card></Card>
 
-      <Page></Page>
+      <Page>
+        <Card />
+      </Page>
     </>
   );
 };
