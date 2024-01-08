@@ -63,8 +63,8 @@ export function signUpAPI(data: FormData) {
 //   return axios.patch('/user', data).then((response) => response.data);
 // }
 
-// // 회원 삭제 API
-// export function deleteUserAPI(email: string) {
-//   console.log('회원 삭제', email);
-//   return axios.delete('/user', { data: { email } }).then((response) => response.data);
-// }
+// 회원 삭제 API
+export function deleteUserAPI(email: string) {
+  console.log('회원 삭제', email);
+  return axios.delete('/user', { data: { email } }).then((response) => response.data);
+}

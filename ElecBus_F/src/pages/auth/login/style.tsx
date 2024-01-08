@@ -19,7 +19,7 @@ export const CheckError = styled.button`
   border: none;
   background-color: transparent;
   margin-left: 4px;
-  tabindex= -1;
+  /* tabindex= -1; */
 
   &:focus {
     outline: none;
@@ -95,6 +95,6 @@ export const ButtonWrapper = styled.div`
 
   & Button {
     color: #808080;
-    danger-color: #808080;
+    /* danger-color: #808080; */
   }
 `;

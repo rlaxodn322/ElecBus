@@ -57,6 +57,7 @@ const App: React.FC = () => {
       <Form {...layout} ref={formRef} name="control-ref" onFinish={onFinish} style={{ maxWidth: 600 }}>
         <Form.Item name="busNumber" label="차량번호" rules={[{ required: true }]}>
           <Input style={inputStyle} placeholder="노선을 입력하세요." />
+          
         </Form.Item>
         <Form.Item name="serial" label="시리얼넘버" rules={[{ required: true }]}>
           <Input style={inputStyle} placeholder="시리얼넘버를 입력하세요." />
@@ -77,7 +78,6 @@ const App: React.FC = () => {
             </Link>
           </div>
         </Form.Item>
-        
       </Form>
     </>
   );
